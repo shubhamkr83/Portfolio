@@ -24,8 +24,8 @@ const Navbar = (props) => {
                 <div className={icon ? "menu mobile_menu" : "menu"}>
 
                     <NavLink exact="true" activeClassname="active_class" className="anc" to="/" onClick={normal}>Home</NavLink>
-                    <NavLink exact="true" className="anc" to="/about" onClick={normal}>About</NavLink>
-                    <NavLink exact="true" className="anc" to="/portfolio" onClick={normal}>Skills</NavLink>
+                    <NavLink exact="true" className="anc" to="/about" onClick={normal}>Experience</NavLink>
+                    <NavLink exact="true" className="anc" to="/skills" onClick={normal}>Skills</NavLink>
                     <NavLink exact="true" className="anc" to="/projects" onClick={normal}>Projects</NavLink>
                     <NavLink exact="true" className="anc" to="/contact" onClick={normal}>Contact</NavLink>
 

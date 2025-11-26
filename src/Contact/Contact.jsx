@@ -1,64 +1,14 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useState } from 'react';
 import Aos from 'aos';
 import "aos/dist/aos.css";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
-import emailjs from '@emailjs/browser';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import "./contact.css";
 
 const Contact = () => {
-
-    const customId = "custom-id-yes";
-
-    const [user, setUser] = useState({
-        name: "", email: "", phone: "", message: "",
-    });
-
-    let name, value;
-
-    const handleInputs = (e) => {
-        name = e.target.name;
-        value = e.target.value;
-
-        setUser({ ...user, [name]: value });
-    }
-
-    function sendEmail(e) {
-        e.preventDefault();
-        const { name, email, phone, message } = user;
-
-        if (!name || !email || !phone || !message) {
-
-            toast.warn("Plz fill all the fields", {
-                position: "top-center",
-                autoClose: 3000,
-                theme: "colored",
-                pauseOnHover: false,
-                toastId: customId,
-                draggable: false,
-            })
-
-        } else {
-            emailjs.sendForm(
-                'service_1lmgnfb',
-                'template_7fwj6nv',
-                e.target,
-                'user_drrUOLk9Cjm6u5uvfMEGQ'
-            ).then(res => {
-                // alert(res);
-                toast.success("Thanks For Contacting Us", {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme: "colored",
-                    pauseOnHover: false,
-                    toastId: customId,
-                    draggable: false,
-                })
-            }).catch(err => console.log(err));
-        }
-    }
 
     useEffect(() => {
         Aos.init({
@@ -69,51 +19,25 @@ const Contact = () => {
 
     return (
         <>
-            <form className="contact_section" id="contact" method="POST" onSubmit={sendEmail}>
-                <h2>Contact Us</h2>
+            <section className="contact_section" id="contact">
+                <h2>Contact Me</h2>
                 <div className="center_contact">
-                    <div className="input_section">
-                        <label>FullName</label>
-                        <input type="text"
-                            name="name"
-                            placeholder="Enter your fullname"
-                            value={user.name}
-                            onChange={handleInputs}
-                        />
+                    <div className="contact_info" data-aos='fade-up'>
+                        <div className="contact_item">
+                            <h3><span className="span">Email:-</span> shubham.krsaw836@gmail.com</h3>
+                        </div>
+                        <div className="contact_item">
+                            <h3><span className="span">Phone:-</span> 6204843730</h3>
+                        </div>
+                        <div className="social_icons">
+                            <a href="https://twitter.com/KrShubhamDev" target="_blank" rel="noreferrer"><TwitterIcon /></a>
+                            <a href="https://www.instagram.com/shubhamkrdev/" target="_blank" rel="noreferrer"><InstagramIcon /></a>
+                            <a href="https://www.linkedin.com/in/shubham-kumar836" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
+                            <a href="https://github.com/shubhamkr83" target="_blank" rel="noreferrer"><GitHubIcon /></a>
+                        </div>
                     </div>
-                    <div className="input_section">
-                        <label>Email Id</label>
-                        <input type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            value={user.email}
-                            onChange={handleInputs}
-                        />
-                    </div>
-                    <div className="input_section">
-                        <label>Phone No.</label>
-                        <input type="number"
-                            name="phone"
-                            placeholder="Enter your phone"
-                            value={user.phone}
-                            onChange={handleInputs}
-                        />
-                    </div>
-                    <div className="input_text">
-                        <label>Message</label>
-                        <textarea
-                            name="message"
-                            placeholder="Message"
-                            value={user.message}
-                            onChange={handleInputs}
-                        >
-                        </textarea>
-                    </div>
-
-                    <input type="submit" value="Send" className="submit_button" />
                 </div>
-            </form>
-            <ToastContainer />
+            </section>
         </>
     )
 };

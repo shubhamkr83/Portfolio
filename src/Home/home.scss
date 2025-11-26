@@ -95,6 +95,19 @@
         filter: brightness(115%);
       }
     }
+
+    .skill_title {
+      font-size: 4.2rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      margin: 1rem 0;
+      color: var(--subtitle_color);
+      text-shadow: var(--subtitle_shadow);
+      text-transform: uppercase;
+      /* border: 2px solid red; */
+    }
   }
 }
 

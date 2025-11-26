@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import MainHeader from './MainHeader';
 import Home from "./Home/Home";
 import About from "./About/About";
-import Portfolio from "./Portfolio/Portfolio";
+import Skills from "./Components/Skills/Skill";
 import Projects from "./Components/Projects/Projects";
 import Contact from "./Contact/Contact";
 import styled, { ThemeProvider } from 'styled-components';
@@ -31,7 +31,7 @@ const App = () => {
             <Route path="/" element={<MainHeader />} >
               <Route index element={<Home />} />
               <Route path="about" element={<About />} />
-              <Route path="portfolio" element={<Portfolio />} />
+              <Route path="skills" element={<Skills />} />
               <Route path="projects" element={<Projects />} />
               <Route path="contact" element={<Contact />} />
               <Route path="*" element={<Error />} />

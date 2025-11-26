@@ -9,7 +9,7 @@ import Aos from 'aos';
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
 import "./home.css";
-import About from "../About/About";
+
 
 const Home = () => {
 
@@ -27,7 +27,8 @@ const Home = () => {
                 <div className="center_home">
                     <div data-aos='fade-right' className="left_sec">
                         <h1> <span className="span" > Shubham </span> Kumar</h1>
-                        <h2>JAVA & MERN Stack Developer</h2>
+                        <h2>QA Automation Engineer</h2>
+
                         <h3><span className="span" >Email:-</span> shubham.krsaw836@gmail.com</h3>
                         <h3><span className="span" >Phone:-</span> 6204843730</h3>
                         <div className="icons">
@@ -38,10 +39,12 @@ const Home = () => {
                         </div>
                     </div>
                     <div data-aos='fade-left' className="right_sec">
-                        <img src={web1} alt="img" className="shubham" />
+                        <img src={web1} alt="Shubham Kumar" className="shubham" />
                     </div>
                 </div>
             </section>
+
+
         </>
     )
 };

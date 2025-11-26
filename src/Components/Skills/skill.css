@@ -1,12 +1,11 @@
-/* ---------------- Skill --------------------- */
+/* ---------------- Skill Section (Optimized & Merged) --------------------- */
 .skill_section {
   width: 100%;
   height: auto;
   display: grid;
   place-items: center;
   margin: 1rem 0;
-  /* border: 2px solid red; */
-
+  padding: 4rem 2rem;
 }
 
 .skill_title {
@@ -15,305 +14,457 @@
   font-weight: 700;
   display: grid;
   place-items: center;
-  margin: 1rem 0;
+  margin: 2rem 0;
   color: var(--subtitle_color);
   text-shadow: var(--subtitle_shadow);
   text-transform: uppercase;
-  /* border: 2px solid red; */
 }
 
 .skill_section .center_section {
-  width: 115rem;
+  max-width: 120rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  gap: 3rem;
+  padding: 2rem;
+}
+
+/* Skill Card Styles */
+.skill_card {
+  background: var(--card_bg);
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 132, 241, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.skill_card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 132, 241, 0.2);
+  border-color: var(--primary_color);
+}
+
+.skill_icon {
+  font-size: 5.5rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.skill_category {
+  font-size: 2.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--text_color);
+  margin-bottom: 1.5rem;
+}
+
+.skill_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.skill_item {
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text_color);
+  opacity: 0.85;
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem 0;
+  background: rgba(0, 132, 241, 0.08);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.skill_item:hover {
+  opacity: 1;
+  background: rgba(0, 132, 241, 0.15);
+  transform: translateX(5px);
+}
+
+/* ----------------- Technology Section (Merged from technology.css) ----------------- */
+
+/* Main section container */
+.tech_center {
+  max-width: 120rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Category section wrapper */
+.skill_category_section {
+  margin: 4rem 0;
+}
+
+/* Category title */
+.tech_title {
+  font-size: 3.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--primary_color);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+/* Grid container for tech cards */
+.tech_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 3rem;
+  justify-items: center;
+  padding: 1rem;
+}
+
+/* Individual tech card */
+.tech {
+  width: 22rem;
   height: auto;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 5rem;
-  transition: all 0.3s linear;
-  /* border: 2px solid red; */
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background: var(--card_bg);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
-.skill_section .center_section .card {
-  width: 32.6rem;
-  height: 43rem;
-  background-color: #F9F9F9;
-  box-shadow: -4px 3px 17px -2px #D8DBDD;
-  -webkit-box-shadow: -4px 3px 17px -2px #D8DBDD;
-  -moz-box-shadow: -4px 3px 17px -2px #D8DBDD;
-  display: grid;
-  align-items: center;
-  margin: 1rem 0;
-  position: relative;
-  transition: all 0.3s linear;
-  /* border: 2px solid red; */
+.tech:hover {
+  transform: translateY(-8px);
 }
 
-.skill_section .center_section .card::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #0895ad;
-  clip-path: circle(17.2% at 103% -1%);
-  transition: all 0.4s linear;
-  z-index: -1;
-  /* border: 2px solid red; */
-
+/* Tech icon/image */
+.tech img {
+  width: 14rem;
+  height: 14rem;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0, 132, 241, 0.3);
+  transition: all 0.3s ease;
+  background: var(--bg_color);
+  padding: 1.5rem;
 }
 
-.center_section .card:nth-child(2)::after {
-  background-color: rgb(134, 40, 172);
+.tech:hover img {
+  transform: scale(1.1) rotateY(10deg);
 }
 
-.center_section .card:nth-child(3)::after {
-  background-color: #6114b9;
+/* Tech name */
+.tech h2 {
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--text_color);
+  text-align: center;
+  margin-top: 1.5rem;
+  line-height: 1.4;
 }
 
-.center_section .card:nth-child(4)::after {
-  background-color: #bb5c1c;
-}
+/* ================ Responsive Design ================ */
 
-.center_section .card:nth-child(5)::after {
-  background-color: #b1298f;
-}
-
-.center_section .card:nth-child(6)::after {
-  background-color: #0c1a81;
-}
-
-.center_section .card:hover::after {
-  clip-path: circle(100%);
-}
-
-.skill_section .center_section .card:hover {
-  transform: translateY(-1rem);
-  color: #fff;
-}
-
-.center_section .card h2 {
-  width: 100%;
-  font-size: 2.5rem;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  display: grid;
-  place-items: center;
-  padding: 1rem 0;
-  margin-top: 1.2rem;
-  z-index: 12;
-  /* border: 2px solid red; */
-}
-
-.center_section .card img {
-  /* width: 30rem; */
-  height: 32rem;
-  border-radius: 1rem;
-  z-index: 12;
-  /* border: 2px solid red; */
-}
-
-.swiper {
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-}
-
+/* Skill Section Responsive */
 @media (max-width: 1023px) {
-
-  /* ---------------- Skill --------------------- */
-  .skill_section {
-    height: auto;
-  }
-
   .skill_title {
-    width: 100%;
-    font-size: 4.6rem;
+    font-size: 3.8rem;
   }
 
   .skill_section .center_section {
-    width: 85%;
-    height: auto;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2.5rem;
   }
 
-  .skill_section .center_section .card {
-    width: 35rem;
-    height: 42rem;
+  .skill_card {
+    padding: 2.5rem 2rem;
   }
 
-  .center_section .card h2 {
-    font-size: 2.6rem;
+  .skill_icon {
+    font-size: 5rem;
   }
 
-  .center_section .card img {
-    width: 93%;
-    height: 32rem;
-  }
-}
-
-@media (max-width: 846px) {
-
-  /* ---------------- Skill --------------------- */
-  .skill_section {
-    height: auto;
+  .skill_category {
+    font-size: 2rem;
   }
 
-  .skill_title {
-    width: 100%;
-    font-size: 4.6rem;
-  }
-
-  .skill_section .center_section {
-    width: 100%;
-    height: auto;
-  }
-
-  .skill_section .center_section .card {
-    width: 32rem;
-    height: 42rem;
-  }
-
-  .center_section .card h2 {
-    font-size: 2.6rem;
-  }
-
-  .center_section .card img {
-    width: 93%;
-    height: 32rem;
+  .skill_item {
+    font-size: 1.5rem;
   }
 }
-
-/* ------------ Mobile Phones -------------- */
 
 @media (max-width: 768px) {
-
-  /* ---------------- Skill --------------------- */
   .skill_section {
-    height: auto;
+    padding: 3rem 1.5rem;
   }
 
   .skill_title {
-    width: 100%;
-    font-size: 4.6rem;
+    font-size: 3.4rem;
   }
 
   .skill_section .center_section {
-    width: 100%;
-    height: auto;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 2rem;
+    padding: 1rem;
   }
 
-  .skill_section .center_section .card {
-    width: 32rem;
-    height: 42rem;
+  .skill_icon {
+    font-size: 4.5rem;
   }
 
-  .center_section .card h2 {
-    font-size: 2.6rem;
+  .skill_category {
+    font-size: 1.9rem;
   }
 
-  .center_section .card img {
-    width: 93%;
-    height: 32rem;
+  .skill_item {
+    padding: 0.7rem 1rem;
   }
 }
 
 @media (max-width: 600px) {
-
-  /* ---------------- Skill --------------------- */
-  .skill_section {
-    height: auto;
-  }
-
-  .skill_title {
-    font-size: 3.7rem;
-  }
-
-  .skill_section .center_section {
-    height: auto;
-  }
-
-  .skill_section .center_section .card {
-    width: 32rem;
-    height: 39rem;
-  }
-
-  .center_section .card h2 {
-    font-size: 2.8rem;
-  }
-
-  .center_section .card img {
-    width: 87%;
-    height: 27rem;
-  }
-}
-
-@media (max-width: 450px) {
-
-  /* ---------------- Skill --------------------- */
-  .skill_section {
-    height: auto;
-  }
-
   .skill_title {
     font-size: 3rem;
   }
 
   .skill_section .center_section {
-    height: auto;
+    grid-template-columns: 1fr;
   }
 
-  .skill_section .center_section .card {
-    width: 24rem;
-    height: 32rem;
+  .skill_card {
+    padding: 2rem 1.5rem;
   }
 
-  .center_section .card h2 {
-    font-size: 2rem;
+  .skill_icon {
+    font-size: 4rem;
   }
 
-  .center_section .card img {
-    width: 93%;
-    height: 23rem;
+  .skill_category {
+    font-size: 1.8rem;
+  }
+
+  .skill_item {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .skill_section {
+    padding: 2rem 1rem;
+  }
+
+  .skill_title {
+    font-size: 2.6rem;
+  }
+
+  .skill_icon {
+    font-size: 3.5rem;
+  }
+
+  .skill_category {
+    font-size: 1.7rem;
+  }
+
+  .skill_item {
+    font-size: 1.3rem;
+    padding: 0.6rem 0.8rem;
   }
 }
 
 @media (max-width: 345px) {
-
-  /* ---------------- Skill --------------------- */
-  .skill_section {
-    height: auto;
-  }
-
   .skill_title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
-  .skill_section .center_section {
-    height: auto;
+  .skill_card {
+    padding: 1.5rem 1rem;
   }
 
-  .skill_section .center_section .card {
-    width: 22rem;
-    height: 29rem;
+  .skill_icon {
+    font-size: 3rem;
   }
 
-  .center_section .card h2 {
+  .skill_category {
+    font-size: 1.6rem;
+  }
+
+  .skill_item {
+    font-size: 1.2rem;
+  }
+}
+
+/* Technology Section Responsive */
+
+@media (max-width: 1200px) {
+  .tech_grid {
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 2.5rem;
+  }
+
+  .tech {
+    width: 20rem;
+  }
+
+  .tech img {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .skill_category_section {
+    margin: 3.5rem 0;
+  }
+
+  .tech_title {
+    font-size: 2.8rem;
+  }
+
+  .tech_grid {
+    gap: 2rem;
+  }
+
+  .tech {
+    width: 18rem;
+    padding: 1.8rem 1.2rem;
+  }
+
+  .tech img {
+    width: 11rem;
+    height: 11rem;
+  }
+
+  .tech h2 {
     font-size: 1.7rem;
   }
+}
 
-  .center_section .card img {
-    height: 20rem;
+@media (max-width: 768px) {
+  .tech_center {
+    padding: 1.5rem;
+  }
+
+  .skill_category_section {
+    margin: 3rem 0;
+  }
+
+  .tech_title {
+    font-size: 2.6rem;
+  }
+
+  .tech_grid {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.8rem;
+  }
+
+  .tech {
+    width: 17rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .tech img {
+    width: 10rem;
+    height: 10rem;
+    padding: 1.2rem;
+  }
+
+  .tech h2 {
+    font-size: 1.6rem;
+    margin-top: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .skill_category_section {
+    margin: 2.5rem 0;
+  }
+
+  .tech_title {
+    font-size: 2.4rem;
+  }
+
+  .tech_grid {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .tech {
+    width: 15rem;
+  }
+
+  .tech img {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .tech h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .tech_center {
+    padding: 1rem;
+  }
+
+  .skill_category_section {
+    margin: 2rem 0;
+  }
+
+  .tech_title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .tech {
+    width: 100%;
+    max-width: 14rem;
+    padding: 1.2rem 0.8rem;
+  }
+
+  .tech img {
+    width: 8rem;
+    height: 8rem;
+    padding: 1rem;
+  }
+
+  .tech h2 {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 345px) {
+  .tech_title {
+    font-size: 1.8rem;
+  }
+
+  .tech_grid {
+    gap: 1rem;
+  }
+
+  .tech {
+    max-width: 12rem;
+    padding: 1rem 0.6rem;
+  }
+
+  .tech img {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .tech h2 {
+    font-size: 1.2rem;
   }
 }
