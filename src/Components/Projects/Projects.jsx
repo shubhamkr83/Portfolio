@@ -1,82 +1,83 @@
 import React from 'react';
 import Aos from 'aos';
 import "aos/dist/aos.css";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ProjectData from "./ProjectData";
 import "./project.css";
 import { BsGithub } from 'react-icons/bs';
-import { RiLiveLine } from 'react-icons/ri';
-
-const allCategory = [...new Set(ProjectData.map((curElem) => curElem.category)), "All"];
+import { MdArrowForward } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const Projects = () => {
-
-    const [items, setItems] = useState(ProjectData);
-    const [catItems] = useState(allCategory);
-
-    const filterItem = (category) => {
-
-        if (category === "All") {
-            setItems(ProjectData);
-            return;
-        }
-        const updatedItems = ProjectData.filter((curElem) => {
-            return curElem.category === category;
-        });
-
-        setItems(updatedItems);
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
         Aos.init({
             duration: 1000,
-            easing: 'ease-in-sine',
+            easing: 'ease-in-out',
         });
     }, []);
 
     return (
-        <>
-            <section className="project_section" id="projects">
-                <h2 className="project_title">Projects Preview</h2>
-                <div className="project_nav">
-                    {
-                        catItems.map((curElem, index) => {
-                            return <button key={index} onClick={() => filterItem(curElem)}>{curElem}</button>
-                        })
-                    }
-
+        <section className="project_section" id="projects">
+            <div className="project_container_wrapper">
+                {/* Section Header */}
+                <div className="section_header" data-aos='zoom-in'>
+                    <h1 className="project_title">Projects & Automation Frameworks</h1>
+                    <p className="project_subtitle">
+                        A collection of automation frameworks, testing solutions, and development projects showcasing expertise in QA automation and software development
+                    </p>
+                    <div className="title_underline"></div>
                 </div>
-                <div className="project_center">
 
-                    {
-                        items.map((elem) => {
-                            const { id, name, image, git, live } = elem;
+                {/* Projects Grid */}
+                <div className="project_grid">
+                    {ProjectData.map((elem, index) => {
+                        const { id, name, image, git, category } = elem;
 
-                            return (
-                                <>
-                                    <div className='project_container'>
-                                        <div className="project" key={id}>
-                                            <a href={live} target="_blank" rel="noreferrer">
-                                                <picture>
-                                                    <img src={image} alt="img" />
-                                                </picture>
-                                                <h2>{name}</h2>
-                                            </a>
-                                        </div>
-                                        <div className='project_buttons'>
-                                            <a href={git}><button className='git_button'><BsGithub /> GitHub </button></a>
-                                            <a href={live}><button className='live_button'><RiLiveLine /> Live </button></a>
+                        return (
+                            <div 
+                                className='project_card' 
+                                key={id}
+                                data-aos='fade-up'
+                                data-aos-delay={index * 100}
+                            >
+                                <div className="project_image_wrapper" onClick={() => navigate(`/projects/${id}`)}>
+                                    <img src={image} alt={name} className="project_image" />
+                                    <div className="project_overlay">
+                                        <div className="overlay_content">
+                                            <MdArrowForward className="arrow_icon" />
+                                            <p>View Project Details</p>
                                         </div>
                                     </div>
-                                </>
-                            )
-                        })
-                    }
-
+                                    {category && <span className="project_badge">{category}</span>}
+                                </div>
+                                
+                                <div className="project_content">
+                                    <h3 className="project_name">{name}</h3>
+                                    
+                                    <div className='project_actions'>
+                                        <button
+                                            className='action_button details_button'
+                                            onClick={() => navigate(`/projects/${id}`)}
+                                        >
+                                            <span>View Details</span>
+                                            <MdArrowForward className="button_arrow" />
+                                        </button>
+                                        <a href={git} target="_blank" rel="noreferrer">
+                                            <button className='action_button github_button'>
+                                                <BsGithub />
+                                                <span>Source Code</span>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
-            </section>
-
-        </>
+            </div>
+        </section>
     );
 };
 

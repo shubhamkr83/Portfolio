@@ -1,339 +1,674 @@
+/* --------------- Home Section ---------------- */
 .home_section {
   width: 100%;
-  min-height: calc(100vh - 6.8rem);
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.home_section .center_home {
-  max-width: 120rem;
+.home_container {
+  max-width: 130rem;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 4rem;
-}
-
-.home_section .center_home .left_sec {
-  flex: 1;
-  max-width: 62rem;
-  font-family: "Montserrat", sans-serif;
-}
-
-.home_section .center_home .left_sec h1 {
-  font-weight: 900;
-  font-size: 5.8rem;
-  text-transform: uppercase;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.home_section .center_home .left_sec span {
-  color: var(--secondary_color);
-}
-
-.home_section .center_home .left_sec h2 {
-  padding: 1rem 0;
-  font-weight: 500;
-  font-size: 3.4rem;
-  color: #383737;
-  font-family: "Poppins", sans-serif;
-  margin-bottom: 1.5rem;
-}
-
-.home_section .center_home .left_sec h3 {
-  padding: 0.6rem 0;
-  font-weight: 500;
-  font-size: 2rem;
-  color: #383737;
-  font-family: "Poppins", sans-serif;
-}
-
-.home_section .center_home .left_sec h3 span {
-  font-weight: 600;
-}
-
-.home_section .center_home .left_sec .icons {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  margin-top: 2rem;
-  transition: all 0.3s linear;
-}
-
-.home_section .center_home .left_sec .icons a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home_section .center_home .left_sec .icons .MuiSvgIcon-root {
-  text-decoration: none;
-  font-size: 3rem;
-  cursor: pointer;
-  color: #383737;
-  transition: all 0.3s ease;
-}
-
-.home_section .center_home .left_sec .icons .MuiSvgIcon-root:hover {
-  color: var(--secondary_color);
-  transform: translateY(-0.5rem) scale(1.1);
-}
-
-.home_section .center_home .right_sec {
-  flex: 0 0 auto;
-  width: 35rem;
-  height: 35rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(1rem 1rem 1rem rgba(88, 82, 82, 0.3));
-}
-
-.home_section .center_home .right_sec img {
-  width: 100%;
-  height: auto;
-  background-color: var(--secondary_color);
-  clip-path: ellipse(37% 50% at 50% 50%);
-  filter: brightness(115%);
-}
-
-/* About Intro Section */
-.about_intro_section {
-  width: 100%;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, rgba(39, 31, 140, 0.05) 0%, rgba(0, 132, 241, 0.05) 100%);
-}
-
-.about_intro_section .intro_container {
-  max-width: 100rem;
   margin: 0 auto;
-  text-align: center;
 }
 
-.about_intro_section .intro_title {
-  font-size: 4.2rem;
+.center_home {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+/* --------------- Left Section ---------------- */
+.left_sec {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.wave {
+  font-size: 3rem;
+  display: inline-block;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+}
+
+.greeting p {
+  font-size: 2rem;
   font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--subtitle_color);
-  text-shadow: var(--subtitle_shadow);
+  font-weight: 500;
+  color: #666;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.1;
+}
+
+.first_name {
+  font-size: 6.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-transform: uppercase;
 }
 
-.about_intro_section .intro_description {
-  font-size: 1.8rem;
+.last_name {
+  font-size: 6.5rem;
+  font-weight: 800;
+  color: var(--title_color);
+  text-shadow: var(--title_shadow);
+  text-transform: uppercase;
+}
+
+.role_container {
+  position: relative;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.role {
+  font-size: 3rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #383737;
+  margin-bottom: 0.5rem;
+}
+
+.role_underline {
+  height: 0.4rem;
+  width: 60%;
+  background: linear-gradient(90deg, var(--secondary_color), transparent);
+  border-radius: 2rem;
+  animation: expandWidth 2s ease-in-out infinite;
+}
+
+@keyframes expandWidth {
+  0%, 100% { width: 60%; }
+  50% { width: 80%; }
+}
+
+.tagline {
+  font-size: 1.7rem;
   line-height: 1.8;
   color: #555;
   font-family: "Roboto", sans-serif;
-  text-align: justify;
-  max-width: 90rem;
-  margin: 0 auto;
+  max-width: 55rem;
+  margin-top: 1rem;
 }
 
-/* Responsive Design */
-@media (max-width: 1023px) {
-  .home_section {
-    padding: 2rem 1rem;
-    min-height: auto;
+/* --------------- CTA Buttons ---------------- */
+.cta_buttons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn_primary,
+.btn_secondary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.btn_primary {
+  background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
+  color: #fff;
+  box-shadow: 0 0.5rem 2rem rgba(0, 132, 241, 0.3);
+}
+
+.btn_primary:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 3rem rgba(0, 132, 241, 0.4);
+}
+
+.btn_primary .MuiSvgIcon-root {
+  font-size: 2.2rem;
+}
+
+.btn_secondary {
+  background: transparent;
+  color: var(--secondary_color);
+  border: 2px solid var(--secondary_color);
+}
+
+.btn_secondary:hover {
+  background: var(--secondary_color);
+  color: #fff;
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0.5rem 2rem rgba(0, 132, 241, 0.2);
+}
+
+.btn_secondary .MuiSvgIcon-root {
+  font-size: 2.2rem;
+}
+
+/* --------------- Social Links ---------------- */
+.social_links {
+  margin-top: 2rem;
+}
+
+.social_label {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.icons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social_icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 132, 241, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social_icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social_icon:hover::before {
+  opacity: 1;
+}
+
+.social_icon .MuiSvgIcon-root {
+  font-size: 2.2rem;
+  color: var(--secondary_color);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.social_icon:hover .MuiSvgIcon-root {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* --------------- Right Section (Image) ---------------- */
+.right_sec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image_wrapper {
+  position: relative;
+  width: 45rem;
+  height: 45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image_background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 132, 241, 0.2), rgba(39, 31, 140, 0.2));
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.profile_image {
+  width: 38rem;
+  height: 38rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 0.8rem solid rgba(0, 132, 241, 0.3);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  background: var(--secondary_color);
+  filter: brightness(105%);
+}
+
+/* --------------- Floating Cards ---------------- */
+.floating_card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 3;
+  border: 1px solid rgba(0, 132, 241, 0.2);
+}
+
+.card_1 {
+  top: 10%;
+  right: -5%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.card_2 {
+  bottom: 15%;
+  left: -8%;
+  animation: float 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5rem); }
+}
+
+.card_icon {
+  font-size: 2.5rem;
+}
+
+.card_text {
+  font-size: 1.4rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* --------------- Scroll Indicator ---------------- */
+.scroll_indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0.7;
+}
+
+.mouse {
+  width: 2.5rem;
+  height: 4rem;
+  border: 2px solid var(--secondary_color);
+  border-radius: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.8rem;
+}
+
+.wheel {
+  width: 0.4rem;
+  height: 0.8rem;
+  background: var(--secondary_color);
+  border-radius: 0.2rem;
+  animation: scroll 2s ease-in-out infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(1.5rem); opacity: 0; }
+}
+
+.scroll_indicator p {
+  font-size: 1.3rem;
+  font-family: "Poppins", sans-serif;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+/* --------------- Responsive Design ---------------- */
+@media (max-width: 1200px) {
+  .center_home {
+    gap: 4rem;
   }
 
-  .home_section .center_home {
+  .first_name,
+  .last_name {
+    font-size: 5.5rem;
+  }
+
+  .role {
+    font-size: 2.6rem;
+  }
+
+  .tagline {
+    font-size: 1.6rem;
+  }
+
+  .image_wrapper {
+    width: 40rem;
+    height: 40rem;
+  }
+
+  .profile_image {
+    width: 34rem;
+    height: 34rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .home_section {
+    padding: 6rem 2rem 4rem;
+  }
+
+  .center_home {
     gap: 3rem;
   }
 
-  .home_section .center_home .left_sec {
-    max-width: 50rem;
+  .first_name,
+  .last_name {
+    font-size: 5rem;
   }
 
-  .home_section .center_home .left_sec h1 {
-    font-size: 4.5rem;
+  .role {
+    font-size: 2.4rem;
   }
 
-  .home_section .center_home .left_sec h2 {
-    font-size: 2.8rem;
+  .tagline {
+    font-size: 1.5rem;
   }
 
-  .home_section .center_home .left_sec h3 {
-    font-size: 1.8rem;
+  .image_wrapper {
+    width: 35rem;
+    height: 35rem;
   }
 
-  .home_section .center_home .right_sec {
+  .profile_image {
     width: 30rem;
     height: 30rem;
   }
 
-  .about_intro_section {
-    padding: 3rem 1.5rem;
+  .floating_card {
+    padding: 1.2rem 1.5rem;
   }
 
-  .about_intro_section .intro_title {
-    font-size: 3.6rem;
-  }
-
-  .about_intro_section .intro_description {
-    font-size: 1.7rem;
+  .card_text {
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 768px) {
   .home_section {
-    padding: 3rem 1.5rem;
+    padding: 5rem 2rem 3rem;
   }
 
-  .home_section .center_home {
-    flex-direction: column-reverse;
-    gap: 3rem;
+  .center_home {
+    grid-template-columns: 1fr;
+    gap: 4rem;
     text-align: center;
   }
 
-  .home_section .center_home .left_sec {
-    max-width: 100%;
+  .left_sec {
+    align-items: center;
   }
 
-  .home_section .center_home .left_sec h1 {
-    font-size: 5rem;
-  }
-
-  .home_section .center_home .left_sec h2 {
-    font-size: 3rem;
-  }
-
-  .home_section .center_home .left_sec h3 {
-    font-size: 1.9rem;
-  }
-
-  .home_section .center_home .left_sec .icons {
+  .greeting {
     justify-content: center;
-    gap: 2.5rem;
   }
 
-  .home_section .center_home .left_sec .icons .MuiSvgIcon-root {
-    font-size: 3.2rem;
+  .role_container {
+    align-self: center;
   }
 
-  .home_section .center_home .right_sec {
+  .tagline {
+    text-align: center;
+  }
+
+  .cta_buttons {
+    justify-content: center;
+  }
+
+  .social_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icons {
+    justify-content: center;
+  }
+
+  .first_name,
+  .last_name {
+    font-size: 5.5rem;
+  }
+
+  .role {
+    font-size: 2.8rem;
+  }
+
+  .image_wrapper {
     width: 40rem;
     height: 40rem;
   }
 
-  .about_intro_section {
-    padding: 3rem 2rem;
-  }
-
-  .about_intro_section .intro_title {
-    font-size: 3.4rem;
-  }
-
-  .about_intro_section .intro_description {
-    font-size: 1.6rem;
+  .profile_image {
+    width: 35rem;
+    height: 35rem;
   }
 }
 
 @media (max-width: 600px) {
-  .home_section .center_home .left_sec h1 {
-    font-size: 4rem;
+  .home_section {
+    padding: 4rem 1.5rem 3rem;
   }
 
-  .home_section .center_home .left_sec h2 {
+  .greeting p {
+    font-size: 1.8rem;
+  }
+
+  .wave {
     font-size: 2.5rem;
   }
 
-  .home_section .center_home .left_sec h3 {
-    font-size: 1.7rem;
+  .first_name,
+  .last_name {
+    font-size: 4.5rem;
   }
 
-  .home_section .center_home .left_sec .icons .MuiSvgIcon-root {
-    font-size: 2.8rem;
+  .role {
+    font-size: 2.4rem;
   }
 
-  .home_section .center_home .right_sec {
-    width: 32rem;
-    height: 32rem;
+  .tagline {
+    font-size: 1.4rem;
   }
 
-  .about_intro_section .intro_title {
-    font-size: 3rem;
+  .cta_buttons {
+    flex-direction: column;
+    width: 100%;
   }
 
-  .about_intro_section .intro_description {
+  .btn_primary,
+  .btn_secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 1.4rem 2.5rem;
     font-size: 1.5rem;
-    line-height: 1.7;
+  }
+
+  .image_wrapper {
+    width: 35rem;
+    height: 35rem;
+  }
+
+  .profile_image {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .floating_card {
+    padding: 1rem 1.2rem;
+  }
+
+  .card_icon {
+    font-size: 2rem;
+  }
+
+  .card_text {
+    font-size: 1.2rem;
+  }
+
+  .scroll_indicator {
+    bottom: 2rem;
   }
 }
 
 @media (max-width: 450px) {
   .home_section {
-    padding: 2rem 1rem;
+    padding: 3rem 1rem 2.5rem;
   }
 
-  .home_section .center_home .left_sec h1 {
-    font-size: 3.2rem;
+  .greeting p {
+    font-size: 1.6rem;
   }
 
-  .home_section .center_home .left_sec h2 {
+  .wave {
+    font-size: 2.2rem;
+  }
+
+  .first_name,
+  .last_name {
+    font-size: 3.5rem;
+  }
+
+  .role {
     font-size: 2rem;
   }
 
-  .home_section .center_home .left_sec h3 {
-    font-size: 1.5rem;
+  .tagline {
+    font-size: 1.3rem;
   }
 
-  .home_section .center_home .left_sec .icons {
-    gap: 2rem;
-  }
-
-  .home_section .center_home .left_sec .icons .MuiSvgIcon-root {
-    font-size: 2.5rem;
-  }
-
-  .home_section .center_home .right_sec {
-    width: 28rem;
-    height: 28rem;
-  }
-
-  .about_intro_section {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .about_intro_section .intro_title {
-    font-size: 2.6rem;
-  }
-
-  .about_intro_section .intro_description {
+  .btn_primary,
+  .btn_secondary {
+    padding: 1.3rem 2rem;
     font-size: 1.4rem;
+  }
+
+  .social_icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .social_icon .MuiSvgIcon-root {
+    font-size: 2rem;
+  }
+
+  .image_wrapper {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .profile_image {
+    width: 26rem;
+    height: 26rem;
+  }
+
+  .floating_card {
+    padding: 0.8rem 1rem;
+  }
+
+  .card_1 {
+    right: -2%;
+  }
+
+  .card_2 {
+    left: -5%;
+  }
+
+  .card_text {
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 345px) {
-  .home_section .center_home .left_sec h1 {
-    font-size: 2.8rem;
+  .first_name,
+  .last_name {
+    font-size: 3rem;
   }
 
-  .home_section .center_home .left_sec h2 {
+  .role {
     font-size: 1.8rem;
   }
 
-  .home_section .center_home .left_sec h3 {
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .btn_primary,
+  .btn_secondary {
+    padding: 1.2rem 1.8rem;
     font-size: 1.3rem;
   }
 
-  .home_section .center_home .left_sec .icons .MuiSvgIcon-root {
-    font-size: 2.2rem;
+  .image_wrapper {
+    width: 26rem;
+    height: 26rem;
   }
 
-  .home_section .center_home .right_sec {
-    width: 24rem;
-    height: 24rem;
+  .profile_image {
+    width: 22rem;
+    height: 22rem;
   }
 
-  .about_intro_section .intro_title {
-    font-size: 2.2rem;
-  }
-
-  .about_intro_section .intro_description {
-    font-size: 1.3rem;
+  .floating_card {
+    display: none;
   }
 }

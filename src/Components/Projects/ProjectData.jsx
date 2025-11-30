@@ -2,10 +2,27 @@ const ProjectData = [
     {
         id: 1,
         image: "image/Shopperia.png",
+        images: [
+            "https://cdn.pixabay.com/video/2025/09/24/306155_large.mp4",
+            "https://cdn.pixabay.com/photo/2025/11/09/17/47/mushrooms-9946579_1280.jpg",
+            "https://cdn.pixabay.com/photo/2025/05/16/14/54/eastern-cottontail-9604011_1280.jpg",
+            "https://cdn.pixabay.com/photo/2024/10/06/15/49/hummingbird-9100457_1280.jpg",
+        ],
         name: " Shopperia(React Ecomm)",
         git: "https://github.com/shubhamkr83/Shopperia",
         live: "https://shopperia.netlify.app",
         category: "Full Stack",
+        overview: "Shopperia is a modern e-commerce web application built with React that provides a seamless shopping experience. It features product browsing, cart management, and a responsive design optimized for all devices.",
+        features: [
+            "Product catalog with search and filter functionality",
+            "Shopping cart with real-time updates",
+            "User authentication and authorization",
+            "Responsive design for mobile and desktop",
+            "Secure checkout process",
+            "Order history and tracking"
+        ],
+        structure: "The application follows a component-based architecture with React hooks for state management. It uses React Router for navigation and Context API for global state handling.",
+        tools: ["React", "Redux", "Node.js", "MongoDB", "Express", "CSS3"]
     },
     {
         id: 4,
@@ -49,7 +66,7 @@ const ProjectData = [
     },
     {
         id: 8,
-        image: "https://user-images.githubusercontent.com/72254047/243904668-9c3bf331-421d-4a36-a58b-232037d11c4a.png",
+        image: "https://cdn.pixabay.com/photo/2025/11/09/17/47/mushrooms-9946579_1280.jpg",
         name: "Contact List Web App",
         git: "https://github.com/shubhamkr83/contactlistapp",
         live: "https://contactlistreactapp.netlify.app",
@@ -87,53 +104,6 @@ const ProjectData = [
         live: "https://shubhamweb.netlify.app",
         category: "FrontEnd",
     },
-
-    // {
-    //     id: 12,
-    //     image1: "image/Carg-webp.webp",
-    //     image2: "image/Carg-jpg.jpg",
-    //     name: "Car Racing Game",
-    //     link: "https://car-racing-game01.netlify.app/",
-    //     category: "FrontEnd",
-    // },
-    // {
-    //     id: 13,
-    //     image1: "https://user-images.githubusercontent.com/72254047/217031437-b09fc265-58c0-4260-8457-5b282af2e17e.png",
-    //     name: "Todo-App",
-    //     link: "https://github.com/shubhamkr83/Todo-App",
-    //     category: "FrontEnd",
-    // },
-    // {
-    //     id: 14,
-    //     image1: "image/Musam.png",
-    //     name: "Awesome Musam App",
-    //     link: "https://awesomemusam.herokuapp.com/",
-    //     category: "FrontEnd",
-    // },
-    // {
-    //     id: 15,
-    //     image: "image/e-learn-min.jpg",
-    //     name: "E-Learning",
-    //     git: "https://shub-edu.netlify.app/",
-    //     live: "https://shub-edu.netlify.app/",
-    //     category: "FrontEnd",
-    // },
-    // {
-    //     id: 16,
-    //     image: "image/fitness-min.jpg",
-    //     name: "Fitness",
-    //     git: "https://shub-health.netlify.app/",
-    //     live: "https://shub-health.netlify.app/",
-    //     category: "FrontEnd",
-    // },
-    // {
-    //     id: 17,
-    //     image: "image/travels-min.jpg",
-    //     name: "Tours & Travels",
-    //     git: "https://shub-travels.netlify.app/",
-    //     live: "https://shub-travels.netlify.app/",
-    //     category: "FrontEnd",
-    // },
 ];
 
 export default ProjectData;

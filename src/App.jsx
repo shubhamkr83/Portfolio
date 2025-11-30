@@ -5,6 +5,7 @@ import Home from "./Home/Home";
 import About from "./About/About";
 import Skills from "./Components/Skills/Skill";
 import Projects from "./Components/Projects/Projects";
+import ProjectDetail from "./Components/Projects/ProjectDetail";
 import Contact from "./Contact/Contact";
 import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyle } from './Components/theme';
@@ -33,8 +34,8 @@ const App = () => {
               <Route path="about" element={<About />} />
               <Route path="skills" element={<Skills />} />
               <Route path="projects" element={<Projects />} />
+              <Route path="projects/:id" element={<ProjectDetail />} />
               <Route path="contact" element={<Contact />} />
-              <Route path="*" element={<Error />} />
             </Route>
           </Routes>
         </>

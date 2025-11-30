@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
 import "aos/dist/aos.css";
 import "./about.css";
 
 const About = () => {
+    useEffect(() => {
+        Aos.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+        });
+    }, []);
+
+    const stats = [
+        { id: 1, icon: '🎯', value: '60%', label: 'Faster Testing' },
+        { id: 2, icon: '📊', value: '40%', label: 'Test Coverage' },
+        { id: 3, icon: '🚀', value: '25%', label: 'Deployment Speed' },
+        { id: 4, icon: '✨', value: '0', label: 'Critical Bugs' }
+    ];
+
     const experiences = [
         {
             id: 1,
-            role: "QA Engineer, Navo (Formaly Bizup)",
-            period: "(Dec 2024 - Present)",
+            company: "Navo",
+            companyNote: "(Formerly Bizup)",
+            role: "QA Engineer",
+            period: "Dec 2024 - Present",
+            icon: "💼",
             achievements: [
                 "Engineered an automation framework, reducing manual testing hours by 60% and increasing test coverage by 40%.",
                 "Streamlined Jenkins CI/CD pipelines for automated test execution, slashing deployment time by 25%.",
@@ -16,8 +34,11 @@ const About = () => {
         },
         {
             id: 2,
-            role: "QA Engineer, Thriwe",
-            period: "(Aug 2024 - Nov 2024)",
+            company: "Thriwe",
+            companyNote: "",
+            role: "QA Engineer",
+            period: "Aug 2024 - Nov 2024",
+            icon: "🔧",
             achievements: [
                 "Constructed end-to-end web automation framework using Python and Playwright for reliable and scalable testing.",
                 "Implemented test coverage for login, signup, and user flows with validations; Scripted page verification to ensure correct URLs and navigation."
@@ -25,8 +46,11 @@ const About = () => {
         },
         {
             id: 3,
-            role: "QA Executive, Bizup",
-            period: "(Sept 2023 - June 2024)",
+            company: "Bizup",
+            companyNote: "",
+            role: "QA Executive",
+            period: "Sept 2023 - June 2024",
+            icon: "⚡",
             achievements: [
                 "Aligned QA strategies with Head of Engineering and Product teams, and improving deployment efficiency by 25%.",
                 "Ensured zero critical bugs in 2 flagship releases, contributing to 20% revenue growth, and validated 5+ cross-platform products (Android, Web, API)."
@@ -35,39 +59,66 @@ const About = () => {
     ];
 
     return (
-        <>
-            {/* Intro Section */}
-            <section className="experience_intro_section">
-                <div className="intro_container">
-                    <h2 data-aos='zoom-in' className="intro_title">Professional Experience</h2>
-                    <p data-aos='fade-up' className="intro_description">
-                        QA Automation Engineer with hands-on experience building scalable automation frameworks across Web, Android, and API platforms. Proven expertise in Playwright, Selenium, Appium, and CI/CD pipelines, achieving up to 60% reduction in manual testing effort and 40% boost in test coverage. Skilled in Jenkins-driven automation, AWS S3 reporting, and data-driven testing to enhance release quality and deployment efficiency. Adept at collaborating with cross-functional teams to deliver zero-critical-bug releases and support fast-paced product launches. Passionate about strengthening software reliability through smart test architecture and continuous automation improvement.
+        <section className="about_section" id="about">
+            <div className="about_container">
+                {/* Section Header */}
+                <div className="section_header" data-aos='zoom-in'>
+                    <h1 className="about_title">Professional Journey</h1>
+                    <p className="about_subtitle">
+                        QA Automation Engineer with hands-on experience building scalable automation frameworks across Web, Android, and API platforms. Proven expertise in Playwright, Selenium, Appium, and CI/CD pipelines.
                     </p>
+                    <div className="title_underline"></div>
                 </div>
-            </section>
 
-            {/* Experience Timeline Section */}
-            <section className="experience_section" id="experience">
-                <div className="experience_center">
-                    <h2 data-aos='zoom-in' className="section_heading">Work Experience</h2>
+                {/* Stats Section */}
+                <div className="stats_container" data-aos='fade-up'>
+                    {stats.map((stat, index) => (
+                        <div 
+                            key={stat.id} 
+                            className="stat_card"
+                            data-aos='zoom-in'
+                            data-aos-delay={index * 100}
+                        >
+                            <div className="stat_icon">{stat.icon}</div>
+                            <div className="stat_value">{stat.value}</div>
+                            <div className="stat_label">{stat.label}</div>
+                        </div>
+                    ))}
+                </div>
 
-                    <div className="timeline">
+                {/* Experience Timeline */}
+                <div className="experience_wrapper">
+                    <h2 className="experience_heading" data-aos='fade-up'>Work Experience</h2>
+                    
+                    <div className="timeline_container">
                         {experiences.map((exp, index) => (
                             <div
                                 key={exp.id}
-                                className="timeline_item"
+                                className="experience_card"
                                 data-aos='fade-up'
                                 data-aos-delay={index * 150}
                             >
-                                <div className="timeline_marker"></div>
-                                <div className="timeline_content">
-                                    <div className="experience_header">
-                                        <h3 className="experience_role">{exp.role}</h3>
-                                        <span className="experience_period">{exp.period}</span>
+                                <div className="card_header">
+                                    <div className="company_info">
+                                        <div className="company_icon">{exp.icon}</div>
+                                        <div className="company_details">
+                                            <h3 className="company_name">
+                                                {exp.company}
+                                                {exp.companyNote && <span className="company_note">{exp.companyNote}</span>}
+                                            </h3>
+                                            <p className="role_title">{exp.role}</p>
+                                        </div>
                                     </div>
-                                    <ul className="experience_achievements">
+                                    <div className="period_badge">{exp.period}</div>
+                                </div>
+                                
+                                <div className="card_body">
+                                    <ul className="achievements_list">
                                         {exp.achievements.map((achievement, idx) => (
-                                            <li key={idx}>{achievement}</li>
+                                            <li key={idx} className="achievement_item">
+                                                <span className="achievement_bullet">▸</span>
+                                                {achievement}
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>
@@ -75,8 +126,8 @@ const About = () => {
                         ))}
                     </div>
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     )
 };
 
