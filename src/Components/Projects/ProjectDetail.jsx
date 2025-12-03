@@ -274,7 +274,7 @@ const ProjectDetail = () => {
 
             {/* Project Actions */}
             <div className="project_actions" data-aos="fade-up" data-aos-delay="300">
-                <a href={git} target="_blank" rel="noreferrer" className="action_button git_action">
+                <a href={git} target="_blank" rel="noreferrer" className="detail_action_button detail_git_action">
                     <BsGithub />
                     <span>View Source Code</span>
                 </a>

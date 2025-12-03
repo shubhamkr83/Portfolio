@@ -58,14 +58,14 @@ const Projects = () => {
                                     
                                     <div className='project_actions'>
                                         <button
-                                            className='action_button details_button'
+                                            className='project_action_button project_details_button'
                                             onClick={() => navigate(`/projects/${id}`)}
                                         >
                                             <span>View Details</span>
                                             <MdArrowForward className="button_arrow" />
                                         </button>
                                         <a href={git} target="_blank" rel="noreferrer">
-                                            <button className='action_button github_button'>
+                                            <button className='project_action_button project_github_button'>
                                                 <BsGithub />
                                                 <span>Source Code</span>
                                             </button>

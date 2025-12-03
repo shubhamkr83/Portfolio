@@ -185,11 +185,11 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-top: 1.2rem;
+  margin-top: 2rem;
   width: 100%;
   flex-wrap: nowrap;
   overflow-x: auto;
-  padding-bottom: 0.5rem; /* Add some space for scrollbar if needed */
+  /* padding-bottom: 0.5rem; Add some space for scrollbar if needed */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
@@ -211,9 +211,9 @@
   display: flex;
 }
 
-.action_button {
+.project_action_button {
   padding: 1rem 2rem;
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   border: none;
@@ -224,27 +224,27 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 100%;
+  width: 50%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  height: 2rem;
+  height: 3.5rem;
 }
 
-.action_button span {
+.project_action_button span {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.action_button svg {
+.project_action_button svg {
   font-size: 1.1rem;
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
 /* Details Button - Professional Look */
-.details_button {
+.project_details_button {
   background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
   color: #fff;
   position: relative;
@@ -257,7 +257,7 @@
   overflow: hidden;
 } */
 
-.details_button::before {
+.project_details_button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -268,16 +268,16 @@
   transition: left 0.5s ease;
 }
 
-.details_button:hover::before {
+.project_details_button:hover::before {
   left: 100%;
 }
 
-.details_button:hover {
-  box-shadow: 0 0.8rem 2.5rem rgba(0, 132, 241, 0.5);
+.project_details_button:hover {
+  /* box-shadow: 0 0.8rem 2.5rem rgba(0, 132, 241, 0.5); */
   transform: translateY(-0.3rem);
 }
 
-.details_button::before {
+.project_details_button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -289,30 +289,30 @@
   z-index: -1;
 }
 
-.details_button:hover::before {
+.project_details_button:hover::before {
   width: 100%;
 }
 
-.details_button .button_arrow {
+.project_details_button .button_arrow {
   transition: transform 0.3s ease;
 }
 
-.details_button:hover .button_arrow {
+.project_details_button:hover .button_arrow {
   transform: translateX(4px);
 }
 
 /* GitHub Button Styling */
-.github_button {
+.project_github_button {
   background-color: #f5f5f5;
   color: #333;
   border: 1px solid #e0e0e0;
   transition: all 0.3s ease;
 }
 
-.github_button:hover {
+.project_github_button:hover {
   background-color: #e0e0e0;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Responsive adjustments */
@@ -322,7 +322,7 @@
     padding-bottom: 0.5rem;
   }
   
-  .action_button {
+  .project_action_button {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
     min-width: fit-content;
@@ -330,28 +330,28 @@
     height: 2.6rem;
   }
   
-  .action_button span {
+  .project_action_button span {
     white-space: nowrap;
   }
   
-  .action_button svg {
+  .project_action_button svg {
     font-size: 1.2rem;
   }
 }
 
 /* GitHub Button */
-.github_button {
+.project_github_button {
   background: #24292e;
   color: #fff;
   flex: 1;
   border: 2px solid #24292e;
 }
 
-.github_button:hover {
+.project_github_button:hover {
   background: #000;
   border-color: #000;
   transform: translateY(-0.2rem);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3); */
 }
 
 /* --------------- Responsive Design ---------------- */
@@ -442,12 +442,12 @@
     font-size: 1.9rem;
   }
 
-  .action_button {
+  .project_action_button {
     padding: 0.9rem 1.2rem;
     font-size: 1.3rem;
   }
 
-  .action_button svg {
+  .project_action_button svg {
     font-size: 1.6rem;
   }
 }
@@ -501,7 +501,7 @@
     min-width: 0;
   }
 
-  .action_button {
+  .project_action_button {
     padding: 1rem 1.5rem;
   }
 }
@@ -546,12 +546,12 @@
     font-size: 1.7rem;
   }
 
-  .action_button {
+  .project_action_button {
     padding: 0.9rem 1.2rem;
     font-size: 1.2rem;
   }
 
-  .action_button svg {
+  .project_action_button svg {
     font-size: 1.5rem;
   }
 
@@ -586,13 +586,13 @@
     font-size: 1.6rem;
   }
 
-  .action_button {
+  .project_action_button {
     padding: 0.8rem 1rem;
     font-size: 1.1rem;
     gap: 0.5rem;
   }
 
-  .action_button svg {
+  .project_action_button svg {
     font-size: 1.4rem;
   }
 
