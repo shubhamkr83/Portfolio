@@ -259,6 +259,46 @@ const ProjectDetail = () => {
                     </div>
                 )}
 
+                {/* Jenkins Pipeline Flow */}
+                {project.pipelineFlow && (
+                    <div className="description_section pipeline_flow_section">
+                        <h3>Jenkins Pipeline Flow</h3>
+
+                        {/* Pipeline Stages - Chevron Design */}
+                        {project.pipelineFlow.stages && (
+                            <div className="pipeline_stages">
+                                <h4 className="pipeline_subtitle">CI/CD Pipeline Stages</h4>
+                                <div className="chevron_pipeline">
+                                    {project.pipelineFlow.stages.map((stage, index) => (
+                                        <div key={index} className={`chevron_stage chevron_stage_${index % 6}`}>
+                                            <div className="chevron_content">
+                                                <span className="chevron_text">{stage}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="feedback_arrow">
+                                    <span>← Production Feedback</span>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Post-Build Actions - Badge Style */}
+                        {project.pipelineFlow.postBuild && (
+                            <div className="pipeline_postbuild">
+                                <h4 className="pipeline_subtitle">Post-Build Actions</h4>
+                                <div className="postbuild_badges">
+                                    {project.pipelineFlow.postBuild.map((action, index) => (
+                                        <div key={index} className={`postbuild_badge_item postbuild_${action.toLowerCase()}`}>
+                                            {action}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+
                 {/* Tools Used */}
                 {project.tools && project.tools.length > 0 && (
                     <div className="description_section">

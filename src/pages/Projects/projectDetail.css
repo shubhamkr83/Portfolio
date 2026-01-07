@@ -812,3 +812,474 @@
     font-size: 1.3rem;
   }
 }
+
+/* ==================== Jenkins Pipeline Flow Section ==================== */
+
+/* Pipeline Flow Container */
+.pipeline_flow_section {
+  background: linear-gradient(135deg, rgba(0, 132, 241, 0.03), rgba(39, 31, 140, 0.02));
+  padding: 3rem !important;
+  border: 2px solid rgba(0, 132, 241, 0.2);
+  border-radius: 1.5rem;
+}
+
+.pipeline_flow_section h3 {
+  color: var(--secondary_color);
+  margin-bottom: 2.5rem !important;
+  text-align: center;
+}
+
+.pipeline_subtitle {
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--primary_color);
+  margin: 2.5rem 0 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 132, 241, 0.2);
+}
+
+/* Pipeline Stages Grid */
+.stages_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Stage Card */
+.stage_card {
+  position: relative;
+  background: #fff;
+  border: 2px solid rgba(0, 132, 241, 0.15);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.3rem 1rem rgba(0, 132, 241, 0.08);
+}
+
+.stage_card:hover {
+  transform: translateY(-0.5rem);
+  border-color: var(--secondary_color);
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 132, 241, 0.2);
+}
+
+/* Stage Number Badge */
+.stage_number {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 0.3rem 1rem rgba(0, 132, 241, 0.3);
+}
+
+/* Stage Content */
+.stage_content {
+  flex: 1;
+}
+
+.stage_title {
+  font-size: 1.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--secondary_color);
+  margin: 0 0 0.8rem 0;
+  line-height: 1.3;
+}
+
+.stage_description {
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Post-Build Actions Grid */
+.postbuild_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  gap: 1.8rem;
+}
+
+/* Post-Build Card */
+.postbuild_card {
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.postbuild_card:hover {
+  transform: translateX(0.5rem);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.12);
+}
+
+/* Color coding for different actions */
+.postbuild_always {
+  border-left-color: #6366f1;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), transparent);
+}
+
+.postbuild_failure {
+  border-left-color: #dc2626;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), transparent);
+}
+
+.postbuild_success {
+  border-left-color: #059669;
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), transparent);
+}
+
+.postbuild_unstable {
+  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), transparent);
+}
+
+/* Post-Build Badge */
+.postbuild_badge {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.postbuild_always .postbuild_badge {
+  background: rgba(99, 102, 241, 0.15);
+  color: #4f46e5;
+}
+
+.postbuild_failure .postbuild_badge {
+  background: rgba(220, 38, 38, 0.15);
+  color: #dc2626;
+}
+
+.postbuild_success .postbuild_badge {
+  background: rgba(5, 150, 105, 0.15);
+  color: #059669;
+}
+
+.postbuild_unstable .postbuild_badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+
+/* Post-Build Description */
+.postbuild_description {
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ==================== Responsive for Pipeline Flow ==================== */
+
+@media (max-width: 768px) {
+  .stages_grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .postbuild_grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stage_card {
+    padding: 1.5rem;
+  }
+
+  .stage_number {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.6rem;
+  }
+
+  .stage_title {
+    font-size: 1.6rem;
+  }
+
+  .stage_description {
+    font-size: 1.3rem;
+  }
+
+  .pipeline_subtitle {
+    font-size: 1.8rem;
+  }
+
+  .postbuild_badge {
+    font-size: 1.2rem;
+    padding: 0.5rem 1.2rem;
+  }
+
+  .postbuild_description {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .pipeline_flow_section {
+    padding: 2rem !important;
+  }
+
+  .stage_card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .stage_number {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ==================== Chevron Pipeline Design (Updated) ==================== */
+
+/* Chevron Pipeline Container */
+.chevron_pipeline {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin: 2rem 0;
+  padding: 2rem 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Scrollbar styling */
+.chevron_pipeline::-webkit-scrollbar {
+  height: 8px;
+}
+
+.chevron_pipeline::-webkit-scrollbar-track {
+  background: rgba(0, 132, 241, 0.1);
+  border-radius: 10px;
+}
+
+.chevron_pipeline::-webkit-scrollbar-thumb {
+  background: var(--secondary_color);
+  border-radius: 10px;
+}
+
+/* Individual Chevron Stage */
+.chevron_stage {
+  position: relative;
+  height: 6rem;
+  min-width: 16rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  clip-path: polygon(0 0, calc(100% - 2.5rem) 0, 100% 50%, calc(100% - 2.5rem) 100%, 0 100%, 2.5rem 50%);
+  margin-left: -2.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.chevron_stage:first-child {
+  clip-path: polygon(0 0, calc(100% - 2.5rem) 0, 100% 50%, calc(100% - 2.5rem) 100%, 0 100%);
+  margin-left: 0;
+}
+
+.chevron_stage:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  filter: brightness(1.1);
+}
+
+/* Color scheme for stages */
+.chevron_stage_0 {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Red */
+.chevron_stage_1 {
+  background: linear-gradient(135deg, #1e40af, #1e3a8a);
+}
+
+/* Blue */
+.chevron_stage_2 {
+  background: linear-gradient(135deg, #0891b2, #0e7490);
+}
+
+/* Cyan */
+.chevron_stage_3 {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+}
+
+/* Teal */
+.chevron_stage_4 {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+/* Green */
+.chevron_stage_5 {
+  background: linear-gradient(135deg, #84cc16, #65a30d);
+}
+
+/* Lime */
+
+/* Chevron Content */
+.chevron_content {
+  padding: 0 3.5rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.chevron_text {
+  display: block;
+  white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Feedback Arrow */
+.feedback_arrow {
+  margin-top: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.feedback_arrow span {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: rgba(0, 132, 241, 0.1);
+  border: 2px dashed rgba(0, 132, 241, 0.3);
+  border-radius: 2rem;
+  color: #666;
+  font-size: 1.4rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+/* Post-Build Badges - Simplified */
+.postbuild_badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.postbuild_badge_item {
+  padding: 1.2rem 3rem;
+  border-radius: 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.postbuild_badge_item:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.postbuild_always {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+}
+
+.postbuild_failure {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+}
+
+.postbuild_success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+}
+
+.postbuild_unstable {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+}
+
+/* ==================== Responsive for Chevron Pipeline ==================== */
+
+@media (max-width: 1200px) {
+  .chevron_stage {
+    min-width: 12rem;
+    font-size: 1.3rem;
+  }
+
+  .chevron_content {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .chevron_pipeline {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .chevron_stage {
+    width: 100%;
+    height: 5rem;
+    clip-path: polygon(0 0, calc(100% - 1.5rem) 0, 100% 50%, calc(100% - 1.5rem) 100%, 0 100%);
+    margin-left: 0;
+    font-size: 1.4rem;
+  }
+
+  .chevron_stage:first-child {
+    clip-path: polygon(0 0, calc(100% - 1.5rem) 0, 100% 50%, calc(100% - 1.5rem) 100%, 0 100%);
+  }
+
+  .postbuild_badges {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .postbuild_badge_item {
+    text-align: center;
+  }
+
+  .feedback_arrow span {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .chevron_stage {
+    height: 4.5rem;
+    font-size: 1.2rem;
+  }
+
+  .chevron_content {
+    padding: 0 1.5rem;
+  }
+
+  .postbuild_badge_item {
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+  }
+}

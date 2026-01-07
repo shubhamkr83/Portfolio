@@ -1,28 +1,36 @@
 const ProjectData = [
     {
         id: 1,
-        image: "image/Shopperia.png",
+        image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
         images: [
-            "https://cdn.pixabay.com/video/2025/09/24/306155_large.mp4",
-            "https://cdn.pixabay.com/photo/2025/11/09/17/47/mushrooms-9946579_1280.jpg",
-            "https://cdn.pixabay.com/photo/2025/05/16/14/54/eastern-cottontail-9604011_1280.jpg",
-            "https://cdn.pixabay.com/photo/2024/10/06/15/49/hummingbird-9100457_1280.jpg",
+            "https://rest-assured.io/img/logo-transparent.png",
+            "https://testng.org/images/testng.png",
+            "https://avatars.githubusercontent.com/u/5879127?s=200&v=4",
+            "https://maven.apache.org/images/maven-logo-black-on-white.png",
         ],
-        name: " Shopperia(React Ecomm)",
-        git: "https://github.com/shubhamkr83/Shopperia",
-        live: "https://shopperia.netlify.app",
-        category: "Full Stack",
-        overview: "Shopperia is a modern e-commerce web application built with React that provides a seamless shopping experience. It features product browsing, cart management, and a responsive design optimized for all devices.",
+        name: "API Automation Framework (RestAssured)",
+        git: "https://github.com/shubhamkr83/api_restassured_automation",
+        live: "https://github.com/shubhamkr83/api_restassured_automation",
+        category: "Automation Testing",
+        overview: "An enterprise-grade REST API automation framework featuring dual API support for BOMB (Admin/Seller operations at bizup.app) and Buyer App (Navo Fashion consumer API at api.navofashion.in). This production-ready framework converts a complete Postman collection into a robust RestAssured + TestNG solution with 56 test files, 40+ endpoints, comprehensive CI/CD integration, and automated reporting. Features include JWT authentication, AI-powered video title generation, performance validation (800ms threshold for Buyer App), and complete workflow pipeline testing with 95%+ success rate.",
         features: [
-            "Product catalog with search and filter functionality",
-            "Shopping cart with real-time updates",
-            "User authentication and authorization",
-            "Responsive design for mobile and desktop",
-            "Secure checkout process",
-            "Order history and tracking"
+            "Dual API architecture: BOMB API (26 tests, 4 pipelines) and Buyer App (30 tests, 8 features)",
+            "Complete JWT authentication flow with automatic token injection and VariableManager",
+            "AI integration for video title generation from tags with context-aware processing",
+            "Performance testing with strict thresholds (800ms for Buyer App, 40s for BOMB)",
+            "Advanced validations: 30+ required fields, MongoDB ID formats, Firebase URLs, phone patterns",
+            "Comprehensive CI/CD: Jenkins automation, AWS S3 timestamped reports, email & Google Chat alerts",
+            "Pipeline-based testing: Login → Catalog Search → Tagging → Video Operations workflows",
+            "Feature-rich reporting: Interactive Allure dashboards with test timelines and flaky detection",
+            "Data-driven architecture: POJO models with Jackson, Lombok, nested object support",
+            "Production-ready features: Retry analyzer, parallel execution, JSON schema validation, Log4j2"
         ],
-        structure: "The application follows a component-based architecture with React hooks for state management. It uses React Router for navigation and Context API for global state handling.",
-        tools: ["React", "Redux", "Node.js", "MongoDB", "Express", "CSS3"]
+        structure: "Clean architecture with dual API support (BOMB and Buyer App) sharing a unified framework. Base layer includes TestNG BaseTest, ConfigManager with Owner properties, and RestClient wrapper. Constants layer manages BombEndpoints and BuyerAppEndpoints. Request/Response POJOs handle complex nested structures (LoginResponse, CatalogResponse, FeedFilterResponse). CI/CD pipeline integrates Jenkins with Python scripts for TestNG result parsing, email/chat notifications, and S3 uploads with timestamped folders. Test execution uses priority-based dependencies and VariableManager for cross-test data sharing.",
+        pipelineFlow: {
+            stages: ["Checkout", "Run Tests", "Setup Allure", "Generate Report", "Upload to S3", "Extract Summary", "Send Notifications", "Archive Links", "Publish Results"],
+            postBuild: ["Always", "Failure", "Success", "Unstable"]
+        },
+        tools: ["Java 17", "Maven", "RestAssured 5.3+", "TestNG 7.8+", "Allure 2.24+", "Jenkins", "AWS S3", "Python 3", "Jackson 2.15", "Lombok 1.18", "Log4j2 2.20", "Hamcrest 2.2", "Owner 1.0.12", "Google Chat Webhooks", "SMTP Email"]
     },
     {
         id: 4,
