@@ -13,7 +13,7 @@ const Footer = () => {
         <>
             <section className="footer_section">
                 <div className="footer_center">
-                    <h2>©Copyright 2023 by Shubham Kumar || All rights reserved</h2>
+                    <h2>©Copyright 2025 by Shubham Kumar || All rights reserved</h2>
                 </div>
             </section>
         </>

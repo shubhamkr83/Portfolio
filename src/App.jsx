@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import Navbar from "./Components/Navbar/Navbar";
-import MainHeader from './MainHeader';
-import Home from "./Home/Home";
-import About from "./About/About";
-import Portfolio from "./Portfolio/Portfolio";
-import Projects from "./Components/Projects/Projects";
-import Contact from "./Contact/Contact";
+import Navbar from "./components/Navbar/Navbar";
+import Layout from './components/Layout/Layout';
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Skills from "./pages/Skills/Skill";
+import Projects from "./pages/Projects/Projects";
+import ProjectDetail from "./pages/Projects/ProjectDetail";
+import Contact from "./pages/Contact/Contact";
 import styled, { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme, GlobalStyle } from './Components/theme';
+import { lightTheme, darkTheme, GlobalStyle } from './styles/theme';
 import { Routes, Route } from "react-router-dom";
 
 
@@ -28,13 +29,13 @@ const App = () => {
         <>
           <Navbar theme={theme} themeToggler={themeToggler} />
           <Routes>
-            <Route path="/" element={<MainHeader />} >
+            <Route path="/" element={<Layout />} >
               <Route index element={<Home />} />
               <Route path="about" element={<About />} />
-              <Route path="portfolio" element={<Portfolio />} />
+              <Route path="skills" element={<Skills />} />
               <Route path="projects" element={<Projects />} />
+              <Route path="projects/:id" element={<ProjectDetail />} />
               <Route path="contact" element={<Contact />} />
-              <Route path="*" element={<Error />} />
             </Route>
           </Routes>
         </>
