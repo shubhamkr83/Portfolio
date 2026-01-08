@@ -295,6 +295,14 @@
   animation: fadeInScale 0.3s ease-out;
 }
 
+/* Carousel Iframe for Google Drive Videos */
+.carousel_iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  object-fit: cover;
+}
 /* ==================== Project Actions ==================== */
 .project_actions {
   max-width: 130rem;
@@ -305,6 +313,16 @@
   flex-wrap: wrap;
 }
 
+/* Project Actions Inside Card */
+.project_actions_inline {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 132, 241, 0.1);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
 .detail_action_button {
   display: inline-flex;
   align-items: center;
@@ -312,7 +330,7 @@
   gap: 0.6rem;
   background: #000000;
   color: #ffffff;
-  padding: 0.8rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   font-size: 1.3rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
@@ -322,8 +340,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  /* width: 4rem; */
-  min-width: 50%;
+  max-width: 25rem;
   text-align: center;
 }
 
@@ -488,6 +505,99 @@
   box-shadow: 0 0.5rem 1.5rem rgba(0, 132, 241, 0.3);
 }
 
+/* ==================== Testing Information Section ==================== */
+.testing_section {
+  margin-top: 2rem;
+}
+
+.testing_subsection {
+  margin-bottom: 2rem;
+}
+
+.testing_subsection:last-child {
+  margin-bottom: 0;
+}
+
+.testing_subsection h4 {
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--secondary_color);
+  margin-bottom: 1rem;
+}
+
+.testing_badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.testing_badge {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.3rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border-radius: 2rem;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+/* Test Type Badges */
+.test_type_badge {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.test_type_badge:hover {
+  background: #4CAF50;
+  color: #fff;
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(76, 175, 80, 0.3);
+}
+
+/* App Version Badges */
+.app_version_badge {
+  background: rgba(255, 152, 0, 0.1);
+  color: #FF9800;
+  border-color: rgba(255, 152, 0, 0.3);
+}
+
+.app_version_badge:hover {
+  background: #FF9800;
+  color: #fff;
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 152, 0, 0.3);
+}
+
+/* Test Area Badges */
+.test_area_badge {
+  background: rgba(156, 39, 176, 0.1);
+  color: #9C27B0;
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+.test_area_badge:hover {
+  background: #9C27B0;
+  color: #fff;
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(156, 39, 176, 0.3);
+}
+
+/* Test Profile Badges */
+.test_profile_badge {
+  background: rgba(33, 150, 243, 0.1);
+  color: #2196F3;
+  border-color: rgba(33, 150, 243, 0.3);
+}
+
+.test_profile_badge:hover {
+  background: #2196F3;
+  color: #fff;
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(33, 150, 243, 0.3);
+}
 /* ==================== Related Projects ==================== */
 .related_projects {
   max-width: 130rem;

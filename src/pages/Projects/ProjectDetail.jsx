@@ -23,6 +23,21 @@ const ProjectDetail = () => {
     // Get images array - support both single image and multiple images
     const images = project ? (Array.isArray(project.images) ? project.images : [project.image]) : [];
 
+    // Helper function to check if URL is a direct video file
+    const isDirectVideo = (url) => {
+        return url?.endsWith('.mp4') || url?.endsWith('.webm');
+    };
+
+    // Helper function to check if URL is a Google Drive video
+    const isGoogleDriveVideo = (url) => {
+        return url?.includes('drive.google.com') && (url?.includes('/file/d/') || url?.includes('/preview'));
+    };
+
+    // Helper function to check if URL is any type of video
+    const isVideoUrl = (url) => {
+        return isDirectVideo(url) || isGoogleDriveVideo(url);
+    };
+
     useEffect(() => {
         Aos.init({
             duration: 1000,
@@ -155,8 +170,8 @@ const ProjectDetail = () => {
             >
                 <div className="carousel_container">
                     {/* Check if current item is video or image */}
-                    {images[currentImageIndex]?.endsWith('.mp4') || 
-                     images[currentImageIndex]?.endsWith('.webm') ? (
+                    {isDirectVideo(images[currentImageIndex]) ? (
+                    // Direct video files (.mp4, .webm)
                         <div className="video_wrapper" onClick={toggleVideoPlayback}>
                             <video 
                                 ref={videoRef}
@@ -178,7 +193,19 @@ const ProjectDetail = () => {
                                 </div>
                             )}
                         </div>
+                    ) : isGoogleDriveVideo(images[currentImageIndex]) ? (
+                        // Google Drive video embeds
+                        <div className="video_wrapper">
+                            <iframe
+                                src={images[currentImageIndex]}
+                                className="carousel_iframe"
+                                allow="autoplay"
+                                allowFullScreen
+                                title={`${name} - Video ${currentImageIndex + 1}`}
+                            />
+                        </div>
                     ) : (
+                                // Regular images
                         <img 
                             src={images[currentImageIndex]} 
                             alt={`${name} - Image ${currentImageIndex + 1}`} 
@@ -299,6 +326,64 @@ const ProjectDetail = () => {
                     </div>
                 )}
 
+                {/* Testing Information */}
+                {project.testing && (
+                    <div className="description_section testing_section">
+                        <h3>Testing Information</h3>
+
+                        {/* Test Types */}
+                        {project.testing.testTypes && project.testing.testTypes.length > 0 && (
+                            <div className="testing_subsection">
+                                <h4>Test Types</h4>
+                                <div className="testing_badges">
+                                    {project.testing.testTypes.map((type, index) => (
+                                        <span key={index} className="testing_badge test_type_badge">{type}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+
+                        {/* App Versions / API Targets */}
+                        {(project.testing.appVersions && project.testing.appVersions.length > 0) ||
+                            (project.testing.apiTargets && project.testing.apiTargets.length > 0) ? (
+                            <div className="testing_subsection">
+                                <h4>{project.testing.appVersions ? "App Versions" : "API Targets"}</h4>
+                                <div className="testing_badges">
+                                    {(project.testing.appVersions || project.testing.apiTargets).map((item, index) => (
+                                        <span key={index} className="testing_badge app_version_badge">{item}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : null}
+
+
+                        {/* Test Areas */}
+                        {project.testing.testAreas && project.testing.testAreas.length > 0 && (
+                            <div className="testing_subsection">
+                                <h4>Test Areas</h4>
+                                <div className="testing_badges">
+                                    {project.testing.testAreas.map((area, index) => (
+                                        <span key={index} className="testing_badge test_area_badge">{area}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Test Profiles */}
+                        {project.testing.profiles && project.testing.profiles.length > 0 && (
+                            <div className="testing_subsection">
+                                <h4>Test Profiles</h4>
+                                <div className="testing_badges">
+                                    {project.testing.profiles.map((profile, index) => (
+                                        <span key={index} className="testing_badge test_profile_badge">{profile}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+
                 {/* Tools Used */}
                 {project.tools && project.tools.length > 0 && (
                     <div className="description_section">
@@ -310,14 +395,14 @@ const ProjectDetail = () => {
                         </div>
                     </div>
                 )}
-            </div>
 
-            {/* Project Actions */}
-            <div className="project_actions" data-aos="fade-up" data-aos-delay="300">
-                <a href={git} target="_blank" rel="noreferrer" className="detail_action_button detail_git_action">
-                    <BsGithub />
-                    <span>View Source Code</span>
-                </a>
+                {/* Project Actions */}
+                <div className="project_actions_inline">
+                    <a href={git} target="_blank" rel="noreferrer" className="detail_action_button detail_git_action">
+                        <BsGithub />
+                        <span>View Source Code</span>
+                    </a>
+                </div>
             </div>
 
             {/* Related Projects */}
