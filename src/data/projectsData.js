@@ -148,60 +148,131 @@ const ProjectData = [
     },
     {
         id: 5,
-        image: "https://user-images.githubusercontent.com/72254047/221830231-789361ae-51a7-401a-8109-ca04e031095f.png",
-        name: "Placement cell",
-        git: "https://github.com/shubhamkr83/Placement-cell-app",
-        live: "https://placementcell-h84y.onrender.com",
-        category: "Full Stack",
+        image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg",
+        images: [
+            "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+            "https://developers.google.com/static/chat/images/chat-product-icon.png",
+            "https://www.twilio.com/content/dam/twilio-com/global/en/blog/legacy/2017/Twilio_Logo_Red-1.png",
+            "https://curl.se/logo/curl-logo.svg",
+        ],
+        name: "Website Health Check & Monitoring Pipeline",
+        git: "https://github.com/shubhamkr83/health-check-pipeline",
+        live: "https://bizup.app",
+        category: "DevOps & CI/CD",
+        overview: "Production-grade automated website health monitoring system with multi-channel alerting via Jenkins CI/CD. Performs scheduled HTTP health checks on Bizup Fashion website (bizup.app), monitors SSL certificate validity, tracks response times, and gathers geo-location server data. On failure detection, triggers instant alerts through Google Chat, WhatsApp messages to multiple team members, and automated voice calls. Generates comprehensive reports with timestamp, build details, server information, and uploads to AWS S3 for historical tracking and analysis.",
+        features: [
+            "Automated HTTP health checks: Monitors website availability with curl-based status validation",
+            "Multi-channel alerting: Google Chat, WhatsApp messages, and automated voice calls on failures",
+            "SSL certificate validation: Verifies SSL status and displays certificate health in reports",
+            "Response time monitoring: Tracks and reports website response times for performance analysis",
+            "Geo-location tracking: Captures server IP, country, region, city, and ISP information",
+            "AWS S3 report archiving: Timestamped failure reports uploaded to S3 for historical analysis",
+            "Multiple recipient support: Sends alerts to team members via configured phone numbers",
+            "Twilio integration: WhatsApp and voice call functionality using Twilio API",
+            "Detailed failure reports: Comprehensive reports with build URL, timestamp, server info, SSL status",
+            "Jenkins build tracking: Updates build descriptions and archives S3 URLs for easy access"
+        ],
+        pipelineFlow: {
+            stages: [
+                "Health Check",
+                "Alert Generation",
+                "Report Upload to S3",
+                "Google Chat Notification",
+                "WhatsApp Alerts",
+                "Voice Call Alerts"
+            ],
+            postBuild: ["Always"]
+        },
+        tools: ["Jenkins", "Curl", "AWS S3", "AWS CLI", "Twilio API", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "IP-API Geolocation"]
+    },
+    {
+        id: 6,
+        image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg",
+        images: [
+            "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+            "https://developers.google.com/static/chat/images/chat-product-icon.png",
+            "https://www.twilio.com/content/dam/twilio-com/global/en/blog/legacy/2017/Twilio_Logo_Red-1.png",
+            "https://curl.se/logo/curl-logo.svg",
+        ],
+        name: "Navo Fashion Health Check & Monitoring Pipeline",
+        git: "https://github.com/shubhamkr83/navo-health-check-pipeline",
+        live: "https://navofashion.in",
+        category: "DevOps & CI/CD",
+        overview: "Production-grade automated website health monitoring system for Navo Fashion (navofashion.in) with multi-channel alerting via Jenkins CI/CD. Performs scheduled HTTP health checks, monitors SSL certificate validity, tracks response times, and gathers geo-location server data. On failure detection, triggers instant alerts through Google Chat, WhatsApp messages to multiple team members, and automated voice calls. Generates comprehensive reports with timestamp, build details, server information, and uploads to AWS S3 for historical tracking and analysis.",
+        features: [
+            "Automated HTTP health checks: Monitors Navo Fashion website availability with curl-based validation",
+            "Multi-channel alerting: Google Chat, WhatsApp messages, and automated voice calls on failures",
+            "SSL certificate validation: Verifies SSL status and displays certificate health in reports",
+            "Response time monitoring: Tracks and reports website response times for performance analysis",
+            "Geo-location tracking: Captures server IP, country, region, city, and ISP information via IP-API",
+            "AWS S3 report archiving: Timestamped failure reports uploaded to navo-health-check-report folder",
+            "Multiple recipient support: Sends alerts to 3 team members via configured phone numbers",
+            "Twilio integration: WhatsApp Business API and voice call functionality using Twilio",
+            "Detailed failure reports: Comprehensive reports with build URL, timestamp, server info, SSL status",
+            "Jenkins build tracking: Updates build descriptions and archives S3 URLs for easy access"
+        ],
+        pipelineFlow: {
+            stages: [
+                "Health Check",
+                "Alert Generation",
+                "Report Upload to S3",
+                "Google Chat Notification",
+                "WhatsApp Alerts",
+                "Voice Call Alerts"
+            ],
+            postBuild: ["Always"]
+        },
+        tools: ["Jenkins", "Curl", "AWS S3", "AWS CLI", "Twilio API", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "IP-API Geolocation"]
     },
     {
         id: 7,
-        image: "https://user-images.githubusercontent.com/72254047/243905261-7ba02639-ea57-468d-b7e9-3a3e095f756a.png",
-        name: "React Chat App",
-        git: "https://github.com/shubhamkr83/React_Chat_App",
-        live: "https://reactchatapp01.netlify.app",
-        category: "FrontEnd",
+        image: "https://www.postman.com/assets/logos/postman-logo-stacked.svg",
+        images: [
+            "https://www.jenkins.io/images/logos/jenkins/jenkins.svg",
+            "https://newman.postman.com/images/newman-logo.png",
+            "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+            "https://developers.google.com/static/chat/images/chat-product-icon.png",
+        ],
+        name: "Payment Health Check API Automation",
+        git: "https://github.com/shubhamkr83/payment-health-check-automation",
+        live: "https://github.com/shubhamkr83/payment-health-check-automation",
+        category: "Automation Testing",
+        overview: "Critical payment gateway health monitoring automation using Postman collections with Jenkins CI/CD. Performs automated payment API health checks with intelligent 3-attempt retry mechanism (20-second delays), branch-specific S3 report organization, and failure-only Google Chat alerts. Generates timestamped Newman JSON/HTML reports with comprehensive test analysis including request/assertion success rates. Features strict report freshness validation (30-minute threshold), automated S3 uploads with size verification, and detailed failure reporting showing up to 10 failed tests with HTTP errors and assertion details.",
+        features: [
+            "Payment API health monitoring: Automated Postman collection execution via Newman CLI",
+            "Intelligent retry logic: 3 attempts with 20-second delays for transient failure recovery",
+            "Failure-only alerting: Google Chat notifications triggered only on payment test failures",
+            "Branch-specific S3 organization: Separate folders for main, dev, and feature branches",
+            "Comprehensive test analysis: Request/assertion success rates with detailed failure detection",
+            "Timestamped reporting: JSON & HTML reports with strict 30-minute freshness validation",
+            "Multi-environment support: Production (main/master) and development (dev/develop) workflows",
+            "Detailed failure summaries: Shows up to 10 failed tests with HTTP status codes and assertions",
+            "Automated S3 upload: Size-based verification with public-read ACL for team access",
+            "Build artifact tracking: Archives S3 URLs and generates comprehensive build summaries"
+        ],
+        pipelineFlow: {
+            stages: [
+                "Checkout",
+                "Setup Environment Variables",
+                "Setup Node Environment",
+                "Run Postman Tests",
+                "Upload to S3",
+                "Generate Report",
+                "Send Notifications"
+            ],
+            postBuild: ["Always", "Failure", "Success"]
+        },
+        tools: ["Node.js v20.15.0", "Newman", "Postman Collections", "Jenkins", "NVM", "AWS S3", "AWS CLI", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "JSON/HTML Reporters"]
     },
     {
         id: 8,
-        image: "https://cdn.pixabay.com/photo/2025/11/09/17/47/mushrooms-9946579_1280.jpg",
-        name: "Contact List Web App",
-        git: "https://github.com/shubhamkr83/contactlistapp",
-        live: "https://contactlistreactapp.netlify.app",
-        category: "FrontEnd",
-    },
-    {
-        id: 9,
         image: "https://user-images.githubusercontent.com/72254047/245164081-b56be2d6-2e3a-499f-96c7-dd6d4f1967c9.png",
         name: "Employee Review System",
         git: "https://github.com/shubhamkr83/Employee-Review-System",
         live: "https://ersystem-p85s.onrender.com",
         category: "Full Stack",
     },
-    {
-        id: 10,
-        image: "https://user-images.githubusercontent.com/72254047/245163279-9f8bf2d9-1089-47b8-97c0-cd6f79b1f0f1.png",
-        name: "Shopperia Web3",
-        git: "https://github.com/shubhamkr83/Web3-Ecomm",
-        live: "https://github.com/shubhamkr83/Web3-Ecomm",
-        category: "Full Stack",
-    },
-    {
-        id: 11,
-        image: "image/Ecomm-webp.webp",
-        name: "Ecommerce Web",
-        git: "https://github.com/shubhamkr83/Ecom-website",
-        live: "https://shubh-ecommerce.netlify.app",
-        category: "FrontEnd",
-    },
-    {
-        id: 6,
-        image: "https://user-images.githubusercontent.com/72254047/247047204-23979487-8f7c-4c31-a57b-14b63b8b3fe3.png",
-        name: "My Portfolio",
-        git: "https://github.com/shubhamkr83/React-Vite-Portfolio",
-        live: "https://shubhamweb.netlify.app",
-        category: "FrontEnd",
-    },
+
 ];
 
 export default ProjectData;
