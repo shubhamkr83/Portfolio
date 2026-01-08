@@ -3,14 +3,13 @@ const ProjectData = [
         id: 1,
         image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
         images: [
-            "https://rest-assured.io/img/logo-transparent.png",
-            "https://testng.org/images/testng.png",
-            "https://avatars.githubusercontent.com/u/5879127?s=200&v=4",
-            "https://maven.apache.org/images/maven-logo-black-on-white.png",
+            "https://drive.google.com/file/d/1dMlLwspoNKrMonwDRzzGZtjV3vIdwesw/preview"
+            // "https://drive.google.com/file/d/11OW5mPx2ryRtr1PGWqvX94-1zSBgn4PD/view",
+            // "https://drive.google.com/file/d/1sfztEotOFLsUqoH2LGpEw8YlAavpjUw3/view",
         ],
         name: "API Automation Framework (RestAssured)",
-        git: "https://github.com/shubhamkr83/api_restassured_automation",
-        live: "https://github.com/shubhamkr83/api_restassured_automation",
+        git: "https://github.com/shubhamkr83/RestAssured_Automation",
+        live: "https://github.com/shubhamkr83/RestAssured_Automation",
         category: "Automation Testing",
         overview: "An enterprise-grade REST API automation framework featuring dual API support for BOMB (Admin/Seller operations at bizup.app) and Buyer App (Navo Fashion consumer API at api.navofashion.in). This production-ready framework converts a complete Postman collection into a robust RestAssured + TestNG solution with 56 test files, 40+ endpoints, comprehensive CI/CD integration, and automated reporting. Features include JWT authentication, AI-powered video title generation, performance validation (800ms threshold for Buyer App), and complete workflow pipeline testing with 95%+ success rate.",
         features: [
@@ -26,6 +25,11 @@ const ProjectData = [
             "Production-ready features: Retry analyzer, parallel execution, JSON schema validation, Log4j2"
         ],
         structure: "Clean architecture with dual API support (BOMB and Buyer App) sharing a unified framework. Base layer includes TestNG BaseTest, ConfigManager with Owner properties, and RestClient wrapper. Constants layer manages BombEndpoints and BuyerAppEndpoints. Request/Response POJOs handle complex nested structures (LoginResponse, CatalogResponse, FeedFilterResponse). CI/CD pipeline integrates Jenkins with Python scripts for TestNG result parsing, email/chat notifications, and S3 uploads with timestamped folders. Test execution uses priority-based dependencies and VariableManager for cross-test data sharing.",
+        testing: {
+            testTypes: ["API Tests", "Integration Tests", "Performance Tests"],
+            apiTargets: ["BOMB API (26 tests)", "Buyer App API (30 tests)"],
+            profiles: ["All", "BOMB-Pipeline", "BuyerApp-Pipeline"]
+        },
         pipelineFlow: {
             stages: ["Checkout", "Run Tests", "Setup Allure", "Generate Report", "Upload to S3", "Extract Summary", "Send Notifications", "Archive Links", "Publish Results"],
             postBuild: ["Always", "Failure", "Success", "Unstable"]
