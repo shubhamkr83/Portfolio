@@ -25,11 +25,15 @@ const About = () => {
             companyNote: "(Formerly Bizup)",
             role: "QA Engineer",
             period: "Dec 2024 - Present",
-            icon: "💼",
+            icon: "/image/navo.png",
+            website: "https://navofashion.in/",
             achievements: [
-                "Engineered an automation framework, reducing manual testing hours by 60% and increasing test coverage by 40%.",
-                "Streamlined Jenkins CI/CD pipelines for automated test execution, slashing deployment time by 25%.",
-                "Leveraged S3 for test data storage and data-driven testing (JSON/CSV), cutting manual verification by 70%."
+                "Engineered API automation framework with 56 test files covering 40+ endpoints, reducing manual testing by 60%.",
+                "Built Android automation (Appium) for 3 app versions with BrowserStack integration.",
+                "Architected Jenkins CI/CD pipelines with AWS S3 reports and Allure dashboards, cutting deployment time by 25%.",
+                "Automated Android APK/AAB builds with secure code signing and SHA256 integrity verification.",
+                "Designed production health monitoring for websites with SSL validation, geo-tracking, and Twilio alerts.",
+                "Implemented data-driven testing with AWS S3, achieving 95%+ success rate."
             ]
         },
         {
@@ -38,10 +42,15 @@ const About = () => {
             companyNote: "",
             role: "QA Engineer",
             period: "Aug 2024 - Nov 2024",
-            icon: "🔧",
+            icon: "/image/thriwe.png",
+            website: "https://thriwe.com/",
             achievements: [
-                "Constructed end-to-end web automation framework using Python and Playwright for reliable and scalable testing.",
-                "Implemented test coverage for login, signup, and user flows with validations; Scripted page verification to ensure correct URLs and navigation."
+                "Built production-ready web automation framework using Python and Playwright with modular architecture.",
+                "Implemented comprehensive test coverage for critical user journeys (login, signup, user flows).",
+                "Developed reusable components and validations for scalable testing solutions.",
+                "Created page verification scripts ensuring correct URLs, navigation flows, and UI element integrity.",
+                "Delivered detailed test reports, increasing release confidence and reducing post-deployment defects.",
+                "Collaborated with development teams to identify bugs early in the development cycle."
             ]
         },
         {
@@ -50,10 +59,15 @@ const About = () => {
             companyNote: "",
             role: "QA Executive",
             period: "Sept 2023 - June 2024",
-            icon: "⚡",
+            icon: "/image/bizup.png",
+            website: "https://bizup.app/",
             achievements: [
-                "Aligned QA strategies with Head of Engineering and Product teams, and improving deployment efficiency by 25%.",
-                "Ensured zero critical bugs in 2 flagship releases, contributing to 20% revenue growth, and validated 5+ cross-platform products (Android, Web, API)."
+                "Aligned QA strategies with Engineering/Product teams, improving deployment efficiency by 25%.",
+                "Ensured zero critical bugs in 2 flagship releases, contributing to 20% revenue growth.",
+                "Validated 5+ cross-platform products (Android, Web, API) through manual and exploratory testing.",
+                "Led end-to-end testing cycles including regression, smoke, and user acceptance testing.",
+                "Performed extensive API testing using Postman for REST endpoints and authentication flows.",
+                "Managed defect lifecycle in Jira with detailed reproduction steps and severity tracking."
             ]
         }
     ];
@@ -100,10 +114,14 @@ const About = () => {
                             >
                                 <div className="card_header">
                                     <div className="company_info">
-                                        <div className="company_icon">{exp.icon}</div>
+                                        <div className="company_icon">
+                                            <img src={exp.icon} alt={`${exp.company} logo`} />
+                                        </div>
                                         <div className="company_details">
                                             <h3 className="company_name">
-                                                {exp.company}
+                                                <a href={exp.website} target="_blank" rel="noopener noreferrer">
+                                                    {exp.company}
+                                                </a>
                                                 {exp.companyNote && <span className="company_note">{exp.companyNote}</span>}
                                             </h3>
                                             <p className="role_title">{exp.role}</p>

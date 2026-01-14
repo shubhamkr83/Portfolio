@@ -13,9 +13,9 @@
 ### QA Engineer | **Navo** (Formerly Bizup)
 *Dec 2024 - Present | Gurgaon, India*
 
-- Engineered API automation framework (RestAssured, TestNG) with **56 test files** covering **40+ endpoints**, reducing manual testing by **60%** | Built Android automation (Appium, Java) for **3 app versions** with BrowserStack integration
-- Architected Jenkins CI/CD pipelines with AWS S3 reports, Allure dashboards, and multi-channel notifications (Google Chat, email), cutting deployment time by **25%** | Automated Android APK/AAB builds with secure code signing
-- Designed production health monitoring for websites with SSL validation, geo-tracking, and Twilio alerts | Implemented data-driven testing achieving **95%+ success rate**
+- Spearheaded enterprise test automation initiative across API, Android, and Web platforms, reducing manual testing efforts by **60%** and increasing overall test coverage by **40%**
+- Streamlined CI/CD deployment workflows through Jenkins pipeline automation and cloud infrastructure optimization, cutting release cycles by **25%**
+- Established comprehensive production monitoring and alerting systems with multi-channel notifications (Google Chat, Twilio), ensuring **zero downtime** incidents
 - **Tech Stack**: RestAssured, Appium, TestNG, Java 17, Python, Jenkins, AWS S3, Maven, Gradle, Allure, BrowserStack, Twilio API
 
 ---
@@ -41,24 +41,18 @@
 
 ## 🚀 PROJECTS
 
-### **API Automation Framework (RestAssured)** | [GitHub](https://github.com/shubhamkr83/RestAssured_Automation)
+### **API Test Automation Suite (RestAssured & Postman/Newman)** | [GitHub](https://github.com/shubhamkr83/RestAssured_Automation)
 
-- Engineered enterprise-grade REST API testing framework with **56 test files** covering BOMB (26 tests) and Buyer App (30 tests) using RestAssured, TestNG, and Maven
-- Implemented complete CI/CD pipeline with Jenkins automation, AWS S3 timestamped reports, Python-based result parsing, and multi-channel notifications (email/Google Chat)
-- Developed dual API architecture with JWT authentication flow, AI-powered video title generation, performance validation (800ms threshold), and comprehensive data-driven testing using POJO models with Jackson/Lombok
-- Achieved **95%+ test success rate** with advanced validations (30+ fields, MongoDB ID formats, Firebase URLs), parallel execution, retry analyzer, Log4j2 logging, and interactive Allure dashboards
+- Engineered enterprise-grade REST API testing framework with **56 test files** covering BOMB (26 tests) and Buyer App (30 tests) using RestAssured, TestNG, Maven, and Postman/Newman for comprehensive API coverage
+- Implemented complete CI/CD pipeline with Jenkins automation, AWS S3 timestamped reports, Python-based result parsing, intelligent 3-attempt retry mechanism, and multi-channel notifications (email/Google Chat)
+- Developed dual API architecture with JWT authentication flow, AI-powered video title generation, performance validation (800ms threshold), multi-environment support (production/development branches), and data-driven testing using POJO models with Jackson/Lombok
+- Achieved **95%+ test success rate** with advanced validations (30+ fields, MongoDB ID formats, Firebase URLs), parallel execution, retry analyzer, detailed failure analysis (HTTP errors/assertions), comprehensive test analytics, Log4j2 logging, and interactive Allure/JSON/HTML dashboards
 
 ### **Android Automation Framework** | [GitHub](https://github.com/shubhamkr83/android-automation)
 
 - Built scalable Android UI automation framework using Java, Appium 10.0.0, and TestNG for Bizup Buyer App testing across **3 versions** (2.16.4, 3.0.1, 3.0.4)
 - Implemented Page Object Model architecture with versioned test suites (Smoke/Regression), BrowserStack cloud integration, and centralized driver management for parallel execution
 - Integrated ExtentReports 5.1.2 with screenshot capture on failures, automated email notifications with HTML summaries, RetryAnalyzer for flaky tests, and Log4j2 logging
-
-### **Postman API Automation with Jenkins CI/CD** | [GitHub](https://github.com/shubhamkr83)
-
-- Developed comprehensive API testing solution with Newman CLI execution, intelligent 3-attempt retry mechanism (30s delays), and branch-specific AWS S3 report organization
-- Automated CI/CD pipeline featuring timestamped JSON/HTML reports with 30-min freshness validation, real-time Google Chat notifications, and detailed failure analysis (HTTP errors/assertions)
-- Implemented multi-environment support (production/development branches), automated S3 uploads with size verification, build status tracking, and comprehensive test analytics (request/assertion success rates)
 
 ### **Android APK/AAB Build & Release CI/CD Pipeline** | [GitHub](https://github.com/Bizup-world/android)
 
@@ -104,4 +98,3 @@
 | **Libraries & Frameworks** | Jackson 2.15, Lombok 1.18, Hamcrest 2.2, JavaMail 1.6.2, Commons IO |
 | **Database** | MongoDB, SQL |
 | **Project Management** | Jira (Defect Tracking), Agile/Scrum |
-| **Other Tools** | Curl, SHA256 Checksums, IP-API Geolocation, Retry Analyzers |

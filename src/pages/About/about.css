@@ -218,6 +218,15 @@
   background: linear-gradient(135deg, rgba(0, 132, 241, 0.15), rgba(39, 31, 140, 0.15));
   border-radius: 1.2rem;
   flex-shrink: 0;
+  overflow: hidden;
+    padding: 0.4rem;
+  }
+  
+  .company_icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.6rem;
 }
 
 .company_details {
@@ -236,6 +245,31 @@
   flex-wrap: wrap;
 }
 
+.company_name a {
+  color: var(--primary_color);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.company_name a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--secondary_color), var(--primary_color));
+  transition: width 0.3s ease;
+}
+
+.company_name a:hover {
+  color: var(--secondary_color);
+}
+
+.company_name a:hover::after {
+  width: 100%;
+}
 .company_note {
   font-size: 1.4rem;
   font-weight: 500;

@@ -20,11 +20,11 @@ const Home = () => {
 
     const handleDownloadCV = () => {
         // Add your CV download link here
-        window.open('/path-to-your-cv.pdf', '_blank');
+        window.open('https://drive.google.com/file/d/1F2Uq2ONZtFBgHTnnUGSZGiRBubCq7tAQ/view?usp=drive_link', '_blank');
     };
 
     const handleContactClick = () => {
-        window.location.href = '#contact';
+        window.location.href = '/contact';
     };
 
     return (
