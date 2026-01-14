@@ -20,7 +20,7 @@ const Home = () => {
 
     const handleDownloadCV = () => {
         // Add your CV download link here
-        window.open('https://drive.google.com/file/d/1F2Uq2ONZtFBgHTnnUGSZGiRBubCq7tAQ/view?usp=drive_link', '_blank');
+        window.open('https://docs.google.com/document/d/1W0Evy5MPSBxBtDaYEovF6cBrX-p6XTYwUg-Visi1PI4/edit?usp=sharing', '_blank');
     };
 
     const handleContactClick = () => {
