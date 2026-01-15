@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import Aos from 'aos';
 import "aos/dist/aos.css";
-import Test_Automation, { CI_CD_Cloud, API_Testing, Programming, Database, Others } from '../../data/skillsData';
+import Test_Automation, { CI_CD_Cloud, API_Testing, Programming, Build_Tools, Reporting, Database, Others } from '../../data/skillsData';
 import "./skill.css";
 
 // Reusable SkillCategory component with enhanced design
@@ -66,10 +66,22 @@ const Skill = () => {
             delay: 300
         },
         { 
+            title: 'Build Tools', 
+            skills: Build_Tools,
+            icon: '🔧',
+            delay: 350
+        },
+        { 
+            title: 'Reporting & Logging', 
+            skills: Reporting,
+            icon: '📊',
+            delay: 400
+        },
+        { 
             title: 'Database', 
             skills: Database,
             icon: '🗄️',
-            delay: 400
+            delay: 450
         },
         { 
             title: 'Other Tools', 

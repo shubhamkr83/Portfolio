@@ -268,14 +268,14 @@ const ProjectData = [
         },
         tools: ["Node.js v20.15.0", "Newman", "Postman Collections", "Jenkins", "NVM", "AWS S3", "AWS CLI", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "JSON/HTML Reporters"]
     },
-    {
-        id: 8,
-        image: "https://user-images.githubusercontent.com/72254047/245164081-b56be2d6-2e3a-499f-96c7-dd6d4f1967c9.png",
-        name: "Employee Review System",
-        git: "https://github.com/shubhamkr83/Employee-Review-System",
-        live: "https://ersystem-p85s.onrender.com",
-        category: "Full Stack",
-    },
+    // {
+    //     id: 8,
+    //     image: "https://user-images.githubusercontent.com/72254047/245164081-b56be2d6-2e3a-499f-96c7-dd6d4f1967c9.png",
+    //     name: "Employee Review System",
+    //     git: "https://github.com/shubhamkr83/Employee-Review-System",
+    //     live: "https://ersystem-p85s.onrender.com",
+    //     category: "Full Stack",
+    // },
 
 ];
 
