@@ -12,4 +12,37 @@
   display: grid;
   place-items: center;
   /* border: 2px solid red; */
+}
+
+/* Mobile view padding */
+@media (max-width: 768px) {
+  .footer_section {
+    padding: 1rem 1.5rem;
+  }
+  
+  .footer_section .footer_center {
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+  
+  .footer_section .footer_center h2 {
+    font-size: 0.875rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .footer_section {
+    padding: 0.75rem 1rem;
+  }
+  
+  .footer_section .footer_center {
+    padding: 1rem 0.75rem;
+  }
+  
+  .footer_section .footer_center h2 {
+    font-size: 0.75rem;
+  }
 }/*# sourceMappingURL=footer.css.map */

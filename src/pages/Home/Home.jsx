@@ -105,12 +105,12 @@ const Home = () => {
                 </div>
 
                 {/* Scroll Indicator */}
-                <div className="scroll_indicator" data-aos='fade-up' data-aos-delay='500'>
+                {/* <div className="scroll_indicator" data-aos='fade-up' data-aos-delay='500'>
                     <div className="mouse">
                         <div className="wheel"></div>
                     </div>
                     <p>Scroll Down</p>
-                </div>
+                </div> */}
             </section>
         </>
     )

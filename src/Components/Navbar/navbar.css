@@ -71,10 +71,117 @@
   width: 100%;
 }
 
-.togglerIcon img {
-  width: 4rem;
-  height: auto;
+/* Modern Theme Toggle */
+.theme_toggle_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: rem;
+}
+
+.theme_toggle_checkbox {
+  display: none;
+}
+
+.theme_toggle_label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 7rem;
+  height: 3.4rem;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.15));
+  border-radius: 5rem;
   cursor: pointer;
+  padding: 0.5rem 0.6rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15),
+              inset 0 2px 4px rgba(255, 255, 255, 0.1),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme_toggle_label:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 132, 241, 0.4), 
+              inset 0 2px 4px rgba(255, 255, 255, 0.15),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 132, 241, 0.4);
+}
+
+.theme_toggle_label:active {
+  transform: translateY(0);
+}
+
+.theme_toggle_icon {
+  font-size: 1.8rem;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.theme_toggle_icon.sun {
+  filter: drop-shadow(0 0 4px rgba(255, 200, 0, 0.9));
+}
+
+.theme_toggle_icon.moon {
+  filter: drop-shadow(0 0 4px rgba(100, 150, 255, 0.8));
+}
+
+.theme_toggle_ball {
+  position: absolute;
+  width: 2.6rem;
+  height: 2.5rem;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 50%;
+  top: 0.4rem;
+  left: 0.4rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease,
+              box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3), 
+              inset 0 -2px 3px rgba(0, 0, 0, 0.1),
+              inset 0 2px 3px rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+/* Checked State - Dark Mode */
+.theme_toggle_checkbox:checked + .theme_toggle_label {
+  background: linear-gradient(145deg, rgba(74, 144, 226, 0.3), rgba(53, 122, 189, 0.2));
+  border-color: rgba(74, 144, 226, 0.5);
+}
+
+.theme_toggle_checkbox:checked + .theme_toggle_label .theme_toggle_ball {
+  transform: translateX(3.2rem);
+  background: linear-gradient(145deg, #5ca3e8, #3b7cb8);
+  box-shadow: 0 3px 10px rgba(0, 132, 241, 0.5), 
+              inset 0 -2px 3px rgba(0, 0, 0, 0.2),
+              inset 0 2px 3px rgba(255, 255, 255, 0.3);
+}
+
+.theme_toggle_checkbox:checked + .theme_toggle_label .sun {
+  opacity: 0.3;
+  transform: rotate(180deg) scale(0.7);
+}
+
+.theme_toggle_checkbox:checked + .theme_toggle_label .moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Default State - Light Mode */
+.theme_toggle_label .moon {
+  opacity: 0.3;
+  transform: rotate(-180deg) scale(0.7);
+}
+
+.theme_toggle_label .sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 .menuIcon {
@@ -105,10 +212,19 @@
     display: none;
   }
 
-  .togglerIcon img {
-    width: 5rem;
-    justify-items: center;
-    align-items: center;
+  /* Theme Toggle Tablet */
+  .theme_toggle_label {
+    width: 6.5rem;
+    height: 3.2rem;
+  }
+
+  .theme_toggle_ball {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .theme_toggle_checkbox:checked + .theme_toggle_label .theme_toggle_ball {
+    transform: translateX(2.9rem);
   }
 
   .navbar {
@@ -160,8 +276,23 @@
     font-size: 1.8rem;
   }
 
-  .togglerIcon img {
-    width: 4.4rem;
+  /* Theme Toggle 768px */
+  .theme_toggle_label {
+    width: 6rem;
+    height: 3rem;
+  }
+
+  .theme_toggle_icon {
+    font-size: 1.5rem;
+  }
+
+  .theme_toggle_ball {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .theme_toggle_checkbox:checked + .theme_toggle_label .theme_toggle_ball {
+    transform: translateX(2.6rem);
   }
 
   .menuIcon .MuiSvgIcon-root {
@@ -232,7 +363,22 @@
     font-size: 3.4rem;
   }
 
-  .togglerIcon img {
-    width: 3.6rem;
+  /* Theme Toggle 345px */
+  .theme_toggle_label {
+    width: 5.5rem;
+    height: 2.8rem;
+  }
+
+  .theme_toggle_icon {
+    font-size: 1.3rem;
+  }
+
+  .theme_toggle_ball {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .theme_toggle_checkbox:checked + .theme_toggle_label .theme_toggle_ball {
+    transform: translateX(2.3rem);
   }
 }

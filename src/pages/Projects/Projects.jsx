@@ -33,7 +33,7 @@ const Projects = () => {
                 {/* Projects Grid */}
                 <div className="project_grid">
                     {ProjectData.map((elem, index) => {
-                        const { id, name, image, git, category } = elem;
+                        const { id, name, image, git, category, tools } = elem;
 
                         return (
                             <div 
@@ -70,11 +70,25 @@ const Projects = () => {
                                                 <span>Source Code</span>
                                             </button>
                                         </a>
+                                        {/* Tech Tools Section */}
+                                        {tools && tools.length > 0 && (
+                                            <div className="project_tools">
+                                                <h4 className="tools_title">Tech Stack</h4>
+                                                <div className="tools_list">
+                                                    {tools.map((tool, toolIndex) => (
+                                                        <span key={toolIndex} className="tool_badge">
+                                                            {tool}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         )
                     })}
+
                 </div>
             </div>
         </section>
