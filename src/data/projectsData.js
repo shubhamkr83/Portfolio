@@ -72,7 +72,7 @@ const ProjectData = [
     },
     {
         id: 3,
-        image: "https://www.postman.com/assets/logos/postman-logo-stacked.svg",
+        image: "https://www.gartner.com/pi/vendorimages/postman_full-life-cycle-api-management_1633960356020.png",
         images: [
             "https://www.jenkins.io/images/logos/jenkins/jenkins.svg",
             "https://newman.postman.com/images/newman-logo.png",
@@ -230,7 +230,7 @@ const ProjectData = [
     },
     {
         id: 7,
-        image: "https://www.postman.com/assets/logos/postman-logo-stacked.svg",
+        image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg",
         images: [
             "https://www.jenkins.io/images/logos/jenkins/jenkins.svg",
             "https://newman.postman.com/images/newman-logo.png",
