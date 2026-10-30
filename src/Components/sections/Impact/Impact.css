@@ -1,0 +1,163 @@
+.impact_section {
+  position: relative;
+  padding: 10rem 0;
+  scroll-margin-top: var(--nav-h);
+  overflow-x: clip;
+}
+
+.impact_inner {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+
+.impact_header {
+  max-width: 64rem;
+  margin-bottom: 4.8rem;
+}
+
+.impact_eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.impact_title {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 4.4vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.impact_subtitle {
+  margin-top: 1.4rem;
+  font-size: 1.7rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.impact_grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  gap: 2rem;
+}
+
+.impact_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+/* Gradient hairline along the top edge. */
+.impact_card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--gradient);
+  opacity: 0.7;
+}
+
+.impact_meter {
+  position: relative;
+  width: 10.4rem;
+  height: 10.4rem;
+  display: grid;
+  place-items: center;
+}
+
+.impact_meter_svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.impact_meter_track,
+.impact_meter_arc {
+  fill: none;
+  stroke-width: 6;
+}
+
+.impact_meter_track { stroke: var(--surface-strong); }
+.impact_meter_arc { stroke-linecap: round; }
+
+.impact_meter .impact_value { font-size: 2.4rem; }
+
+.impact_count {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  min-height: 10.4rem;
+}
+
+.impact_icon {
+  display: grid;
+  place-items: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 2.4rem;
+}
+
+.impact_value {
+  font-family: var(--font-display);
+  font-size: 4.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.impact_label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.impact_context {
+  margin-top: auto;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.impact_sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .impact_section { padding: 7rem 0; }
+  .impact_inner { padding-inline: 1.6rem; }
+  .impact_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+  .impact_card { padding: 1.8rem 1.4rem; }
+  .impact_meter { width: 8.4rem; height: 8.4rem; }
+  .impact_meter .impact_value { font-size: 2rem; }
+  .impact_count { min-height: 8.4rem; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0.8rem; }
+  .impact_icon { width: 3.6rem; height: 3.6rem; font-size: 1.8rem; }
+  .impact_value { font-size: 3.2rem; }
+  .impact_label { font-size: 1.4rem; }
+}
