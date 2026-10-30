@@ -24,7 +24,7 @@
 .pd_header::before {
   content: "";
   position: absolute;
-  inset: -4rem -2rem auto;
+  inset: -4rem 0 auto;
   height: 32rem;
   background:
     radial-gradient(50% 60% at 15% 20%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
