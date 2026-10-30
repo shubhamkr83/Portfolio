@@ -1,436 +1,366 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
+import { FiArrowLeft, FiArrowRight, FiChevronLeft, FiChevronRight, FiExternalLink, FiGithub } from 'react-icons/fi';
+import { BsPauseFill, BsPlayFill } from 'react-icons/bs';
 import ProjectData from '../../data/projectsData';
-import Aos from 'aos';
-import 'aos/dist/aos.css';
-import { BsGithub, BsArrowLeft, BsChevronLeft, BsChevronRight, BsPlayFill, BsPauseFill } from 'react-icons/bs';
-import { RiLiveLine } from 'react-icons/ri';
-import { BiCategory } from 'react-icons/bi';
+import { fadeUp, scaleIn, stagger } from '../../motion/variants';
+import FlowDiagram from '../../Components/FlowDiagram/FlowDiagram';
+import toPipelineFlow, { guessIcon } from '../../Components/FlowDiagram/toPipelineFlow';
+import { getIcon } from '../../Components/FlowDiagram/icons';
+import CountUp from './CountUp';
 import './projectDetail.css';
 
-const ProjectDetail = () => {
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const TESTING_GROUPS = [
+    ['testTypes', 'Test types'],
+    ['apiTargets', 'API targets'],
+    ['appVersions', 'App versions'],
+    ['testAreas', 'Test areas'],
+    ['profiles', 'Profiles'],
+];
+
+const POST_BUILD_TONE = { always: 'neutral', success: 'pass', failure: 'fail', unstable: 'warn' };
+
+const isDirectVideo = (url) => /\.(mp4|webm)$/i.test(url || '');
+const isGoogleDriveVideo = (url) => (url || '').includes('drive.google.com') && /\/file\/d\/|\/preview/.test(url);
+const isMedia = (url) => isDirectVideo(url) || isGoogleDriveVideo(url);
+
+const reveal = { initial: 'hidden', whileInView: 'visible', viewport: { once: true, amount: 0.15 } };
+
+/** "Title: body" feature strings become a titled card; others are body-only. */
+const splitFeature = (text) => {
+    const at = text.indexOf(': ');
+    return at > 0 && at < 60 ? [text.slice(0, at), text.slice(at + 2)] : [null, text];
+};
+
+const Section = ({ id, title, eyebrow, children }) => (
+    <motion.section className="pd_section" aria-labelledby={id} variants={fadeUp} {...reveal}>
+        {eyebrow && <p className="pd_eyebrow">{eyebrow}</p>}
+        <h2 id={id} className="pd_h2">{title}</h2>
+        {children}
+    </motion.section>
+);
+
+/* ---------------- How it works (tabs) ---------------- */
+
+const FlowTabs = ({ project }) => {
+    const pipeline = toPipelineFlow(project);
+    const tabs = [
+        project.flows?.[0] && { key: 'user', label: 'User flow', flow: project.flows[0] },
+        pipeline && { key: 'pipeline', label: 'CI/CD pipeline', flow: pipeline },
+    ].filter(Boolean);
+    const [current, setCurrent] = useState(tabs[0]?.key);
+    const tabRefs = useRef({});
+
+    if (tabs.length === 0) return null;
+    const tab = tabs.find((t) => t.key === current) || tabs[0];
+
+    const onTabKey = (e, index) => {
+        const delta = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!delta) return;
+        e.preventDefault();
+        const next = tabs[(index + delta + tabs.length) % tabs.length];
+        setCurrent(next.key);
+        tabRefs.current[next.key]?.focus();
+    };
+
+    return (
+        <Section id="pd-how" title="How it works" eyebrow="Motion walkthrough">
+            {tabs.length > 1 && (
+                <div className="pd_tabs" role="tablist" aria-label="Flow diagrams">
+                    {tabs.map((t, i) => {
+                        const selected = t.key === tab.key;
+                        return (
+                            <button
+                                key={t.key}
+                                ref={(el) => { tabRefs.current[t.key] = el; }}
+                                type="button"
+                                role="tab"
+                                id={`pd-tab-${t.key}`}
+                                aria-selected={selected}
+                                aria-controls="pd-tabpanel"
+                                tabIndex={selected ? 0 : -1}
+                                className={`pd_tab${selected ? ' is-selected' : ''}`}
+                                onClick={() => setCurrent(t.key)}
+                                onKeyDown={(e) => onTabKey(e, i)}
+                            >
+                                {selected && <motion.span layoutId="pd-tab-pill" className="pd_tab_pill" />}
+                                <span className="pd_tab_text">{t.label}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            )}
+            <div
+                id="pd-tabpanel"
+                role={tabs.length > 1 ? 'tabpanel' : undefined}
+                aria-labelledby={tabs.length > 1 ? `pd-tab-${tab.key}` : undefined}
+            >
+                <FlowDiagram key={tab.key} flow={tab.flow} />
+                {tab.key === 'pipeline' && project.pipelineFlow.postBuild?.length > 0 && (
+                    <div className="pd_postbuild">
+                        <span className="pd_postbuild_label">Post-build</span>
+                        <ul className="pd_chips">
+                            {project.pipelineFlow.postBuild.map((outcome) => (
+                                <li key={outcome} className={`pd_chip pd_chip--${POST_BUILD_TONE[outcome.toLowerCase()] || 'neutral'}`}>
+                                    {outcome}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </div>
+        </Section>
+    );
+};
+
+/* ---------------- Media carousel (real media only) ---------------- */
+
+const MediaCarousel = ({ name, media }) => {
+    const reduce = useReducedMotion();
+    const [index, setIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-    const [showPlayPause, setShowPlayPause] = useState(false);
+    const [showPause, setShowPause] = useState(false);
     const videoRef = useRef(null);
-    
-    // Find the project by id
-    const project = ProjectData.find(p => p.id === parseInt(id));
+    const current = media[index];
 
-    // Get images array - support both single image and multiple images
-    const images = project ? (Array.isArray(project.images) ? project.images : [project.image]) : [];
-
-    // Helper function to check if URL is a direct video file
-    const isDirectVideo = (url) => {
-        return url?.endsWith('.mp4') || url?.endsWith('.webm');
-    };
-
-    // Helper function to check if URL is a Google Drive video
-    const isGoogleDriveVideo = (url) => {
-        return url?.includes('drive.google.com') && (url?.includes('/file/d/') || url?.includes('/preview'));
-    };
-
-    // Helper function to check if URL is any type of video
-    const isVideoUrl = (url) => {
-        return isDirectVideo(url) || isGoogleDriveVideo(url);
-    };
-
-    useEffect(() => {
-        Aos.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-        });
-        // Scroll to top when component mounts
-        window.scrollTo(0, 0);
-    }, [id]);
-
-    // Sync video play/pause state with actual video events
+    // Keep the play/pause overlay in sync with the <video> element.
     useEffect(() => {
         const video = videoRef.current;
-        if (!video) return;
-
-        const handlePlay = () => {
-            setIsVideoPlaying(true);
-        };
-
-        const handlePause = () => {
-            setIsVideoPlaying(false);
-        };
-
-        video.addEventListener('play', handlePlay);
-        video.addEventListener('pause', handlePause);
-
+        if (!video) return undefined;
+        const onPlay = () => setIsVideoPlaying(true);
+        const onPause = () => setIsVideoPlaying(false);
+        video.addEventListener('play', onPlay);
+        video.addEventListener('pause', onPause);
         return () => {
-            video.removeEventListener('play', handlePlay);
-            video.removeEventListener('pause', handlePause);
+            video.removeEventListener('play', onPlay);
+            video.removeEventListener('pause', onPause);
         };
-    }, [currentImageIndex]); // Re-attach when video changes
+    }, [index]);
 
-    // Auto-scroll carousel every 5 seconds
+    // Auto-advance every 5s; never under reduced motion.
     useEffect(() => {
-        if (images.length <= 1 || isPaused) return;
+        if (media.length <= 1 || isPaused || reduce) return undefined;
+        const timer = setInterval(() => setIndex((i) => (i + 1) % media.length), 5000);
+        return () => clearInterval(timer);
+    }, [media.length, isPaused, reduce]);
 
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => 
-                prevIndex === images.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 5000);
+    const step = (delta) => setIndex((i) => (i + delta + media.length) % media.length);
 
-        return () => clearInterval(interval);
-    }, [images.length, isPaused]);
-
-    const goToPrevious = () => {
-        setCurrentImageIndex((prevIndex) => 
-            prevIndex === 0 ? images.length - 1 : prevIndex - 1
-        );
-    };
-
-    const goToNext = () => {
-        setCurrentImageIndex((prevIndex) => 
-            prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
-    };
-
-    const goToImage = (index) => {
-        setCurrentImageIndex(index);
-    };
-
-    const toggleVideoPlayback = () => {
-        if (videoRef.current) {
-            if (videoRef.current.paused) {
-                videoRef.current.play();
-                setIsVideoPlaying(true);
-            } else {
-                videoRef.current.pause();
-                setIsVideoPlaying(false);
-                // Show pause icon briefly when pausing
-                setShowPlayPause(true);
-                setTimeout(() => setShowPlayPause(false), 600);
-            }
+    const toggleVideo = () => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+            setShowPause(true);
+            setTimeout(() => setShowPause(false), 600);
         }
     };
 
-    // If project not found, show error message
-    if (!project) {
-        return (
-            <div className="project_detail_error">
-                <h2>Project Not Found</h2>
-                <p>The project you're looking for doesn't exist.</p>
-                <Link to="/projects" className="back_link">
-                    <BsArrowLeft /> Back to Projects
-                </Link>
-            </div>
-        );
-    }
-
-    const { name, image, git, live, category } = project;
-
-    // Get related projects (same category, excluding current project)
-    const relatedProjects = ProjectData.filter(
-        p => p.category === category && p.id !== project.id
-    ).slice(0, 3);
-
     return (
-        <div className="project_detail_section">
-            {/* Breadcrumb Navigation and Back Button */}
-            <div className="breadcrumb_container" data-aos="fade-down">
-                <div className="breadcrumb">
-                    <Link to="/">Home</Link>
-                    <span className="separator">/</span>
-                    <Link to="/projects">Projects</Link>
-                    <span className="separator">/</span>
-                    <span className="current">{name}</span>
-                </div>
-                <button className="back_button" onClick={() => navigate('/projects')}>
-                    <BsArrowLeft /> Back to Projects
-                </button>
-            </div>
-
-            {/* Project Hero Section */}
-            <div className="project_hero">
-                <div className="project_hero_content">
-                    <h1 className="project_detail_title">{name}</h1>
-                    <div className="project_category">
-                        <BiCategory />
-                        <span>{category}</span>
+        <div className="pd_media" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+            <div className="pd_media_frame">
+                {isDirectVideo(current) ? (
+                    <div className="pd_media_video" onClick={toggleVideo}>
+                        <video ref={videoRef} src={current} controls muted loop playsInline />
+                        {!isVideoPlaying && (
+                            <div className="pd_media_overlay" aria-hidden="true">
+                                {showPause ? <BsPauseFill /> : <BsPlayFill />}
+                            </div>
+                        )}
                     </div>
-                </div>
+                ) : (
+                    <iframe
+                        src={current}
+                        allow="autoplay"
+                        allowFullScreen
+                        loading="lazy"
+                        title={`${name}: demo video ${index + 1}`}
+                    />
+                )}
+                {media.length > 1 && (
+                    <>
+                        <button type="button" className="pd_media_arrow pd_media_arrow--left" onClick={() => step(-1)} aria-label="Previous media">
+                            <FiChevronLeft aria-hidden="true" />
+                        </button>
+                        <button type="button" className="pd_media_arrow pd_media_arrow--right" onClick={() => step(1)} aria-label="Next media">
+                            <FiChevronRight aria-hidden="true" />
+                        </button>
+                    </>
+                )}
             </div>
-
-            {/* Project Image Carousel */}
-            <div 
-                className="project_image_carousel" 
-                data-aos="zoom-in" 
-                data-aos-delay="200"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-            >
-                <div className="carousel_container">
-                    {/* Check if current item is video or image */}
-                    {isDirectVideo(images[currentImageIndex]) ? (
-                    // Direct video files (.mp4, .webm)
-                        <div className="video_wrapper" onClick={toggleVideoPlayback}>
-                            <video 
-                                ref={videoRef}
-                                src={images[currentImageIndex]} 
-                                className="carousel_image" 
-                                controls
-                                muted 
-                                loop
-                                playsInline
-                            />
-                            {/* Custom Play/Pause Overlay - Single container */}
-                            {!isVideoPlaying && (
-                                <div className="video_play_pause_overlay">
-                                    {showPlayPause ? (
-                                        <BsPauseFill className="play_pause_icon pause_animation" />
-                                    ) : (
-                                        <BsPlayFill className="play_pause_icon" />
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                    ) : isGoogleDriveVideo(images[currentImageIndex]) ? (
-                        // Google Drive video embeds
-                        <div className="video_wrapper">
-                            <iframe
-                                src={images[currentImageIndex]}
-                                className="carousel_iframe"
-                                allow="autoplay"
-                                allowFullScreen
-                                title={`${name} - Video ${currentImageIndex + 1}`}
-                            />
-                        </div>
-                    ) : (
-                                // Regular images
-                        <img 
-                            src={images[currentImageIndex]} 
-                            alt={`${name} - Image ${currentImageIndex + 1}`} 
-                            className="carousel_image" 
+            {media.length > 1 && (
+                <div className="pd_media_dots">
+                    {media.map((url, i) => (
+                        <button
+                            key={url}
+                            type="button"
+                            className={`pd_media_dot${i === index ? ' is-active' : ''}`}
+                            onClick={() => setIndex(i)}
+                            aria-label={`Show media ${i + 1}`}
+                            aria-current={i === index ? 'true' : undefined}
                         />
-                    )}
-                    <div className="image_overlay"></div>
-                    
-                    {/* Navigation Arrows - only show if multiple images */}
-                    {images.length > 1 && (
-                        <>
-                            <button className="carousel_arrow carousel_arrow_left" onClick={goToPrevious}>
-                                <BsChevronLeft />
-                            </button>
-                            <button className="carousel_arrow carousel_arrow_right" onClick={goToNext}>
-                                <BsChevronRight />
-                            </button>
-                        </>
-                    )}
-                </div>
-
-                {/* Navigation Dots - only show if multiple images */}
-                {images.length > 1 && (
-                    <div className="carousel_dots">
-                        {images.map((_, index) => (
-                            <button
-                                key={index}
-                                className={`carousel_dot ${index === currentImageIndex ? 'active' : ''}`}
-                                onClick={() => goToImage(index)}
-                                aria-label={`Go to image ${index + 1}`}
-                            />
-                        ))}
-                    </div>
-                )}
-            </div>
-
-            
-
-            {/* Project Description Section */}
-            <div className="project_description" data-aos="fade-up" data-aos-delay="400">
-                <h2>Project Details</h2>
-                
-                {/* Overview */}
-                <div className="description_section">
-                    <h3>Overview</h3>
-                    <p>
-                        {project.overview || `${name} is a ${category.toLowerCase()} project that demonstrates modern 
-                        web development practices and clean code architecture. This project showcases responsive design, 
-                        user-friendly interface, and optimal performance.`}
-                    </p>
-                </div>
-
-                {/* Features */}
-                <div className="description_section">
-                    <h3>Features</h3>
-                    <ul className="features_list">
-                        {project.features && project.features.length > 0 ? (
-                            project.features.map((feature, index) => (
-                                <li key={index}>{feature}</li>
-                            ))
-                        ) : (
-                            <>
-                                <li>Responsive and mobile-friendly design</li>
-                                <li>Modern UI/UX principles</li>
-                                <li>Optimized performance</li>
-                                <li>Clean and maintainable code</li>
-                                <li>Cross-browser compatibility</li>
-                            </>
-                        )}
-                    </ul>
-                </div>
-
-                {/* Project Structure */}
-                {project.structure && (
-                    <div className="description_section">
-                        <h3>Project Structure</h3>
-                        <p>{project.structure}</p>
-                    </div>
-                )}
-
-                {/* Jenkins Pipeline Flow */}
-                {project.pipelineFlow && (
-                    <div className="description_section pipeline_flow_section">
-                        <h3>Jenkins Pipeline Flow</h3>
-
-                        {/* Pipeline Stages - Chevron Design */}
-                        {project.pipelineFlow.stages && (
-                            <div className="pipeline_stages">
-                                <h4 className="pipeline_subtitle">CI/CD Pipeline Stages</h4>
-                                <div className="chevron_pipeline">
-                                    {project.pipelineFlow.stages.map((stage, index) => (
-                                        <div key={index} className={`chevron_stage chevron_stage_${index % 6}`}>
-                                            <div className="chevron_content">
-                                                <span className="chevron_text">{stage}</span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="feedback_arrow">
-                                    <span>← Production Feedback</span>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Post-Build Actions - Badge Style */}
-                        {project.pipelineFlow.postBuild && (
-                            <div className="pipeline_postbuild">
-                                <h4 className="pipeline_subtitle">Post-Build Actions</h4>
-                                <div className="postbuild_badges">
-                                    {project.pipelineFlow.postBuild.map((action, index) => (
-                                        <div key={index} className={`postbuild_badge_item postbuild_${action.toLowerCase()}`}>
-                                            {action}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                )}
-
-                {/* Testing Information */}
-                {project.testing && (
-                    <div className="description_section testing_section">
-                        <h3>Testing Information</h3>
-
-                        {/* Test Types */}
-                        {project.testing.testTypes && project.testing.testTypes.length > 0 && (
-                            <div className="testing_subsection">
-                                <h4>Test Types</h4>
-                                <div className="testing_badges">
-                                    {project.testing.testTypes.map((type, index) => (
-                                        <span key={index} className="testing_badge test_type_badge">{type}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-
-                        {/* App Versions / API Targets */}
-                        {(project.testing.appVersions && project.testing.appVersions.length > 0) ||
-                            (project.testing.apiTargets && project.testing.apiTargets.length > 0) ? (
-                            <div className="testing_subsection">
-                                <h4>{project.testing.appVersions ? "App Versions" : "API Targets"}</h4>
-                                <div className="testing_badges">
-                                    {(project.testing.appVersions || project.testing.apiTargets).map((item, index) => (
-                                        <span key={index} className="testing_badge app_version_badge">{item}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : null}
-
-
-                        {/* Test Areas */}
-                        {project.testing.testAreas && project.testing.testAreas.length > 0 && (
-                            <div className="testing_subsection">
-                                <h4>Test Areas</h4>
-                                <div className="testing_badges">
-                                    {project.testing.testAreas.map((area, index) => (
-                                        <span key={index} className="testing_badge test_area_badge">{area}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Test Profiles */}
-                        {project.testing.profiles && project.testing.profiles.length > 0 && (
-                            <div className="testing_subsection">
-                                <h4>Test Profiles</h4>
-                                <div className="testing_badges">
-                                    {project.testing.profiles.map((profile, index) => (
-                                        <span key={index} className="testing_badge test_profile_badge">{profile}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                )}
-
-                {/* Tools Used */}
-                {project.tools && project.tools.length > 0 && (
-                    <div className="description_section">
-                        <h3>Tools Used</h3>
-                        <div className="tools_tags">
-                            {project.tools.map((tool, index) => (
-                                <span key={index} className="tool_tag">{tool}</span>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* Project Actions */}
-                <div className="project_actions_inline">
-                    <a href={git} target="_blank" rel="noreferrer" className="detail_action_button detail_git_action">
-                        <BsGithub />
-                        <span>View Source Code</span>
-                    </a>
-                </div>
-            </div>
-
-            {/* Related Projects */}
-            {relatedProjects.length > 0 && (
-                <div className="related_projects" data-aos="fade-up" data-aos-delay="500">
-                    <h2>Related Projects</h2>
-                    <div className="related_grid">
-                        {relatedProjects.map((relatedProject) => (
-                            <div 
-                                key={relatedProject.id} 
-                                className="related_card"
-                                onClick={() => navigate(`/projects/${relatedProject.id}`)}
-                            >
-                                <div className="related_image">
-                                    <img src={relatedProject.image} alt={relatedProject.name} />
-                                    <div className="related_overlay">
-                                        <span>View Details</span>
-                                    </div>
-                                </div>
-                                <h3>{relatedProject.name}</h3>
-                                <p className="related_category">{relatedProject.category}</p>
-                            </div>
-                        ))}
-                    </div>
+                    ))}
                 </div>
             )}
         </div>
     );
+};
+
+/* ---------------- Page ---------------- */
+
+const ProjectView = ({ project }) => {
+    const { name, image, git, live, category, overview, features = [], structure, testing, highlights = [], tools = [] } = project;
+    const media = (project.images || []).filter(isMedia);
+    const related = ProjectData.filter((p) => p.category === category && p.id !== project.id).slice(0, 3);
+    const testingGroups = testing ? TESTING_GROUPS.filter(([key]) => testing[key]?.length > 0) : [];
+    const liveIsDistinct = live && live !== git;
+
+    return (
+        <article className="pd">
+            <motion.header className="pd_header" variants={stagger} initial="hidden" animate="visible">
+                <motion.nav variants={fadeUp} aria-label="Breadcrumb">
+                    <ol className="pd_breadcrumb">
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/projects">Projects</Link></li>
+                        <li aria-current="page">{name}</li>
+                    </ol>
+                </motion.nav>
+                <motion.div className="pd_header_row" variants={fadeUp}>
+                    <span className="pd_header_icon"><img src={image} alt="" loading="lazy" /></span>
+                    <span className="pd_category">{category}</span>
+                </motion.div>
+                <motion.h1 className="pd_title" variants={fadeUp}>{name}</motion.h1>
+                {overview && <motion.p className="pd_overview" variants={fadeUp}>{overview}</motion.p>}
+                <motion.div className="pd_actions" variants={fadeUp}>
+                    <a className="pd_button pd_button--primary" href={git} target="_blank" rel="noreferrer">
+                        <FiGithub aria-hidden="true" /> View on GitHub
+                    </a>
+                    {liveIsDistinct && (
+                        <a className="pd_button" href={live} target="_blank" rel="noreferrer">
+                            <FiExternalLink aria-hidden="true" /> Live site
+                        </a>
+                    )}
+                    <Link className="pd_button pd_button--ghost" to="/projects">
+                        <FiArrowLeft aria-hidden="true" /> All projects
+                    </Link>
+                </motion.div>
+            </motion.header>
+
+            {highlights.length > 0 && (
+                <motion.ul className="pd_stats" aria-label="Highlights" variants={stagger} {...reveal}>
+                    {highlights.map((h) => (
+                        <motion.li key={h.label} className="pd_stat" variants={scaleIn}>
+                            <span className="pd_stat_value"><CountUp value={h.value} /></span>
+                            <span className="pd_stat_label">{h.label}</span>
+                        </motion.li>
+                    ))}
+                </motion.ul>
+            )}
+
+            <FlowTabs project={project} />
+
+            {features.length > 0 && (
+                <Section id="pd-features" title="Features" eyebrow="What it does">
+                    <motion.ul className="pd_features" variants={stagger} {...reveal}>
+                        {features.map((feature) => {
+                            const [title, body] = splitFeature(feature);
+                            const Icon = getIcon(guessIcon(title || body));
+                            return (
+                                <motion.li key={feature} className="pd_feature" variants={fadeUp}>
+                                    <span className="pd_feature_icon" aria-hidden="true"><Icon /></span>
+                                    <div>
+                                        {title && <h3 className="pd_feature_title">{title}</h3>}
+                                        <p className="pd_feature_body">{body}</p>
+                                    </div>
+                                </motion.li>
+                            );
+                        })}
+                    </motion.ul>
+                </Section>
+            )}
+
+            {structure && (
+                <Section id="pd-architecture" title="Architecture" eyebrow="Under the hood">
+                    <p className="pd_prose">{structure}</p>
+                </Section>
+            )}
+
+            {testingGroups.length > 0 && (
+                <Section id="pd-testing" title="Testing coverage" eyebrow="Quality gates">
+                    <div className="pd_groups">
+                        {testingGroups.map(([key, label]) => (
+                            <div key={key} className="pd_group">
+                                <h3 className="pd_group_title">{label}</h3>
+                                <ul className="pd_chips">
+                                    {testing[key].map((item) => <li key={item} className="pd_chip">{item}</li>)}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </Section>
+            )}
+
+            {tools.length > 0 && (
+                <Section id="pd-stack" title="Tech stack" eyebrow="Built with">
+                    <ul className="pd_chips pd_chips--stack">
+                        {tools.map((tool) => <li key={tool} className="pd_chip pd_chip--mono">{tool}</li>)}
+                    </ul>
+                </Section>
+            )}
+
+            {media.length > 0 && (
+                <Section id="pd-media" title="Demo" eyebrow="See it run">
+                    <MediaCarousel name={name} media={media} />
+                </Section>
+            )}
+
+            {related.length > 0 && (
+                <Section id="pd-related" title="Related projects" eyebrow={category}>
+                    <ul className="pd_related">
+                        {related.map((p) => (
+                            <li key={p.id} className="pd_related_card">
+                                <span className="pd_related_icon"><img src={p.image} alt="" loading="lazy" /></span>
+                                <div className="pd_related_text">
+                                    <Link to={`/projects/${p.id}`} className="pd_related_link">{p.name}</Link>
+                                    <span className="pd_related_meta">{p.highlights?.[0] ? `${p.highlights[0].value} ${p.highlights[0].label}` : p.category}</span>
+                                </div>
+                                <FiArrowRight className="pd_related_arrow" aria-hidden="true" />
+                            </li>
+                        ))}
+                    </ul>
+                </Section>
+            )}
+        </article>
+    );
+};
+
+const ProjectDetail = () => {
+    const { id } = useParams();
+    const project = ProjectData.find((p) => String(p.id) === id);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
+    if (!project) {
+        return (
+            <section className="pd pd_notfound">
+                <p className="pd_notfound_code">404</p>
+                <h1 className="pd_title">Project not found</h1>
+                <p className="pd_overview">There is no project with id &ldquo;{id}&rdquo;. It may have been renamed or removed.</p>
+                <Link to="/projects" className="pd_button pd_button--primary">
+                    <FiArrowLeft aria-hidden="true" /> Browse all projects
+                </Link>
+            </section>
+        );
+    }
+
+    // Keyed so tabs, flow playback and the carousel reset when moving between projects.
+    return <ProjectView key={project.id} project={project} />;
 };
 
 export default ProjectDetail;
