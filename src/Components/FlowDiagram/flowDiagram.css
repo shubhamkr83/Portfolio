@@ -1,0 +1,332 @@
+/* ==================== FlowDiagram ==================== */
+
+.fd {
+  --fd-node: 5.2rem;
+  position: relative;
+  margin: 0;
+  padding: 2.4rem 2.4rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%),
+    radial-gradient(120% 80% at 100% 100%, color-mix(in srgb, var(--accent-2) 8%, transparent), transparent 60%),
+    var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  min-width: 0;
+}
+
+.fd:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Canvas ---------- */
+
+.fd_canvas {
+  position: relative;
+  width: 100%;
+}
+
+.fd_svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.fd_stop_a { stop-color: var(--accent); }
+.fd_stop_b { stop-color: var(--accent-2); }
+
+.fd_track {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 2;
+  stroke-dasharray: 4 8;
+  stroke-linecap: round;
+}
+
+.fd_edge {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.fd_packet {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+.fd_packet_halo {
+  fill: var(--accent-2);
+  filter: blur(4px);
+}
+
+/* ---------- Nodes ---------- */
+
+.fd_node_slot {
+  position: absolute;
+}
+
+.fd--horizontal .fd_node_slot {
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.fd--vertical .fd_node_slot {
+  left: 0;
+  right: 0;
+  height: var(--fd-node);
+}
+
+.fd_node {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fd--horizontal .fd_node {
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.fd--vertical .fd_node {
+  width: 100%;
+  height: 100%;
+  gap: 1.4rem;
+  text-align: left;
+}
+
+.fd_node:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.fd_circle {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--fd-node);
+  height: var(--fd-node);
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  /* Glass over a solid base so the edges underneath stay hidden. */
+  background:
+    linear-gradient(var(--surface-strong), var(--surface-strong)) padding-box,
+    linear-gradient(var(--bg-elev), var(--bg-elev)) padding-box,
+    linear-gradient(var(--border), var(--border)) border-box;
+  color: var(--text-muted);
+  font-size: 2.2rem;
+  transition: color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.fd_node:hover .fd_circle {
+  color: var(--text);
+}
+
+.fd_node.is-done .fd_circle {
+  color: var(--text);
+}
+
+.fd_node.is-active .fd_circle {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--surface-strong), var(--surface-strong)) padding-box,
+    linear-gradient(var(--bg-elev), var(--bg-elev)) padding-box,
+    var(--gradient) border-box;
+  color: var(--accent);
+  box-shadow: var(--glow);
+}
+
+.fd_node.is-active .fd_circle::after {
+  content: "";
+  position: absolute;
+  inset: -0.7rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fd_node.is-active .fd_circle::after {
+    animation: fd-pulse 1.8s ease-out infinite;
+  }
+}
+
+@keyframes fd-pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.fd_badge {
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--pass);
+  color: var(--bg);
+  font-size: 1.1rem;
+  border: 2px solid var(--bg-elev);
+}
+
+.fd_label {
+  font-family: var(--font-ui);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+  transition: color 0.3s ease;
+}
+
+.fd--horizontal .fd_label {
+  text-align: center;
+}
+
+.fd--vertical .fd_label {
+  font-size: 1.5rem;
+}
+
+.fd_node.is-active .fd_label,
+.fd_node.is-done .fd_label {
+  color: var(--text);
+}
+
+.fd_node.is-active .fd_label {
+  font-weight: 600;
+}
+
+/* ---------- Caption ---------- */
+
+.fd_caption {
+  margin-top: 1.6rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  min-height: 11.6rem;
+  overflow: hidden;
+}
+
+.fd_progress {
+  height: 3px;
+  border-radius: 3px;
+  background: var(--border);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+}
+
+.fd_progress span {
+  display: block;
+  height: 100%;
+  background: var(--gradient);
+  border-radius: inherit;
+  transition: width 0.4s ease;
+}
+
+.fd_caption_num {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.fd_caption_title {
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.fd_caption_detail {
+  margin-top: 0.6rem;
+  font-size: 1.45rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ---------- Controls ---------- */
+
+.fd_controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.fd_btn {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: var(--text);
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.fd_btn:hover:not(:disabled),
+.fd_btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow);
+}
+
+.fd_btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.fd_btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fd_btn--primary {
+  border-color: transparent;
+  background: var(--gradient);
+  color: #fff;
+}
+
+.fd_btn--primary:hover:not(:disabled),
+.fd_btn--primary:focus-visible {
+  color: #fff;
+}
+
+/* ---------- Mobile: vertical layout ---------- */
+
+@media (max-width: 719.98px) {
+  .fd {
+    --fd-node: 4.4rem;
+    padding: 1.8rem 1.4rem 1.6rem;
+  }
+
+  .fd_circle {
+    font-size: 1.9rem;
+  }
+
+  .fd_caption {
+    padding: 1.4rem;
+  }
+}
