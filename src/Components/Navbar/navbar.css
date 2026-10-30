@@ -81,7 +81,20 @@
 }
 
 .theme_toggle_checkbox {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.theme_toggle_checkbox:focus-visible + label {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .theme_toggle_label {
@@ -191,6 +204,29 @@
   justify-content: start;
   align-items: center;
   display: none;
+}
+
+.menu_toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.menu_toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.logo_text {
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .menuIcon svg {

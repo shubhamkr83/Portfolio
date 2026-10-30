@@ -4,7 +4,7 @@ import "./contact.css";
 
 const Contact = () => (
     <main className="contact_page">
-        <ContactSection />
+        <ContactSection headingLevel={1} />
     </main>
 );
 

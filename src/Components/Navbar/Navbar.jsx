@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HiMenu } from 'react-icons/hi';
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import "./navbar.css";
 
 
@@ -17,16 +17,16 @@ const Navbar = (props) => {
             <nav className="navbar">
 
                 <div className="logo">
-                    <h2>Shubham</h2>
+                    <Link to="/" className="logo_text" onClick={normal}>Shubham</Link>
                 </div>
 
-                <div className={icon ? "menu mobile_menu" : "menu"}>
+                <div id="primary-menu" className={icon ? "menu mobile_menu" : "menu"}>
 
                     <NavLink end className="anc" to="/" onClick={normal}>Home</NavLink>
                     <NavLink className="anc" to="/about" onClick={normal}>Journey</NavLink>
                     <NavLink className="anc" to="/skills" onClick={normal}>Skills</NavLink>
                     <NavLink className="anc" to="/projects" onClick={normal}>Projects</NavLink>
-                    <NavLink exact="true" className="anc" to="/resume" onClick={normal}>Resume</NavLink>
+                    <NavLink className="anc" to="/resume" onClick={normal}>Resume</NavLink>
                     <NavLink className="anc" to="/contact" onClick={normal}>Contact</NavLink>
 
 
@@ -34,7 +34,7 @@ const Navbar = (props) => {
                     <div className="theme_toggle_wrapper">
                         <input 
                             type="checkbox" 
-                            id="theme_toggle" 
+                            id="theme_toggle" aria-label="Dark theme" 
                             className="theme_toggle_checkbox" 
                             checked={props.theme === 'dark'}
                             onChange={props.themeToggler}
@@ -49,7 +49,9 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="menuIcon">
-                    <HiMenu onClick={() => setIcon(!icon)} />
+                    <button type="button" className="menu_toggle" aria-label="Menu" aria-expanded={icon} aria-controls="primary-menu" onClick={() => setIcon(!icon)}>
+                        <HiMenu aria-hidden="true" />
+                    </button>
                 </div>
 
             </nav>

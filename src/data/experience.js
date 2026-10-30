@@ -11,12 +11,12 @@ export const experience = [
         logo: "/image/navo.png",
         website: "https://navofashion.in/",
         achievements: [
-            "Engineered API automation framework with 56 test files covering 40+ endpoints, reducing manual testing by 60%.",
+            "Engineered API automation framework with 56 test files covering 40+ endpoints.",
             "Built Android automation (Appium) for 3 app versions with BrowserStack integration.",
-            "Architected Jenkins CI/CD pipelines with AWS S3 reports and Allure dashboards, cutting deployment time by 25%.",
+            "Architected Jenkins CI/CD pipelines with AWS S3 reports and Allure dashboards, cutting release cycles by 25%.",
             "Automated Android APK/AAB builds with secure code signing and SHA256 integrity verification.",
             "Designed production health monitoring for websites with SSL validation, geo-tracking, and Twilio alerts.",
-            "Implemented data-driven testing with AWS S3, achieving 95%+ success rate.",
+            "Implemented data-driven API testing with POJO models (Jackson/Lombok), achieving a 95%+ test success rate.",
         ],
         resumeBullets: [
             "Spearheaded enterprise test automation initiative across API, Android, and Web platforms, reducing manual testing efforts by 60% and increasing overall test coverage by 40%",
@@ -41,8 +41,6 @@ export const experience = [
             "Implemented comprehensive test coverage for critical user journeys (login, signup, user flows).",
             "Developed reusable components and validations for scalable testing solutions.",
             "Created page verification scripts ensuring correct URLs, navigation flows, and UI element integrity.",
-            "Delivered detailed test reports, increasing release confidence and reducing post-deployment defects.",
-            "Collaborated with development teams to identify bugs early in the development cycle.",
         ],
         resumeBullets: [
             "Built production-ready web automation framework using Python and Playwright with modular architecture, reusable components, and comprehensive test coverage for critical user journeys (login, signup, user flows)",

@@ -342,10 +342,6 @@ const ProjectDetail = () => {
     const { id } = useParams();
     const project = ProjectData.find((p) => String(p.id) === id);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [id]);
-
     if (!project) {
         return (
             <section className="pd pd_notfound">

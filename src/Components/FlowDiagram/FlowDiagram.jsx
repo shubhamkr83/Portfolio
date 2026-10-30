@@ -253,6 +253,7 @@ const FlowDiagram = ({ flow }) => {
                                 aria-label={`Step ${i + 1} of ${count}: ${s.label}`}
                                 aria-current={i === active ? "step" : undefined}
                                 tabIndex={revealed ? 0 : -1}
+                                style={revealed ? undefined : { pointerEvents: "none" }}
                                 onClick={() => userGoTo(i)}
                                 initial={reduce ? false : { opacity: 0, scale: 0.6 }}
                                 animate={revealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
@@ -285,7 +286,7 @@ const FlowDiagram = ({ flow }) => {
                         transition={{ duration: 0.25 }}
                     >
                         <span className="fd_caption_num">{pad(active + 1)} / {pad(count)}</span>
-                        <h4 className="fd_caption_title">{step.label}</h4>
+                        <h3 className="fd_caption_title">{step.label}</h3>
                         <p className="fd_caption_detail">{detail}</p>
                     </motion.div>
                 </AnimatePresence>

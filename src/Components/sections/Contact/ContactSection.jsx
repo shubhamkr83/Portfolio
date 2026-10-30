@@ -37,7 +37,8 @@ const FIELDS = [
     { name: 'subject', label: 'Subject', type: 'text', autoComplete: 'off' },
 ];
 
-const ContactSection = () => {
+const ContactSection = ({ headingLevel = 2 }) => {
+    const Heading = `h${headingLevel}`;
     const [values, setValues] = useState(EMPTY);
     const [errors, setErrors] = useState({});
     const [sending, setSending] = useState(false);
@@ -102,7 +103,7 @@ const ContactSection = () => {
                 viewport={{ once: true, amount: 0.15 }}
             >
                 <motion.div className="cs_info" variants={fadeUp}>
-                    <h2 className="cs_title">Get in touch</h2>
+                    <Heading className="cs_title">Get in touch</Heading>
                     <p className="cs_lead">
                         Hiring for QA automation, or have a testing problem to solve? Send a message and I will reply soon.
                     </p>
