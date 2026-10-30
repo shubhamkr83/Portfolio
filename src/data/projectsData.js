@@ -34,6 +34,27 @@ const ProjectData = [
             stages: ["Checkout", "Run Tests", "Setup Allure", "Generate Report", "Upload to S3", "Extract Summary", "Send Notifications", "Archive Links", "Publish Results"],
             postBuild: ["Always", "Failure", "Success", "Unstable"]
         },
+        highlights: [
+            { value: "56", label: "Test files" },
+            { value: "40+", label: "Endpoints" },
+            { value: "95%+", label: "Success rate" },
+            { value: "800ms", label: "Buyer App threshold" },
+        ],
+        flows: [
+            {
+                title: "How it works",
+                kind: "user",
+                steps: [
+                    { label: "Authenticate", icon: "key", detail: "Login call returns a JWT that is injected automatically into later requests via VariableManager." },
+                    { label: "Build request", icon: "code", detail: "RestAssured requests use POJO models with Jackson and Lombok for nested payloads." },
+                    { label: "Run TestNG suite", icon: "play", detail: "Priority-ordered BOMB and Buyer App tests run in parallel, with retry analyzer." },
+                    { label: "Assert & measure", icon: "check", detail: "Responses are checked for 30+ fields, ID formats, schema, and the 800ms threshold." },
+                    { label: "Allure report", icon: "report", detail: "Interactive Allure dashboards show test timelines and flaky detection." },
+                    { label: "Upload to S3", icon: "upload", detail: "Timestamped report folders are uploaded to AWS S3 by the Jenkins pipeline." },
+                    { label: "Notify team", icon: "chat", detail: "Email and Google Chat alerts summarize results for the team." },
+                ],
+            },
+        ],
         tools: ["Java 17", "Maven", "RestAssured 5.3+", "TestNG 7.8+", "Allure 2.24+", "Jenkins", "AWS S3", "Python 3", "Jackson 2.15", "Lombok 1.18", "Log4j2 2.20", "Hamcrest 2.2", "Owner 1.0.12", "Google Chat Webhooks", "SMTP Email"]
     },
     {
@@ -68,6 +89,25 @@ const ProjectData = [
             testAreas: ["Login Flows", "Search & Discovery", "Cart & Orders", "Video Feeds", "Seller Profiles"],
             profiles: ["Smoke151", "Smoke148", "Smoke143", "Regression151", "Regression148", "Regression143"]
         },
+        highlights: [
+            { value: "3", label: "App versions" },
+            { value: "2", label: "Suite types (Smoke & Regression)" },
+            { value: "6", label: "Test profiles" },
+        ],
+        flows: [
+            {
+                title: "How it works",
+                kind: "user",
+                steps: [
+                    { label: "Pick version", icon: "device", detail: "Choose a Smoke or Regression profile for app version 2.16.4, 3.0.1, or 3.0.4." },
+                    { label: "Launch BrowserStack", icon: "cloud", detail: "Tests start on real devices in BrowserStack with parallel execution." },
+                    { label: "Drive the app", icon: "play", detail: "Page Object Model tests exercise login, search, cart, orders, and video feeds." },
+                    { label: "Retry flaky tests", icon: "retry", detail: "RetryAnalyzer automatically re-runs failed tests before they are marked failed." },
+                    { label: "Capture failures", icon: "report", detail: "ExtentReports records results with screenshots on test failures." },
+                    { label: "Email summary", icon: "mail", detail: "An HTML summary with statistics and BrowserStack links is emailed automatically." },
+                ],
+            },
+        ],
         tools: ["Java 8+", "Appium 10.0.0", "TestNG 7.11.0", "Maven", "ExtentReports 5.1.2", "Log4j2 2.24.3", "BrowserStack Java SDK 1.39.1", "JavaMail 1.6.2", "Jackson", "Commons IO", "Android SDK", "Node.js"]
     },
     {
@@ -109,6 +149,27 @@ const ProjectData = [
             postBuild: ["Always", "Failure", "Success"]
         },
 
+        highlights: [
+            { value: "3", label: "Retry attempts" },
+            { value: "30s", label: "Retry delay" },
+            { value: "30 min", label: "Report freshness check" },
+            { value: "10", label: "Failed tests listed" },
+        ],
+        flows: [
+            {
+                title: "How it works",
+                kind: "user",
+                steps: [
+                    { label: "Pick branch", icon: "branch", detail: "Main/master use production settings; dev/develop use the development environment." },
+                    { label: "Run Newman", icon: "play", detail: "Postman collections execute via Newman with CLI, JSON, and HTML reporters." },
+                    { label: "Retry failures", icon: "retry", detail: "Failed runs retry up to 3 attempts with 30-second delays between them." },
+                    { label: "Verify report", icon: "check", detail: "Generated reports must pass the 30-minute freshness validation." },
+                    { label: "Upload to S3", icon: "upload", detail: "Reports upload to branch-specific S3 folders with size-based verification." },
+                    { label: "Analyze results", icon: "report", detail: "Request and assertion success rates and failures are calculated from the report." },
+                    { label: "Alert Google Chat", icon: "chat", detail: "Notifications carry failure summaries and direct report links." },
+                ],
+            },
+        ],
         tools: ["Node.js v20.15.0", "Newman", "Postman Collections", "Jenkins", "NVM", "AWS S3", "AWS CLI", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "JSON/HTML Reporters"]
     },
     {
@@ -148,6 +209,25 @@ const ProjectData = [
             ],
             postBuild: ["Always", "Failure"]
         },
+        highlights: [
+            { value: "3", label: "Artifacts per run" },
+            { value: "SHA256", label: "Checksums" },
+            { value: "3", label: "Branch types" },
+        ],
+        flows: [
+            {
+                title: "How it works",
+                kind: "user",
+                steps: [
+                    { label: "Choose branch", icon: "branch", detail: "Select develop, main, or a feature branch through Jenkins parameters." },
+                    { label: "Verify environment", icon: "check", detail: "Pre-build checks confirm Java 17, Android SDK, Gradle, and build tools." },
+                    { label: "Build & sign", icon: "sign", detail: "Debug APK, Release APK, and Release AAB are built with injected signing credentials." },
+                    { label: "Checksum", icon: "shield", detail: "SHA256 checksum files are generated for integrity verification of every artifact." },
+                    { label: "Upload to S3", icon: "upload", detail: "Artifacts upload to the bizup-builds bucket in build number folders." },
+                    { label: "Share links", icon: "archive", detail: "s3_links.txt lists direct download URLs and artifacts are fingerprinted." },
+                ],
+            },
+        ],
         tools: ["Jenkins", "Gradle", "Java 17", "Android SDK", "AWS S3", "AWS CLI", "Bash", "Git", "Android Build Tools 34.0.0", "Groovy (Jenkins Pipeline)"]
     },
     {
@@ -187,6 +267,25 @@ const ProjectData = [
             ],
             postBuild: ["Always"]
         },
+        highlights: [
+            { value: "3", label: "Alert channels" },
+            { value: "SSL", label: "Certificate validation" },
+            { value: "bizup.app", label: "Monitored site" },
+        ],
+        flows: [
+            {
+                title: "How it works",
+                kind: "user",
+                steps: [
+                    { label: "Check health", icon: "globe", detail: "Scheduled curl-based HTTP checks validate website availability on bizup.app." },
+                    { label: "Validate SSL", icon: "shield", detail: "SSL certificate validity and response time are checked and tracked." },
+                    { label: "Locate server", icon: "search", detail: "IP-API returns server IP, country, region, city, and ISP information." },
+                    { label: "Build report", icon: "report", detail: "Failure reports include build URL, timestamp, server info, and SSL status." },
+                    { label: "Archive to S3", icon: "upload", detail: "Timestamped failure reports upload to AWS S3 for historical analysis." },
+                    { label: "Alert team", icon: "bell", detail: "Google Chat, WhatsApp messages, and voice calls fire on failure." },
+                ],
+            },
+        ],
         tools: ["Jenkins", "Curl", "AWS S3", "AWS CLI", "Twilio API", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "IP-API Geolocation"]
     },
     {
@@ -226,6 +325,25 @@ const ProjectData = [
             ],
             postBuild: ["Always"]
         },
+        highlights: [
+            { value: "3", label: "Team members alerted" },
+            { value: "3", label: "Alert channels" },
+            { value: "navofashion.in", label: "Monitored site" },
+        ],
+        flows: [
+            {
+                title: "How it works",
+                kind: "user",
+                steps: [
+                    { label: "Check health", icon: "globe", detail: "Scheduled curl-based HTTP checks validate Navo Fashion website availability." },
+                    { label: "Validate SSL", icon: "shield", detail: "SSL certificate validity and response time are checked and tracked." },
+                    { label: "Locate server", icon: "search", detail: "IP-API returns server IP, country, region, city, and ISP information." },
+                    { label: "Build report", icon: "report", detail: "Failure reports include build URL, timestamp, server info, and SSL status." },
+                    { label: "Archive to S3", icon: "upload", detail: "Timestamped failure reports upload to the navo-health-check-report folder." },
+                    { label: "Alert team", icon: "phone", detail: "Google Chat, WhatsApp, and voice calls reach 3 team members via Twilio." },
+                ],
+            },
+        ],
         tools: ["Jenkins", "Curl", "AWS S3", "AWS CLI", "Twilio API", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "IP-API Geolocation"]
     },
     {
@@ -266,6 +384,26 @@ const ProjectData = [
             ],
             postBuild: ["Always", "Failure", "Success"]
         },
+        highlights: [
+            { value: "3", label: "Retry attempts" },
+            { value: "20s", label: "Retry delay" },
+            { value: "30 min", label: "Report freshness check" },
+            { value: "10", label: "Failed tests listed" },
+        ],
+        flows: [
+            {
+                title: "How it works",
+                kind: "user",
+                steps: [
+                    { label: "Run Newman", icon: "play", detail: "Postman payment API health collections run automatically via Newman CLI." },
+                    { label: "Retry failures", icon: "retry", detail: "Transient failures get 3 attempts with 20-second delays." },
+                    { label: "Validate report", icon: "check", detail: "JSON and HTML reports must pass the 30-minute freshness validation." },
+                    { label: "Upload to S3", icon: "upload", detail: "Reports upload to branch folders with size verification and public-read ACL." },
+                    { label: "Analyze results", icon: "report", detail: "Request and assertion success rates are computed with failure details." },
+                    { label: "Alert on failure", icon: "bell", detail: "Google Chat alerts fire only when payment tests fail, listing up to 10." },
+                ],
+            },
+        ],
         tools: ["Node.js v20.15.0", "Newman", "Postman Collections", "Jenkins", "NVM", "AWS S3", "AWS CLI", "Google Chat Webhooks", "Bash", "Groovy (Jenkins Pipeline)", "JSON/HTML Reporters"]
     },
     // {

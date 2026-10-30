@@ -1,0 +1,37 @@
+export const profile = {
+    name: "Shubham Kumar",
+    role: "QA Automation Engineer",
+    tagline: "Building automation that ships releases with zero critical bugs.",
+    summary:
+        "QA Automation Engineer with hands-on experience building scalable automation frameworks across API, Android, and Web platforms using RestAssured, Appium, TestNG, and Playwright. Automates CI/CD with Jenkins and AWS S3, with multi-channel monitoring through Google Chat and Twilio. At Navo, reduced manual testing by 60% and cut release cycles by 25%.",
+    location: "Gurgaon, India",
+    email: "shubham.kr.saw837@gmail.com",
+    links: {
+        linkedin: "https://linkedin.com/in/shubham-kumar-qa-engineer",
+        github: "https://github.com/shubhamkr83",
+    },
+    metrics: [
+        { id: "manual", value: 60, suffix: "%", label: "Less manual testing", context: "Navo: enterprise test automation across API, Android, and Web" },
+        { id: "coverage", value: 40, prefix: "+", suffix: "%", label: "Test coverage", context: "Navo: enterprise test automation across API, Android, and Web" },
+        { id: "release", value: 25, suffix: "%", label: "Faster release cycles", context: "Navo: Jenkins pipeline automation and cloud infrastructure optimization" },
+        { id: "downtime", value: 0, label: "Downtime incidents", context: "Navo: production monitoring and multi-channel alerting (Google Chat, Twilio)" },
+        { id: "tests", value: 56, label: "API test files", context: "API Test Automation Suite (RestAssured & Postman/Newman)" },
+        { id: "endpoints", value: 40, suffix: "+", label: "Endpoints covered", context: "API Test Automation Suite (RestAssured & Postman/Newman)" },
+        { id: "pass", value: 95, suffix: "%+", label: "Test pass rate", context: "API Test Automation Suite (RestAssured & Postman/Newman)" },
+        { id: "revenue", value: 20, suffix: "%", label: "Revenue growth from zero-critical-bug releases", context: "Bizup: 2 flagship releases with zero critical bugs" },
+    ],
+    resumeSkills: [
+        { category: "Automation Frameworks", items: ["Selenium", "Appium 10.0.0", "Playwright", "RestAssured 5.3+", "TestNG 7.8+", "BrowserStack"] },
+        { category: "Programming Languages", items: ["Java (8, 17)", "Python 3"] },
+        { category: "Build Tools", items: ["Maven", "Gradle", "Android Build Tools"] },
+        { category: "Reporting & Logging", items: ["Allure 2.24+", "ExtentReports 5.1.2", "Log4j2 2.20+"] },
+        { category: "CI/CD & DevOps", items: ["Jenkins (Pipeline/Groovy)", "AWS S3", "AWS CLI", "Git/GitHub"] },
+        { category: "API Testing", items: ["Postman", "Newman", "RestAssured", "JSON/HTML Reporters"] },
+        { category: "Mobile Development", items: ["Android SDK", "APK/AAB Building", "Code Signing"] },
+        { category: "Scripting & Runtime", items: ["Bash", "Groovy (Jenkins Pipeline)", "Node.js v20.15.0", "NVM"] },
+        { category: "Integrations & Webhooks", items: ["Google Chat Webhooks", "Twilio API (WhatsApp/Voice)", "SMTP Email"] },
+        { category: "Libraries & Frameworks", items: ["Jackson 2.15", "Lombok 1.18", "Hamcrest 2.2", "JavaMail 1.6.2", "Commons IO"] },
+        { category: "Database", items: ["MongoDB", "SQL"] },
+        { category: "Project Management", items: ["Jira (Defect Tracking)", "Agile/Scrum"] },
+    ],
+};
