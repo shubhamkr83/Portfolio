@@ -8,6 +8,7 @@ import Skills from "./pages/Skills/Skill";
 import Projects from "./pages/Projects/Projects";
 import ProjectDetail from "./pages/Projects/ProjectDetail";
 import Contact from "./pages/Contact/Contact";
+import Resume from "./pages/Resume/Resume";
 import NotFound from "./pages/NotFound/NotFound";
 import { Routes, Route } from "react-router-dom";
 
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="skills" element={<Skills />} />
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:id" element={<ProjectDetail />} />
+          <Route path="resume" element={<Resume />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>

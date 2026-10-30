@@ -26,6 +26,7 @@ const Navbar = (props) => {
                     <NavLink className="anc" to="/about" onClick={normal}>Journey</NavLink>
                     <NavLink className="anc" to="/skills" onClick={normal}>Skills</NavLink>
                     <NavLink className="anc" to="/projects" onClick={normal}>Projects</NavLink>
+                    <NavLink exact="true" className="anc" to="/resume" onClick={normal}>Resume</NavLink>
                     <NavLink className="anc" to="/contact" onClick={normal}>Contact</NavLink>
 
 
