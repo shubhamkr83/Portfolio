@@ -17,13 +17,6 @@
   text-align: center;
 }
 
-.journey_eyebrow {
-  font-family: var(--font-mono);
-  font-size: 1.3rem;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-}
-
 .journey_title {
   margin-top: 1rem;
   font-family: var(--font-display);

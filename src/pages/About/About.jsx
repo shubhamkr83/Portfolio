@@ -9,7 +9,6 @@ import './about.css';
 const About = () => (
     <main className="about_page">
         <motion.header className="about_intro" variants={fadeUp} initial="hidden" animate="visible">
-            <p className="about_eyebrow">// about</p>
             <h1 className="about_heading">{profile.name} · {profile.role}</h1>
             <p className="about_summary">{profile.summary}</p>
         </motion.header>

@@ -20,13 +20,6 @@
   margin-bottom: 4.8rem;
 }
 
-.featured_eyebrow {
-  font-family: var(--font-mono);
-  font-size: 1.3rem;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-}
-
 .featured_title {
   margin-top: 1rem;
   font-family: var(--font-display);

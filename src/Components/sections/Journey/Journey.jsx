@@ -128,7 +128,6 @@ const Journey = () => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.6 }}
                 >
-                    <p className="journey_eyebrow">// git log --reverse</p>
                     <h2 id="journey_title" className="journey_title">The journey so far</h2>
                     <p className="journey_subtitle">
                         From a computer science degree to owning automation, CI/CD and monitoring end to end.

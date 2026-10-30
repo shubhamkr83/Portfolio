@@ -87,7 +87,6 @@ const FeaturedProjects = () => (
                 viewport={{ once: true, amount: 0.6 }}
             >
                 <div>
-                    <p className="featured_eyebrow">// featured builds</p>
                     <h2 id="featured_title" className="featured_title">Selected projects</h2>
                 </div>
                 <Link to="/projects" className="featured_all">

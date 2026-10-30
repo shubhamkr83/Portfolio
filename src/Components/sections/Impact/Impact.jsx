@@ -102,7 +102,6 @@ const Impact = () => (
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.6 }}
             >
-                <p className="impact_eyebrow">// impact.report</p>
                 <h2 id="impact_title" className="impact_title">Impact in numbers</h2>
                 <p className="impact_subtitle">
                     Outcomes from automation frameworks, CI/CD pipelines and monitoring I have shipped.

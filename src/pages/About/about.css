@@ -9,12 +9,6 @@
   padding: 8rem 2.4rem 0;
 }
 
-.about_eyebrow {
-  font-family: var(--font-mono);
-  font-size: 1.3rem;
-  color: var(--accent);
-}
-
 .about_heading {
   margin-top: 1.2rem;
   max-width: 80rem;

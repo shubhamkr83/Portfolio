@@ -24,7 +24,6 @@ const imageSrc = (path) => encodeURI(path.replace(/^(\.\.\/)+/, '/'));
 const SkillsStack = ({ headingLevel = 2 }) => {
     const Heading = `h${headingLevel}`;
     const LayerHeading = `h${headingLevel + 1}`;
-    const total = layers.reduce((sum, layer) => sum + layer.skills.length, 0);
 
     return (
         <section className="stack_section" id="skills" aria-labelledby="stack_title">
@@ -36,7 +35,6 @@ const SkillsStack = ({ headingLevel = 2 }) => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.6 }}
                 >
-                    <p className="stack_eyebrow">// {total} tools · {layers.length} layers</p>
                     <Heading id="stack_title" className="stack_title">The automation stack</Heading>
                     <p className="stack_subtitle">
                         From the languages underneath to the suites that drive real devices and browsers.
