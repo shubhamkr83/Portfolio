@@ -2,8 +2,9 @@
   width: 100%;
   display: grid;
   place-items: center;
-  background-color: rgb(29, 28, 28);
-  color: #fff;
+  background-color: var(--footer_color);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
   /* border: 2px solid red; */
 }
 .footer_section .footer_center {

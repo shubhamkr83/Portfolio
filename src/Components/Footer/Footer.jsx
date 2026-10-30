@@ -8,7 +8,7 @@ const Footer = () => {
         <>
             <section className="footer_section">
                 <div className="footer_center">
-                    <h2>©Copyright 2026 by Shubham Kumar || All rights reserved</h2>
+                    <h2>©Copyright {new Date().getFullYear()} by Shubham Kumar || All rights reserved</h2>
                 </div>
             </section>
         </>

@@ -17,7 +17,7 @@
 
 .contact_title {
   font-size: 5rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--title_color);
   text-shadow: var(--title_shadow);
@@ -40,7 +40,7 @@
 
 .contact_subtitle {
   font-size: 1.8rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   text-align: center;
   color: #666;
   margin-bottom: 5rem;
@@ -92,21 +92,21 @@
   flex-shrink: 0;
 }
 
-.info_icon .MuiSvgIcon-root {
+.info_icon svg {
   font-size: 3rem;
   color: #fff;
 }
 
 .info_details h3 {
   font-size: 1.8rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .info_details p {
   font-size: 1.5rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   color: #666;
   word-break: break-word;
 }
@@ -122,7 +122,7 @@
 
 .social_section h3 {
   font-size: 2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   margin-bottom: 2rem;
   text-align: center;
@@ -165,7 +165,7 @@
   opacity: 1;
 }
 
-.social_link .MuiSvgIcon-root {
+.social_link svg {
   font-size: 2.4rem;
   color: #666;
   transition: all 0.3s ease;
@@ -173,7 +173,7 @@
   z-index: 1;
 }
 
-.social_link:hover .MuiSvgIcon-root {
+.social_link:hover svg {
   color: #fff;
   transform: scale(1.1);
 }
@@ -202,7 +202,7 @@
   width: 100%;
   padding: 1.5rem 2rem;
   font-size: 1.6rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(0, 132, 241, 0.2);
   border-radius: 1rem;
@@ -234,7 +234,7 @@
   gap: 1rem;
   padding: 1.5rem 4rem;
   font-size: 1.6rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
   color: #fff;
@@ -250,7 +250,7 @@
   box-shadow: 0 1rem 2rem rgba(0, 132, 241, 0.3);
 }
 
-.submit_button .MuiSvgIcon-root {
+.submit_button svg {
   font-size: 2rem;
 }
 
@@ -261,7 +261,7 @@
   border-radius: 1rem;
   color: #00c853;
   font-size: 1.5rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   text-align: center;
   animation: slideIn 0.3s ease;
 }
@@ -334,7 +334,7 @@
     height: 5.5rem;
   }
 
-  .info_icon .MuiSvgIcon-root {
+  .info_icon svg {
     font-size: 2.6rem;
   }
 
@@ -381,7 +381,7 @@
     height: 5rem;
   }
 
-  .info_icon .MuiSvgIcon-root {
+  .info_icon svg {
     font-size: 2.4rem;
   }
 
@@ -407,7 +407,7 @@
     height: 4.5rem;
   }
 
-  .social_link .MuiSvgIcon-root {
+  .social_link svg {
     font-size: 2.2rem;
   }
 
@@ -453,7 +453,7 @@
     height: 4.5rem;
   }
 
-  .info_icon .MuiSvgIcon-root {
+  .info_icon svg {
     font-size: 2.2rem;
   }
 
@@ -482,7 +482,7 @@
     height: 4rem;
   }
 
-  .social_link .MuiSvgIcon-root {
+  .social_link svg {
     font-size: 2rem;
   }
 }

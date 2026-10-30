@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'image/logo.png'],
+      includeAssets: ['apple-touch-icon.png', 'image/logo.png'],
       manifest: {
         name: 'My Portfolio - Shubham Kumar',
         short_name: 'Portfolio',

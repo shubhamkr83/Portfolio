@@ -55,7 +55,7 @@
 
 .greeting p {
   font-size: 2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 500;
   color: #666;
 }
@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-display);
   line-height: 1.1;
 }
 
@@ -94,7 +94,7 @@
 
 .role {
   font-size: 3rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: #383737;
   margin-bottom: 0.5rem;
@@ -117,7 +117,7 @@
   font-size: 1.7rem;
   line-height: 1.8;
   color: #555;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-ui);
   max-width: 55rem;
   margin-top: 1rem;
 }
@@ -137,7 +137,7 @@
   gap: 1rem;
   padding: 1.5rem 3rem;
   font-size: 1.6rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   border-radius: 1rem;
   cursor: pointer;
@@ -157,7 +157,7 @@
   box-shadow: 0 1rem 3rem rgba(0, 132, 241, 0.4);
 }
 
-.btn_primary .MuiSvgIcon-root {
+.btn_primary svg {
   font-size: 2.2rem;
 }
 
@@ -174,7 +174,7 @@
   box-shadow: 0 0.5rem 2rem rgba(0, 132, 241, 0.2);
 }
 
-.btn_secondary .MuiSvgIcon-root {
+.btn_secondary svg {
   font-size: 2.2rem;
 }
 
@@ -185,7 +185,7 @@
 
 .social_label {
   font-size: 1.5rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 500;
   color: #666;
   margin-bottom: 1.5rem;
@@ -226,7 +226,7 @@
   opacity: 1;
 }
 
-.social_icon .MuiSvgIcon-root {
+.social_icon svg {
   font-size: 2.2rem;
   color: var(--secondary_color);
   transition: all 0.3s ease;
@@ -234,7 +234,7 @@
   z-index: 1;
 }
 
-.social_icon:hover .MuiSvgIcon-root {
+.social_icon:hover svg {
   color: #fff;
   transform: scale(1.1);
 }
@@ -321,7 +321,7 @@
 
 .card_text {
   font-size: 1.4rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: #333;
   white-space: nowrap;
@@ -366,7 +366,7 @@
 
 .scroll_indicator p {
   font-size: 1.3rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   color: #666;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
@@ -607,7 +607,7 @@
     height: 4rem;
   }
 
-  .social_icon .MuiSvgIcon-root {
+  .social_icon svg {
     font-size: 2rem;
   }
 

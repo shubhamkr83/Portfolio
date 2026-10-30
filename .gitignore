@@ -23,3 +23,11 @@ node_modules
 *.sw?
 .qodo
 .vscode
+
+# Vite config timestamp artefacts
+vite.config.js.timestamp-*
+
+# Environment files
+.env
+.env.*
+!.env.example

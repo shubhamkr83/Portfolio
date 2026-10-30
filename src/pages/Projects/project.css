@@ -24,7 +24,7 @@
 
 .project_title {
   font-size: 5rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--title_color);
   text-shadow: var(--title_shadow);
@@ -33,7 +33,7 @@
 
 .project_subtitle {
   font-size: 1.8rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   color: #666;
   max-width: 80rem;
   margin: 0 auto 2rem;
@@ -144,7 +144,7 @@
 
 .overlay_content p {
   font-size: 1.8rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
 }
 
@@ -155,7 +155,7 @@
   right: 1.5rem;
   padding: 0.6rem 1.5rem;
   font-size: 1.3rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: #fff;
   background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
@@ -175,7 +175,7 @@
 
 .project_name {
   font-size: 2.2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--primary_color);
   margin: 0;
@@ -218,7 +218,7 @@
 .project_action_button {
   padding: 1rem 2rem;
   font-size: 1.3rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 500;
   border: none;
   border-radius: 0.6rem;
@@ -376,7 +376,7 @@
 
 .tools_title {
   font-size: 1.4rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: var(--primary_color);
   margin-bottom: 1.2rem;
@@ -399,7 +399,7 @@
 .tool_badge {
   padding: 0.6rem 1.2rem;
   font-size: 1.2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 500;
   background: rgba(0, 132, 241, 0.08);
   color: var(--primary_color);

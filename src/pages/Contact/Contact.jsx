@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Aos from 'aos';
 import "aos/dist/aos.css";
-import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/Phone';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import SendIcon from '@material-ui/icons/Send';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { MdEmail, MdPhone, MdLocationOn, MdSend } from 'react-icons/md';
 import "./contact.css";
 
 const Contact = () => {
@@ -61,17 +55,17 @@ const Contact = () => {
                         <div className="contact_info_wrapper" data-aos='fade-right'>
                             <div className="info_card">
                                 <div className="info_icon">
-                                    <EmailIcon />
+                                    <MdEmail />
                                 </div>
                                 <div className="info_details">
                                     <h3>Email</h3>
-                                    <p>shubham.krsaw836@gmail.com</p>
+                                    <p>shubham.kr.saw837@gmail.com</p>
                                 </div>
                             </div>
 
                             <div className="info_card">
                                 <div className="info_icon">
-                                    <PhoneIcon />
+                                    <MdPhone />
                                 </div>
                                 <div className="info_details">
                                     <h3>Phone</h3>
@@ -81,7 +75,7 @@ const Contact = () => {
 
                             <div className="info_card">
                                 <div className="info_icon">
-                                    <LocationOnIcon />
+                                    <MdLocationOn />
                                 </div>
                                 <div className="info_details">
                                     <h3>Location</h3>
@@ -93,17 +87,14 @@ const Contact = () => {
                             <div className="social_section">
                                 <h3>Connect With Me</h3>
                                 <div className="social_icons">
-                                    <a href="https://twitter.com/KrShubhamDev" target="_blank" rel="noreferrer" className="social_link">
-                                        <TwitterIcon />
+                                    <a href="https://www.linkedin.com/in/shubham-kumar-qa-engineer" target="_blank" rel="noreferrer" className="social_link" aria-label="LinkedIn">
+                                        <FaLinkedin />
                                     </a>
-                                    <a href="https://www.instagram.com/shubhamkrdev/" target="_blank" rel="noreferrer" className="social_link">
-                                        <InstagramIcon />
+                                    <a href="https://github.com/shubhamkr83" target="_blank" rel="noreferrer" className="social_link" aria-label="GitHub">
+                                        <FaGithub />
                                     </a>
-                                    <a href="https://www.linkedin.com/in/shubham-kumar836" target="_blank" rel="noreferrer" className="social_link">
-                                        <LinkedInIcon />
-                                    </a>
-                                    <a href="https://github.com/shubhamkr83" target="_blank" rel="noreferrer" className="social_link">
-                                        <GitHubIcon />
+                                    <a href="mailto:shubham.kr.saw837@gmail.com" className="social_link" aria-label="Email">
+                                        <MdEmail />
                                     </a>
                                 </div>
                             </div>
@@ -162,7 +153,7 @@ const Contact = () => {
 
                                 <button type="submit" className="submit_button">
                                     <span>Send Message</span>
-                                    <SendIcon />
+                                    <MdSend />
                                 </button>
 
                                 {formStatus && (

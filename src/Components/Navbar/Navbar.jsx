@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MenuIcon from '@material-ui/icons/Menu';
+import { HiMenu } from 'react-icons/hi';
 import { NavLink } from "react-router-dom"
 import "./navbar.css";
 
@@ -22,11 +22,11 @@ const Navbar = (props) => {
 
                 <div className={icon ? "menu mobile_menu" : "menu"}>
 
-                    <NavLink exact="true" activeClassname="active_class" className="anc" to="/" onClick={normal}>Home</NavLink>
-                    <NavLink exact="true" className="anc" to="/about" onClick={normal}>Experience</NavLink>
-                    <NavLink exact="true" className="anc" to="/skills" onClick={normal}>Skills</NavLink>
-                    <NavLink exact="true" className="anc" to="/projects" onClick={normal}>Projects</NavLink>
-                    <NavLink exact="true" className="anc" to="/contact" onClick={normal}>Contact</NavLink>
+                    <NavLink end className="anc" to="/" onClick={normal}>Home</NavLink>
+                    <NavLink className="anc" to="/about" onClick={normal}>Journey</NavLink>
+                    <NavLink className="anc" to="/skills" onClick={normal}>Skills</NavLink>
+                    <NavLink className="anc" to="/projects" onClick={normal}>Projects</NavLink>
+                    <NavLink className="anc" to="/contact" onClick={normal}>Contact</NavLink>
 
 
 
@@ -35,6 +35,7 @@ const Navbar = (props) => {
                             type="checkbox" 
                             id="theme_toggle" 
                             className="theme_toggle_checkbox" 
+                            checked={props.theme === 'dark'}
                             onChange={props.themeToggler}
                         />
                         <label htmlFor="theme_toggle" className="theme_toggle_label">
@@ -47,7 +48,7 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="menuIcon">
-                    <MenuIcon onClick={() => setIcon(!icon)} />
+                    <HiMenu onClick={() => setIcon(!icon)} />
                 </div>
 
             </nav>

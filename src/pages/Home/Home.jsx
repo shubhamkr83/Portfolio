@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import web1 from '../../assets/images/img32.png';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import EmailIcon from '@material-ui/icons/Email';
+import { useNavigate } from 'react-router-dom';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { MdEmail, MdFileDownload } from 'react-icons/md';
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import "./home.css";
 
 const Home = () => {
+    const navigate = useNavigate();
+
     useEffect(() => {
         Aos.init({
             duration: 1000,
@@ -24,7 +23,7 @@ const Home = () => {
     };
 
     const handleContactClick = () => {
-        window.location.href = '/contact';
+        navigate('/contact');
     };
 
     return (
@@ -57,11 +56,11 @@ const Home = () => {
                             {/* CTA Buttons */}
                             <div className="cta_buttons">
                                 <button className="btn_primary" onClick={handleContactClick}>
-                                    <EmailIcon />
+                                    <MdEmail />
                                     <span>Get In Touch</span>
                                 </button>
                                 <button className="btn_secondary" onClick={handleDownloadCV}>
-                                    <GetAppIcon />
+                                    <MdFileDownload />
                                     <span>Download CV</span>
                                 </button>
                             </div>
@@ -70,17 +69,14 @@ const Home = () => {
                             <div className="social_links">
                                 <p className="social_label">Connect with me</p>
                                 <div className="icons">
-                                    <a href="https://twitter.com/KrShubhamDev" target="_blank" rel="noreferrer" className="social_icon">
-                                        <TwitterIcon />
+                                    <a href="https://www.linkedin.com/in/shubham-kumar-qa-engineer" target="_blank" rel="noreferrer" className="social_icon" aria-label="LinkedIn">
+                                        <FaLinkedin />
                                     </a>
-                                    <a href="https://www.instagram.com/shubhamkrdev/" target="_blank" rel="noreferrer" className="social_icon">
-                                        <InstagramIcon />
+                                    <a href="https://github.com/shubhamkr83" target="_blank" rel="noreferrer" className="social_icon" aria-label="GitHub">
+                                        <FaGithub />
                                     </a>
-                                    <a href="https://www.linkedin.com/in/shubham-kumar836" target="_blank" rel="noreferrer" className="social_icon">
-                                        <LinkedInIcon />
-                                    </a>
-                                    <a href="https://github.com/shubhamkr83" target="_blank" rel="noreferrer" className="social_icon">
-                                        <GitHubIcon />
+                                    <a href="mailto:shubham.kr.saw837@gmail.com" className="social_icon" aria-label="Email">
+                                        <MdEmail />
                                     </a>
                                 </div>
                             </div>

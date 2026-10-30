@@ -5,7 +5,7 @@
   min-height: 100vh;
   padding: 8rem 2rem 6rem;
   position: relative;
-  background: #fff;
+  background: var(--bg-elev);
 }
 
 /* ==================== Breadcrumb Container ==================== */
@@ -26,7 +26,7 @@
 /* ==================== Breadcrumb ==================== */
 .breadcrumb {
   font-size: 1.6rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -61,7 +61,7 @@
   gap: 1rem;
   padding: 1.2rem 2.5rem;
   font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: #fff;
   background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
@@ -96,7 +96,7 @@
 
 .project_detail_title {
   font-size: 5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--title_color);
   text-shadow: var(--title_shadow);
@@ -118,7 +118,7 @@
   font-weight: 600;
   color: var(--secondary_color);
   border: 2px solid rgba(0, 132, 241, 0.2);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
 }
 
 .project_category svg {
@@ -332,7 +332,7 @@
   color: #ffffff;
   padding: 1.5rem 1.5rem;
   font-size: 1.3rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: #fff;
   text-decoration: none;
@@ -391,7 +391,7 @@
 
 .project_description h2 {
   font-size: 3.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--primary_color);
   margin-bottom: 3rem;
@@ -428,7 +428,7 @@
 
 .description_section h3 {
   font-size: 2.4rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--primary_color);
   margin-bottom: 1.5rem;
@@ -436,9 +436,9 @@
 
 .description_section p {
   font-size: 1.6rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-ui);
   line-height: 1.8;
-  color: #555;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
 
@@ -454,8 +454,8 @@
 
 .features_list li {
   font-size: 1.6rem;
-  font-family: 'Roboto', sans-serif;
-  color: #555;
+  font-family: var(--font-ui);
+  color: var(--text-muted);
   line-height: 1.8;
   display: flex;
   align-items: flex-start;
@@ -489,7 +489,7 @@
   display: inline-block;
   padding: 0.8rem 1.5rem;
   font-size: 1.4rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: var(--secondary_color);
   background: rgba(0, 132, 241, 0.1);
@@ -520,7 +520,7 @@
 
 .testing_subsection h4 {
   font-size: 1.8rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: var(--secondary_color);
   margin-bottom: 1rem;
@@ -536,7 +536,7 @@
   display: inline-block;
   padding: 0.8rem 1.5rem;
   font-size: 1.3rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   border-radius: 2rem;
   transition: all 0.3s ease;
@@ -607,7 +607,7 @@
 
 .related_projects h2 {
   font-size: 3.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--primary_color);
   text-align: center;
@@ -690,12 +690,12 @@
   font-size: 1.8rem;
   font-weight: 600;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
 }
 
 .related_card h3 {
   font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: var(--primary_color);
   padding: 2rem 2rem 1rem;
@@ -703,9 +703,9 @@
 
 .related_category {
   font-size: 1.4rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 500;
-  color: #666;
+  color: var(--text-muted);
   padding: 0 2rem 2rem;
 }
 
@@ -722,7 +722,7 @@
 
 .project_detail_error h2 {
   font-size: 3.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
   color: var(--primary_color);
   margin-bottom: 2rem;
@@ -730,8 +730,8 @@
 
 .project_detail_error p {
   font-size: 1.6rem;
-  font-family: 'Roboto', sans-serif;
-  color: #666;
+  font-family: var(--font-ui);
+  color: var(--text-muted);
   margin-bottom: 3rem;
 }
 
@@ -741,7 +741,7 @@
   gap: 1rem;
   padding: 1.5rem 3rem;
   font-size: 1.6rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: #fff;
   background: linear-gradient(135deg, var(--secondary_color), var(--primary_color));
@@ -941,7 +941,7 @@
 
 .pipeline_subtitle {
   font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: var(--primary_color);
   margin: 2.5rem 0 2rem;
@@ -960,7 +960,7 @@
 /* Stage Card */
 .stage_card {
   position: relative;
-  background: #fff;
+  background: var(--bg-elev);
   border: 2px solid rgba(0, 132, 241, 0.15);
   border-radius: 1.2rem;
   padding: 2rem;
@@ -990,7 +990,7 @@
   justify-content: center;
   font-size: 1.8rem;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   box-shadow: 0 0.3rem 1rem rgba(0, 132, 241, 0.3);
 }
 
@@ -1001,7 +1001,7 @@
 
 .stage_title {
   font-size: 1.7rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   color: var(--secondary_color);
   margin: 0 0 0.8rem 0;
@@ -1010,8 +1010,8 @@
 
 .stage_description {
   font-size: 1.4rem;
-  font-family: 'Roboto', sans-serif;
-  color: #666;
+  font-family: var(--font-ui);
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
 }
@@ -1025,7 +1025,7 @@
 
 /* Post-Build Card */
 .postbuild_card {
-  background: #fff;
+  background: var(--bg-elev);
   border-radius: 1.2rem;
   padding: 2rem;
   border-left: 4px solid;
@@ -1066,7 +1066,7 @@
   border-radius: 2rem;
   font-size: 1.3rem;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
@@ -1095,8 +1095,8 @@
 /* Post-Build Description */
 .postbuild_description {
   font-size: 1.4rem;
-  font-family: 'Roboto', sans-serif;
-  color: #555;
+  font-family: var(--font-ui);
+  color: var(--text-muted);
   line-height: 1.7;
   margin: 0;
 }
@@ -1202,7 +1202,7 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 600;
   font-size: 1.3rem;
   clip-path: polygon(0 0, calc(100% - 2.5rem) 0, 100% 50%, calc(100% - 2.5rem) 100%, 0 100%, 2.5rem 50%);
@@ -1280,9 +1280,9 @@
   background: rgba(0, 132, 241, 0.1);
   border: 2px dashed rgba(0, 132, 241, 0.3);
   border-radius: 2rem;
-  color: #666;
+  color: var(--text-muted);
   font-size: 1.4rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 500;
 }
 
@@ -1300,7 +1300,7 @@
   border-radius: 3rem;
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-ui);
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   transition: all 0.3s ease;

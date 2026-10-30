@@ -1,49 +1,210 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
-body {
+/* ==================== Design tokens ==================== */
+/* Fonts are loaded via <link> in index.html. */
+
+:root {
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --nav-h: 68px;
+
+  /* Legacy names kept for the existing pages; mapped onto the new tokens. */
+  --primary_color: var(--accent-2);
+  --secondary_color: var(--accent);
+  --title_color: var(--text);
+  --subtitle_color: var(--accent);
+  --title_shadow: none;
+  --subtitle_shadow: none;
+  --footer_color: var(--bg-elev);
+}
+
+/* Dark is the default (also used if the pre-paint script could not run). */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #070A14;
+  --bg-elev: #0D1222;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(148, 163, 184, 0.16);
+  --text: #E6EAF2;
+  --text-muted: #9AA4B8;
+  --accent: #1F8FFF;
+  --accent-2: #9B7BFF;
+  --pass: #22C55E;
+  --fail: #F43F5E;
+  --warn: #F59E0B;
+  --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+  --glow: 0 0 24px rgba(31, 143, 255, 0.35);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #F5F7FB;
+  --bg-elev: #FFFFFF;
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --border: rgba(15, 23, 42, 0.12);
+  --text: #0B1020;
+  --text-muted: #4A5468;
+  --accent: #0068D1;
+  --accent-2: #6D3FE0;
+  --pass: #15803D;
+  --fail: #DC2626;
+  --warn: #B45309;
+  --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+  --glow: 0 0 20px rgba(0, 104, 209, 0.22);
+}
+
+/* ==================== Base ==================== */
+
+*, *::before, *::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* border: 2px solid red; */
+/* ==================== Legacy page overrides ==================== */
+/* Ported from the former JS GlobalStyle (theme.jsx).
+   This file is imported after the page CSS, so these win on equal specificity. */
+
+/* ------- Home ------- */
+.greeting p,
+.tagline,
+.social_label,
+.scroll_indicator p { color: var(--text-muted); }
+.last_name,
+.role,
+.card_text { color: var(--text); }
+.social_icon { background: var(--surface-strong); }
+.social_icon svg { color: var(--accent); }
+.floating_card {
+  background: var(--bg-elev);
+  border-color: var(--border);
+}
+.mouse { border-color: var(--accent); }
+.wheel { background: var(--accent); }
+
+/* ------- Skills ------- */
+.skill_section .center_section .card {
+  background-color: var(--bg-elev);
+  color: var(--text);
+}
+.skill_subtitle,
+.category_count { color: var(--text-muted); }
+.skill_category_wrapper {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.skill_category_wrapper:hover { border-color: var(--accent); }
+.category_header { border-bottom-color: var(--border); }
+.category_icon,
+.company_icon { background: linear-gradient(135deg, rgba(0, 132, 241, 0.18), rgba(124, 92, 255, 0.18)); }
+.category_title,
+.skill_name { color: var(--text); }
+.category_count { background: var(--surface-strong); }
+.skill_card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.skill_image_wrapper { background: var(--surface-strong); }
+.skill_card:hover .skill_image_wrapper { background: rgba(0, 132, 241, 0.12); }
+
+/* ------- About ------- */
+.about_subtitle,
+.stat_label,
+.company_note,
+.role_title,
+.achievement_item { color: var(--text-muted); }
+.stat_card {
+  background: linear-gradient(135deg, rgba(0, 132, 241, 0.06), rgba(124, 92, 255, 0.06));
+  border-color: var(--border);
+}
+.experience_card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.card_header { border-bottom-color: var(--border); }
+.company_name { color: var(--text); }
+.period_badge { background: rgba(0, 132, 241, 0.12); }
+
+/* ------- Technology ------- */
+.tech_section .tech_center .tech h2 { color: var(--text); }
+
+/* ------- Projects ------- */
+.project_section { background-color: var(--bg); }
+.project_subtitle { color: var(--text-muted); }
+.project_card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.project_card:hover { border-color: var(--accent); }
+.project_name { color: var(--text); }
+.github_button {
+  background: #24292e;
+  border-color: #24292e;
+}
+.github_button:hover {
+  background: #000;
+  border-color: #000;
 }
 
-:root{
-  --primary_color: #271F8C;
-  --secondary_color: #0084F1;
-  --title_color: #F9F9F9;
-  --subtitle_color: #0073D2;
-  --title_shadow: -4px 4px 7px rgba(0,0,0,0.3);
-  --subtitle_shadow: -4px 4px 7px rgba(0,0,0,0.2);
-  --footer_color: #1D1C1C;
+/* ------- Contact ------- */
+.contact_section { background-image: none; }
+.contact_subtitle,
+.info_details p { color: var(--text-muted); }
+.info_card,
+.contact_form_wrapper {
+  background: var(--surface);
+  border-color: var(--border);
 }
-
-html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
+.info_details h3,
+.social_section h3 { color: var(--text); }
+.social_section {
+  background: linear-gradient(135deg, rgba(0, 132, 241, 0.1), rgba(124, 92, 255, 0.1));
+  border-color: var(--border);
 }
-/* html, body {width: auto!important; overflow-x: hidden!important}  */
-body {
-    width: 100%;
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+.social_link {
+  background: var(--surface);
+  border-color: var(--border);
 }
-
-/* -------------------- Media Query -------------------- */
-
-/* ------------ Desktops and Laptops -------------- */
-
-@media (min-width: 1024px){
-
+.social_link svg { color: var(--text-muted); }
+.form_input,
+.form_textarea {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
 }
+.form_input::placeholder,
+.form_textarea::placeholder { color: var(--text-muted); }
 
-/* ------------ Tablets and iPads -------------- */
+/* ------- Project detail ------- */
+.project_detail_section { background-color: var(--bg); }
+.breadcrumb_container { background: var(--surface-strong); }
+.breadcrumb a,
+.breadcrumb .current,
+.project_description h2,
+.project_description h3,
+.related_card h3 { color: var(--text); }
+.project_description { background: var(--bg-elev); }
+.description_content p,
+.tech_highlights li { color: var(--text-muted); }
+.related_card { background: var(--bg-elev); }
