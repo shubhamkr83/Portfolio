@@ -11,12 +11,12 @@ export const experience = [
         logo: "/image/navo.png",
         website: "https://navofashion.in/",
         achievements: [
-            "Engineered API automation framework with 56 test files covering 40+ endpoints.",
+            "Engineered API automation framework with 471 automated tests covering 60+ endpoints across two production APIs.",
             "Built Android automation (Appium) for 3 app versions with BrowserStack integration.",
             "Architected Jenkins CI/CD pipelines with AWS S3 reports and Allure dashboards, cutting release cycles by 25%.",
             "Automated Android APK/AAB builds with secure code signing and SHA256 integrity verification.",
             "Designed production health monitoring for websites with SSL validation, geo-tracking, and Twilio alerts.",
-            "Implemented data-driven API testing with POJO models (Jackson/Lombok), achieving a 95%+ test success rate.",
+            "Implemented data-driven API testing with POJO models (Jackson/Lombok), live test-data lookups and JSON Schema contract checks, reaching a 100% pass rate on the latest full run.",
         ],
         resumeBullets: [
             "Spearheaded enterprise test automation initiative across API, Android, and Web platforms, reducing manual testing efforts by 60% and increasing overall test coverage by 40%",

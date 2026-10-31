@@ -11,51 +11,51 @@ const ProjectData = [
         git: "https://github.com/shubhamkr83/RestAssured_Automation",
         live: "https://github.com/shubhamkr83/RestAssured_Automation",
         category: "Automation Testing",
-        overview: "An enterprise-grade REST API automation framework featuring dual API support for BOMB (Admin/Seller operations at bizup.app) and Buyer App (Navo Fashion consumer API at api.navofashion.in). This production-ready framework converts a complete Postman collection into a robust RestAssured + TestNG solution with 56 test files, 40+ endpoints, comprehensive CI/CD integration, and automated reporting. Features include JWT authentication, AI-powered video title generation, performance validation (800ms threshold for Buyer App), and complete workflow pipeline testing with 95%+ success rate.",
+        overview: "A REST API automation framework for two production APIs: BOMB (admin/seller operations at api.bizup.app) and the Navo Buyer App (consumer API at api.navofashion.in). Built in Java with RestAssured, TestNG and Allure, it runs 471 tests across 63 test classes and 60+ endpoints, with the latest full run passing 471/471. Because it runs against production, the newest tests only send reads or requests the API rejects before any write, and every test links back to its documented QA test case. Credentials come from CI secrets, test data is looked up live at run time, and Jenkins publishes Allure reports to AWS S3 with email and Google Chat alerts.",
         features: [
-            "Dual API architecture: BOMB API (26 tests, 4 pipelines) and Buyer App (30 tests, 8 features)",
-            "Complete JWT authentication flow with automatic token injection and VariableManager",
-            "AI integration for video title generation from tags with context-aware processing",
-            "Performance testing with strict thresholds (800ms for Buyer App, 40s for BOMB)",
-            "Advanced validations: 30+ required fields, MongoDB ID formats, Firebase URLs, phone patterns",
-            "Comprehensive CI/CD: Jenkins automation, AWS S3 timestamped reports, email & Google Chat alerts",
-            "Pipeline-based testing: Login → Catalog Search → Tagging → Video Operations workflows",
-            "Feature-rich reporting: Interactive Allure dashboards with test timelines and flaky detection",
-            "Data-driven architecture: POJO models with Jackson, Lombok, nested object support",
-            "Production-ready features: Retry analyzer, parallel execution, JSON schema validation, Log4j2"
+            "471 tests across two production APIs: BOMB (212 tests, 4 workflow pipelines) and Buyer App (259 tests)",
+            "Production-safe test design: 76 tests for new API routes send only GETs or requests rejected before any write, Kafka publish or LLM call",
+            "Test-case traceability: every test carries an Allure @TmsLink to its QA test case in the backend repo",
+            "Contract testing: JSON Schema validation of key responses catches renamed, removed or retyped fields",
+            "Self-healing test data: cart and catalog ids are resolved from live APIs at run time instead of hardcoded ids that expire",
+            "Secrets out of git: logins come from Jenkins credentials or env vars, and tokens stay in memory, never written to disk",
+            "Shared request specs send the real app's headers (zone, app version, segment) with on-demand login, so any class runs on its own",
+            "Group-based TestNG suites pick up new test classes automatically; README test counts are generated from source",
+            "CI/CD: Jenkins pipeline, timestamped Allure reports on AWS S3, Python result parsing, email and Google Chat notifications",
+            "Workflow pipelines: Login → Catalog Search → Catalog Tagging → Video Upload and Tagging, sharing data via VariableManager"
         ],
-        structure: "Clean architecture with dual API support (BOMB and Buyer App) sharing a unified framework. Base layer includes TestNG BaseTest, ConfigManager with Owner properties, and RestClient wrapper. Constants layer manages BombEndpoints and BuyerAppEndpoints. Request/Response POJOs handle complex nested structures (LoginResponse, CatalogResponse, FeedFilterResponse). CI/CD pipeline integrates Jenkins with Python scripts for TestNG result parsing, email/chat notifications, and S3 uploads with timestamped folders. Test execution uses priority-based dependencies and VariableManager for cross-test data sharing.",
+        structure: "One framework serves both APIs. BaseTest builds the RestAssured specs (including a shared Buyer App spec with the app's headers and on-demand login); ConfigManager uses Owner to merge -D properties, CI env vars, a gitignored secrets file and config.properties; TestDataResolver looks up live ids with read-only GETs; ApiErrorAssertions checks the backend's error envelope. Endpoints live in BombEndpoints and BuyerAppEndpoints, payloads in Jackson/Lombok POJOs, and JSON Schemas under test resources. The Buyer App suite is discovered by package and TestNG group; BOMB keeps an ordered class list because its pipelines pass data between steps. Jenkins injects credentials, runs Maven, builds Allure, uploads to S3 and sends notifications.",
         testing: {
-            testTypes: ["API Tests", "Integration Tests", "Performance Tests"],
-            apiTargets: ["BOMB API (26 tests)", "Buyer App API (30 tests)"],
+            testTypes: ["API Tests", "Contract (JSON Schema) Tests", "Negative / Security Tests", "Workflow Pipeline Tests"],
+            apiTargets: ["BOMB API (212 tests)", "Buyer App API (259 tests)"],
             profiles: ["All", "BOMB-Pipeline", "BuyerApp-Pipeline"]
         },
         pipelineFlow: {
-            stages: ["Checkout", "Run Tests", "Setup Allure", "Generate Report", "Upload to S3", "Extract Summary", "Send Notifications", "Archive Links", "Publish Results"],
+            stages: ["Checkout", "Inject Credentials", "Run Tests", "Setup Allure", "Generate Report", "Upload to S3", "Extract Summary", "Send Notifications", "Archive Links"],
             postBuild: ["Always", "Failure", "Success", "Unstable"]
         },
         highlights: [
-            { value: "56", label: "Test files" },
-            { value: "40+", label: "Endpoints" },
-            { value: "95%+", label: "Success rate" },
-            { value: "800ms", label: "Buyer App threshold" },
+            { value: "471", label: "Automated tests" },
+            { value: "60+", label: "Endpoints" },
+            { value: "100%", label: "Latest full-run pass rate" },
+            { value: "2", label: "Production APIs" },
         ],
         flows: [
             {
                 title: "How it works",
                 kind: "user",
                 steps: [
-                    { label: "Authenticate", icon: "key", detail: "Login call returns a JWT that is injected automatically into later requests via VariableManager." },
-                    { label: "Build request", icon: "code", detail: "RestAssured requests use POJO models with Jackson and Lombok for nested payloads." },
-                    { label: "Run TestNG suite", icon: "play", detail: "Priority-ordered BOMB and Buyer App tests run in parallel, with retry analyzer." },
-                    { label: "Assert & measure", icon: "check", detail: "Responses are checked for 30+ fields, ID formats, schema, and the 800ms threshold." },
-                    { label: "Allure report", icon: "report", detail: "Interactive Allure dashboards show test timelines and flaky detection." },
+                    { label: "Load secrets", icon: "key", detail: "Login credentials come from Jenkins credentials or env vars; the JWT from login stays in memory for the run." },
+                    { label: "Resolve data", icon: "code", detail: "Current cart and catalog ids are looked up from live APIs with read-only GETs." },
+                    { label: "Run TestNG suite", icon: "play", detail: "BOMB pipelines run in order; Buyer App tests are discovered by package and group." },
+                    { label: "Assert & validate", icon: "check", detail: "Status codes, error envelopes, field values, JSON Schemas and response-time thresholds are checked." },
+                    { label: "Allure report", icon: "report", detail: "Allure dashboards link every test to its QA test case." },
                     { label: "Upload to S3", icon: "upload", detail: "Timestamped report folders are uploaded to AWS S3 by the Jenkins pipeline." },
                     { label: "Notify team", icon: "chat", detail: "Email and Google Chat alerts summarize results for the team." },
                 ],
             },
         ],
-        tools: ["Java 17", "Maven", "RestAssured 5.3+", "TestNG 7.8+", "Allure 2.24+", "Jenkins", "AWS S3", "Python 3", "Jackson 2.15", "Lombok 1.18", "Log4j2 2.20", "Hamcrest 2.2", "Owner 1.0.12", "Google Chat Webhooks", "SMTP Email"]
+        tools: ["Java 17", "Maven", "RestAssured 5.4", "TestNG 7.9", "Allure 2.25", "JSON Schema Validator", "Jenkins", "AWS S3", "Python 3", "Jackson 2.16", "Lombok 1.18", "Log4j2 2.22", "Hamcrest 2.2", "Owner 1.0.12", "Google Chat Webhooks", "SMTP Email"]
     },
     {
         id: 2,

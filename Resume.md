@@ -43,10 +43,10 @@
 
 ### **API Test Automation Suite (RestAssured & Postman/Newman)** | [GitHub](https://github.com/shubhamkr83/RestAssured_Automation)
 
-- Engineered enterprise-grade REST API testing framework with **56 test files** covering BOMB (26 tests) and Buyer App (30 tests) using RestAssured, TestNG, Maven, and Postman/Newman for comprehensive API coverage
+- Engineered a REST API automation framework with **471 automated tests** across two production APIs, BOMB (212) and the Navo Buyer App (259), using RestAssured, TestNG and Maven, alongside Postman/Newman collections
 - Implemented complete CI/CD pipeline with Jenkins automation, AWS S3 timestamped reports, Python-based result parsing, intelligent 3-attempt retry mechanism, and multi-channel notifications (email/Google Chat)
-- Developed dual API architecture with JWT authentication flow, AI-powered video title generation, performance validation (800ms threshold), multi-environment support (production/development branches), and data-driven testing using POJO models with Jackson/Lombok
-- Achieved **95%+ test success rate** with advanced validations (30+ fields, MongoDB ID formats, Firebase URLs), parallel execution, retry analyzer, detailed failure analysis (HTTP errors/assertions), comprehensive test analytics, Log4j2 logging, and interactive Allure/JSON/HTML dashboards
+- Designed production-safe tests for 8 new backend route groups that send only reads or requests rejected before any write, with every test linked to its QA test case via Allure TMS links and key responses checked against JSON Schemas
+- Hardened the framework: credentials moved from source to Jenkins credentials and env vars, expiring hardcoded test data replaced by live run-time lookups, and suites made self-discovering, reaching a **100% pass rate (471/471)** on the latest full run
 
 ### **Android Automation Framework** | [GitHub](https://github.com/shubhamkr83/android-automation)
 
@@ -86,10 +86,10 @@
 
 | Category | Technologies |
 |----------|-------------|
-| **Automation Frameworks** | Selenium, Appium 10.0.0, Playwright, RestAssured 5.3+, TestNG 7.8+, BrowserStack |
+| **Automation Frameworks** | Selenium, Appium 10.0.0, Playwright, RestAssured 5.4, TestNG 7.9, BrowserStack |
 | **Programming Languages** | Java (8, 17), Python 3 |
 | **Build Tools** | Maven, Gradle, Android Build Tools |
-| **Reporting & Logging** | Allure 2.24+, ExtentReports 5.1.2, Log4j2 2.20+ |
+| **Reporting & Logging** | Allure 2.25, ExtentReports 5.1.2, Log4j2 2.22 |
 | **CI/CD & DevOps** | Jenkins (Pipeline/Groovy), AWS S3, AWS CLI, Git/GitHub |
 | **API Testing** | Postman, Newman, RestAssured, JSON/HTML Reporters |
 | **Mobile Development** | Android SDK, APK/AAB Building, Code Signing |

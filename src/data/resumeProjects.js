@@ -4,10 +4,10 @@ export const resumeProjects = [
         title: "API Test Automation Suite (RestAssured & Postman/Newman)",
         link: "https://github.com/shubhamkr83/RestAssured_Automation",
         bullets: [
-            "Engineered enterprise-grade REST API testing framework with 56 test files covering BOMB (26 tests) and Buyer App (30 tests) using RestAssured, TestNG, Maven, and Postman/Newman for comprehensive API coverage",
+            "Engineered a REST API automation framework with 471 automated tests across two production APIs, BOMB (212) and the Navo Buyer App (259), using RestAssured, TestNG and Maven, alongside Postman/Newman collections",
             "Implemented complete CI/CD pipeline with Jenkins automation, AWS S3 timestamped reports, Python-based result parsing, intelligent 3-attempt retry mechanism, and multi-channel notifications (email/Google Chat)",
-            "Developed dual API architecture with JWT authentication flow, AI-powered video title generation, performance validation (800ms threshold), multi-environment support (production/development branches), and data-driven testing using POJO models with Jackson/Lombok",
-            "Achieved 95%+ test success rate with advanced validations (30+ fields, MongoDB ID formats, Firebase URLs), parallel execution, retry analyzer, detailed failure analysis (HTTP errors/assertions), comprehensive test analytics, Log4j2 logging, and interactive Allure/JSON/HTML dashboards",
+            "Designed production-safe tests for 8 new backend route groups that send only reads or requests rejected before any write, with every test linked to its QA test case via Allure TMS links and key responses checked against JSON Schemas",
+            "Hardened the framework: credentials moved from source to Jenkins credentials and env vars, expiring hardcoded test data replaced by live run-time lookups, and suites made self-discovering, reaching a 100% pass rate (471/471) on the latest full run",
         ],
         projectIds: [1, 3],
     },

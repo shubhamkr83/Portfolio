@@ -3,25 +3,51 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Portfolio">
-  <meta name="keywords" content="HTML, CSS, JavaScript, Reactjs">
-  <meta name="author" content="Shubham Kumar">
-<!-- PWA Meta Tags -->
-<meta name="theme-color" content="#271F8C">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Portfolio">
-
-<!-- Icons -->
-<link rel="icon" type="image/png" href="/image/logo.png" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-<!-- PWA Manifest -->
-<link rel="manifest" href="/manifest.webmanifest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <script type="module" crossorigin src="/assets/index-bacb0d6a.js"></script>
-  <link rel="stylesheet" href="/assets/index-71d6c53e.css">
+  <title>Shubham Kumar — QA Automation Engineer</title>
+  <meta name="description" content="Shubham Kumar, QA Automation Engineer: API, Android and web test automation, CI/CD pipelines and production monitoring.">
+  <meta name="keywords" content="QA Automation, Test Automation, API Testing, Android Testing, Selenium, Playwright, Appium, CI/CD">
+  <meta name="author" content="Shubham Kumar">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shubham Kumar — QA Automation Engineer">
+  <meta property="og:description" content="API, Android and web test automation, CI/CD pipelines and production monitoring.">
+
+  <!-- Set the theme before first paint to avoid a flash (same logic as App.jsx) -->
+  <script>
+    (function () {
+      var theme;
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') theme = stored;
+      } catch (e) { /* storage unavailable */ }
+      if (!theme) {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#070A14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Portfolio">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="/image/logo.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <script type="module" crossorigin src="/assets/index-6b308205.js"></script>
+  <link rel="stylesheet" href="/assets/index-3313ebd2.css">
 <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
 
 <body>
