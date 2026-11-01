@@ -48,6 +48,12 @@
 - Designed production-safe tests for 8 new backend route groups that send only reads or requests rejected before any write, with every test linked to its QA test case via Allure TMS links and key responses checked against JSON Schemas
 - Hardened the framework: credentials moved from source to Jenkins credentials and env vars, expiring hardcoded test data replaced by live run-time lookups, and suites made self-discovering, reaching a **100% pass rate (471/471)** on the latest full run
 
+### **Master QA Prompts: AI-Generated QA Documentation (Frontend & Backend)** | [GitHub](https://github.com/Bizup-world/backend-api)
+
+- Wrote two reusable master prompts (backend API and web frontend) that an AI coding agent runs against a codebase to generate its complete QA system: a 9-section QA context, exhaustive test cases, smoke and environment docs, coverage checks and an HTML QA dashboard
+- Enforced a strict step order (pre-scan, QA context, Bruno API collection, then test cases) so every Expected Result is derived from an existing API assertion rather than an invented response shape
+- Applied across **4 production repositories** (2 backends, 2 frontends), generating **3,850+ test cases** and a **1,159-request Bruno collection**, kept current by an on-demand /update-qa-context skill and a qa:check coverage gate
+
 ### **Android Automation Framework** | [GitHub](https://github.com/shubhamkr83/android-automation)
 
 - Built scalable Android UI automation framework using Java, Appium 10.0.0, and TestNG for Bizup Buyer App testing across **3 versions** (2.16.4, 3.0.1, 3.0.4)

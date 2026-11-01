@@ -9,6 +9,7 @@ import FlowDiagram from '../../Components/FlowDiagram/FlowDiagram';
 import toPipelineFlow, { guessIcon } from '../../Components/FlowDiagram/toPipelineFlow';
 import { getIcon } from '../../Components/FlowDiagram/icons';
 import CountUp from './CountUp';
+import QaDashboardDemo from './QaDashboardDemo';
 import './projectDetail.css';
 
 const TESTING_GROUPS = [
@@ -46,7 +47,12 @@ const Section = ({ id, title, eyebrow, children }) => (
 const FlowTabs = ({ project }) => {
     const pipeline = toPipelineFlow(project);
     const tabs = [
-        project.flows?.[0] && { key: 'user', label: 'User flow', flow: project.flows[0] },
+        // A single flow keeps the "User flow" label; several flows are tabbed by their own titles.
+        ...(project.flows || []).map((flow, i, all) => ({
+            key: i === 0 ? 'user' : `flow-${i}`,
+            label: all.length > 1 ? flow.title : 'User flow',
+            flow,
+        })),
         pipeline && { key: 'pipeline', label: 'CI/CD pipeline', flow: pipeline },
     ].filter(Boolean);
     const [current, setCurrent] = useState(tabs[0]?.key);
@@ -262,6 +268,12 @@ const ProjectView = ({ project }) => {
             )}
 
             <FlowTabs project={project} />
+
+            {project.dashboardDemo && (
+                <Section id="pd-dashboard" title="Dashboard example" eyebrow="Try it">
+                    <QaDashboardDemo />
+                </Section>
+            )}
 
             {features.length > 0 && (
                 <Section id="pd-features" title="Features" eyebrow="What it does">

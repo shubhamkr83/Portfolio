@@ -12,6 +12,17 @@ export const resumeProjects = [
         projectIds: [1, 3],
     },
     {
+        id: "master-qa-prompts",
+        title: "Master QA Prompts: AI-Generated QA Documentation (Frontend & Backend)",
+        link: "https://github.com/Bizup-world/backend-api",
+        bullets: [
+            "Wrote two reusable master prompts (backend API and web frontend) that an AI coding agent runs against a codebase to generate its complete QA system: a 9-section QA context, exhaustive test cases, smoke and environment docs, coverage checks and an HTML QA dashboard",
+            "Enforced a strict step order (pre-scan, QA context, Bruno API collection, then test cases) so every Expected Result is derived from an existing API assertion rather than an invented response shape",
+            "Applied across 4 production repositories (2 backends, 2 frontends), generating 3,850+ test cases and a 1,159-request Bruno collection, kept current by an on-demand /update-qa-context skill and a qa:check coverage gate",
+        ],
+        projectIds: [8],
+    },
+    {
         id: "android-automation",
         title: "Android Automation Framework",
         link: "https://github.com/shubhamkr83/android-automation",

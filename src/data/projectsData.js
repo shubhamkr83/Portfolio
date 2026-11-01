@@ -58,6 +58,79 @@ const ProjectData = [
         tools: ["Java 17", "Maven", "RestAssured 5.4", "TestNG 7.9", "Allure 2.25", "JSON Schema Validator", "Jenkins", "AWS S3", "Python 3", "Jackson 2.16", "Lombok 1.18", "Log4j2 2.22", "Hamcrest 2.2", "Owner 1.0.12", "Google Chat Webhooks", "SMTP Email"]
     },
     {
+        id: 8,
+        image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/markdown/markdown-original.svg",
+        images: [],
+        dashboardDemo: true,
+        name: "Master QA Prompts: AI-Generated QA Documentation (Frontend & Backend)",
+        git: "https://github.com/Bizup-world/backend-api",
+        live: "https://github.com/Bizup-world/backend-api",
+        category: "AI-Assisted QA",
+        overview: "Two reusable prompts that an AI coding agent (Claude Code or Cursor, in Agent mode) runs once against a codebase to build its whole QA documentation system. master_backend_qa_prompt.md targets backend APIs; master_frontend_qa_prompt.md targets web frontends and SPAs. The agent scans the code, then writes everything in a fixed order: a 9-section QA context document, an API collection (backend only), exhaustive test cases, smoke and environment docs, coverage-check scripts, an HTML QA dashboard, and an /update-qa-context skill that keeps it all current. Applied to four Navo / Bizup repositories, it produced about 3,850 test cases in 450 feature files and a Bruno collection of 1,159 requests.",
+        features: [
+            "Pre-scan: before writing anything, the agent discovers the framework, router or route registration, auth scheme, ORM, validation library, response envelope, state management and background jobs, and reuses those findings in every step",
+            "Strict step order: QA_CONTEXT first, then (backend) the full Bruno API collection, and only then test cases, so every Expected Result mirrors an assertion that already exists instead of an invented response shape",
+            "QA_CONTEXT.md in 9 sections: route groups or screens, auth and user flows, endpoints or API calls, data models or state shapes, enums, validation, error handling, per-feature details, and background jobs or client infrastructure",
+            "Exhaustive test cases: positive, negative (each required field missing, each unauthorized role, expired token) and edge cases (boundaries, races, invalid status transitions, flag-gated behaviour), with Priority, Smoke/Regression type, Automatable and Auth on every case",
+            "Bruno API collection (backend): one .bru file per endpoint with a mandatory tests block, plus negative files for every endpoint",
+            "Coverage drift check: qa-utils.mjs parses the project's real routes and qa:check exits 1 when a route has no test case, is missing from QA_CONTEXT, or is stale",
+            "Self-contained HTML QA dashboard: 6 tabs for backend, 5 for frontend, with stats, a filterable test-case table with CSV export, smoke checklist with pass/fail state, feature cards, coverage gaps and the last Bruno run",
+            "Kept current on demand: the generated /update-qa-context skill re-scans the whole project and updates only the affected sections and test files, never deleting old cases (it marks them deprecated)",
+            "Generic by design: framework, auth header, folder names, domain prefixes and package manager are discovered, not hardcoded, so the same prompt runs on Express, NestJS, FastAPI, Next.js, Vite + React and more",
+            "Frontend variant: test steps use UI actions (click, fill, see, be redirected), and it adds empty, loading and error states, deep links, back-button and session-expiry cases, accessibility spot-checks and a browser/device matrix"
+        ],
+        structure: "Each prompt is one Markdown file copied to the repository root and pasted into an agent session. It opens with a pre-scan checklist, then an execution-order table, then one section per step that specifies the exact output file, its headings and its rules, and ends with a confirmation checklist the agent must satisfy. The backend prompt (about 950 lines) has 6 main steps plus optional extensions for worker test cases and a test-data seed script. The frontend prompt (about 750 lines) has 5 steps and ends with a table of how it differs from the backend version. The generated output is shared: QA/docs/ (QA_CONTEXT, SMOKE_TESTS, TEST_ENV), QA/test_cases_doc/<domain>/<feature>/test_cases.md, QA/qa-utils.mjs, QA/check-coverage.mjs, QA/generate-dashboard.mjs and the agent skills. The test cases also feed the RestAssured framework, where each automated test links back to its case through an Allure TMS link.",
+        testing: {
+            testTypes: ["Positive", "Negative", "Edge Case", "Smoke", "Regression", "RBAC spot-checks", "Accessibility spot-checks"],
+            apiTargets: ["backend-api (1,076 TCs, 1,159 Bruno requests)", "worms OMS backend (1,356 TCs)", "OMS frontend (416 TCs)", "BOMB admin frontend (1,008 TCs)"],
+            profiles: ["qa:check", "qa:dashboard", "qa:run", "/update-qa-context"]
+        },
+        highlights: [
+            { value: "2", label: "Master prompts (frontend & backend)" },
+            { value: "4", label: "Repositories documented" },
+            { value: "3,850+", label: "Test cases generated" },
+            { value: "1,159", label: "Bruno API requests" },
+        ],
+        flows: [
+            {
+                title: "Backend prompt",
+                kind: "user",
+                steps: [
+                    { label: "Pre-scan", icon: "search", detail: "Find the framework, route registration, auth header format, ORM, validation library, response envelope and job workers." },
+                    { label: "QA_CONTEXT.md", icon: "report", detail: "Write all 9 sections: route groups, auth flows and status tables, endpoints, models, enums, validation, errors, features and background jobs." },
+                    { label: "Bruno collection", icon: "code", detail: "Create one .bru request per endpoint in one pass, each with a tests block, plus negative files. Must finish before test cases start." },
+                    { label: "Test cases", icon: "check", detail: "Write exhaustive positive, negative and edge cases per feature, with Expected Results copied from the Bruno assertions." },
+                    { label: "Smoke & env docs", icon: "shield", detail: "SMOKE_TESTS.md lists the business-critical checks; TEST_ENV.md lists environments, role accounts and seeding." },
+                    { label: "Coverage check", icon: "server", detail: "qa-utils.mjs parses real routes; qa:check fails when a route has no test case or the context is stale." },
+                    { label: "Skills & dashboard", icon: "ai", detail: "Create the update-qa-context, bruno and create-api skills, then build the 6-tab HTML QA dashboard." },
+                ],
+            },
+            {
+                title: "Frontend prompt",
+                kind: "user",
+                steps: [
+                    { label: "Pre-scan", icon: "search", detail: "Find the framework, router type, layouts, auth guards and token storage, state management, API layer, form library and E2E setup." },
+                    { label: "QA_CONTEXT.md", icon: "report", detail: "Write all 9 sections: screens, user flows and navigation, API calls, data and state shapes, enums, form validation, error/empty/loading states, features and client infrastructure." },
+                    { label: "Test cases", icon: "check", detail: "Write UI-action test cases per feature, including deep links, back button, session expiry, slow and failing APIs, and theme or locale changes." },
+                    { label: "Smoke & env docs", icon: "shield", detail: "Smoke checklist with RBAC and accessibility spot-checks; TEST_ENV with the browser and device matrix." },
+                    { label: "Coverage check", icon: "server", detail: "extractAppRoutes() parses the router or pages folder; qa:check lists pages without test cases." },
+                    { label: "Skill & dashboard", icon: "ai", detail: "Create the /update-qa-context skill and an editor rule, then build the 5-tab HTML QA dashboard." },
+                ],
+            },
+            {
+                title: "Keeping it current",
+                kind: "user",
+                steps: [
+                    { label: "Ship a feature", icon: "git", detail: "Ordinary feature work never rewrites QA docs automatically." },
+                    { label: "/update-qa-context", icon: "ai", detail: "On request, the agent re-scans the whole project and updates only the affected QA_CONTEXT sections and test files." },
+                    { label: "qa:check", icon: "check", detail: "The coverage check confirms no route or page is left without test cases." },
+                    { label: "Automate", icon: "play", detail: "Cases marked Automatable become RestAssured tests that link back to their test-case ID in Allure." },
+                ],
+            },
+        ],
+        tools: ["Claude Code", "Cursor", "Markdown", "Node.js (.mjs scripts)", "Bruno", "HTML / vanilla JS dashboard", "Agent skills", "Express / TypeScript", "Next.js", "React + Vite", "RestAssured + Allure"]
+    },
+    {
         id: 2,
         image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original.svg",
         images: [
