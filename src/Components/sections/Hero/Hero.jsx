@@ -6,7 +6,6 @@ import { MdEmail } from 'react-icons/md';
 import { FiArrowDown, FiFolder, FiFileText } from 'react-icons/fi';
 import { profile } from '../../../data/profile';
 import { fadeUp, scaleIn, stagger } from '../../../motion/variants';
-import portrait from '../../../assets/images/img32.png';
 import HeroBackdrop from './HeroBackdrop';
 import TerminalCard from './TerminalCard';
 import './Hero.css';
@@ -71,15 +70,6 @@ const Hero = () => {
                 </motion.div>
 
                 <motion.div className="hero_visual" variants={scaleIn} initial="hidden" animate="visible">
-                    <div className="hero_photo_ring">
-                        <img
-                            src={portrait}
-                            alt={`Portrait of ${profile.name}`}
-                            className="hero_photo"
-                            width="411"
-                            height="308"
-                        />
-                    </div>
                     <TerminalCard />
                 </motion.div>
             </div>

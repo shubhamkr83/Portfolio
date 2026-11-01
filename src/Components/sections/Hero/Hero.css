@@ -166,57 +166,11 @@
   align-items: center;
 }
 
-.hero_photo_ring {
-  position: relative;
-  width: min(32rem, 70vw);
-  aspect-ratio: 1;
-  padding: 0.6rem;
-  border-radius: 50%;
-  isolation: isolate;
-}
-
-/* Rotating gradient ring + soft glow behind it. */
-.hero_photo_ring::before,
-.hero_photo_ring::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
-  z-index: -1;
-}
-
-.hero_photo_ring::before {
-  animation: hero_spin 10s linear infinite;
-}
-
-.hero_photo_ring::after {
-  inset: -1.6rem;
-  filter: blur(3rem);
-  opacity: 0.45;
-}
-
-.hero_photo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  background: var(--bg-elev);
-  border: 0.4rem solid var(--bg);
-}
-
-@keyframes hero_spin {
-  to { transform: rotate(360deg); }
-}
-
 /* ---------- Terminal ---------- */
 
 .hero_terminal {
   position: relative;
   width: min(100%, 46rem);
-  margin-top: -4rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface-strong);
@@ -318,7 +272,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero_photo_ring::before,
   .hero_terminal_cursor { animation: none; }
   .hero_btn,
   .hero_social { transition: none; }
