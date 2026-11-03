@@ -11,7 +11,7 @@ import "./resume.css";
 const bare = (url) => url.replace(/^https?:\/\/(www\.)?/, '');
 
 const PDF_FILE = 'Shubham_Kumar_QA_Automation_Engineer.pdf';
-const PDF_URL = `/resume/${PDF_FILE}`;
+const PDF_URL = `/files/${PDF_FILE}`;
 
 const OnePage = () => (
     <motion.section

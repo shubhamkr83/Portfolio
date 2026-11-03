@@ -1,0 +1,3 @@
+# Serve the React app for every route (e.g. /resume, /projects/1) so hard refreshes don't 404.
+# Real files such as the resume PDF are still served directly.
+/*    /index.html   200
