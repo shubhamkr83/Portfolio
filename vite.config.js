@@ -39,6 +39,8 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,gif,webp}'],
+        // Let the browser open the resume PDF instead of the SPA fallback.
+        navigateFallbackDenylist: [/\.pdf$/],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

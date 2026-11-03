@@ -10,6 +10,30 @@ import "./resume.css";
 
 const bare = (url) => url.replace(/^https?:\/\/(www\.)?/, '');
 
+const PDF_FILE = 'Shubham_Kumar_QA_Automation_Engineer.pdf';
+const PDF_URL = `/resume/${PDF_FILE}`;
+
+const OnePage = () => (
+    <motion.section
+        className="resume_onepage print-hidden"
+        aria-labelledby="onepage_title"
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+    >
+        <div className="resume_onepage_head">
+            <div>
+                <h2 id="onepage_title" className="resume_onepage_title">1 page resume</h2>
+                <p className="resume_onepage_text">The same resume as a single A4 PDF, ready to attach or print.</p>
+            </div>
+            <div className="resume_onepage_actions">
+                <a href={PDF_URL} target="_blank" rel="noreferrer" className="resume_btn resume_btn_ghost">View PDF</a>
+                <a href={PDF_URL} download={PDF_FILE} className="resume_btn">Download PDF</a>
+            </div>
+        </div>
+    </motion.section>
+);
+
 const Section = ({ title, children }) => (
     <motion.section
         className="resume_section"
@@ -27,8 +51,10 @@ const Resume = () => (
     <main className="resume_page">
         <div className="resume_toolbar print-hidden">
             <Link to="/" className="resume_btn resume_btn_ghost">Back to site</Link>
-            <button type="button" className="resume_btn" onClick={() => window.print()}>Download PDF</button>
+            <button type="button" className="resume_btn" onClick={() => window.print()}>Print full resume</button>
         </div>
+
+        <OnePage />
 
         <article className="resume_sheet">
             <header className="resume_header">

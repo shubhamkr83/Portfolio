@@ -39,6 +39,29 @@
   background: transparent;
   border: 1px solid var(--border);
 }
+.resume_onepage {
+  max-width: 860px;
+  margin: 0 auto 2.4rem;
+  padding: 2.4rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.resume_onepage_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+.resume_onepage_title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  margin: 0;
+}
+.resume_onepage_text { font-size: 1.4rem; color: var(--text-muted); margin: 0.4rem 0 0; }
+.resume_onepage_actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
 .resume_sheet {
   max-width: 860px;
   margin: 0 auto;
@@ -84,6 +107,7 @@
 .resume_skill_row dd { margin: 0; color: var(--text-muted); }
 
 @media (max-width: 640px) {
+  .resume_onepage { padding: 1.8rem; }
   .resume_sheet { padding: 2.4rem 1.8rem; }
   .resume_name { font-size: 3.2rem; }
   .resume_skill_row { grid-template-columns: 1fr; gap: 0.2rem; }
